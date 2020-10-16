@@ -3,12 +3,12 @@
 # NOTES ON PAPER WRITING
 Rename the paper.tex file into your paper name. Follow the steps below:
 - Use a Spell Checker with US English as spelling language
-- Make shure you use a neat Text IDE:
+- Make sure you use a neat Text IDE:
     - https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
 - Use a good spell checker:
     - Academic Writing Check: https://github.com/devd/Academic-Writing-Check
     - Grammarly: https://marketplace.visualstudio.com/items?itemName=znck.grammarly
-- Use GIT for version control, fork from this repos.
+- Use GIT for version control.
 - Make sure your Makefile is working correctly and compiles the documents
 - All images go to the subfolder figures
 - Make sure the source files for images are in the pics folder as well (unless they are huge)
