@@ -103,7 +103,7 @@ fi
 echo
 
 # don't need stashing as we make sure that there are no uncommitted changes
-git checkout master
+git checkout main
 
 echo "${bold}${green}Successfully installed filter.${normal}"
 popd >/dev/null
