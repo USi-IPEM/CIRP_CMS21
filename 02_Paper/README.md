@@ -10,7 +10,7 @@ Rename the paper.tex file into your paper name. Follow the steps below:
     - Grammarly: https://marketplace.visualstudio.com/items?itemName=znck.grammarly
 - Use GIT for version control.
 - Make sure your Makefile is working correctly and compiles the documents
-- All images go to the subfolder figures
+- All images go to the subfolder img.
 - Make sure the source files for images are in the pics folder as well (unless they are huge)
 - Place the reviews as txt files in the folder reviews.
 - Place related work pdfs into the folder related work using the bitex key as filename.
