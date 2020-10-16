@@ -1,9 +1,13 @@
-# wavelet_pooling_paper
+# Predictive analytics paper
 
 # NOTES ON PAPER WRITING
 Rename the paper.tex file into your paper name. Follow the steps below:
 - Use a Spell Checker with US English as spelling language
-- Use Academic Writing Check: https://github.com/devd/Academic-Writing-Check
+- Make shure you use a neat Text IDE:
+    - https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
+- Use a good spell checker:
+    - Academic Writing Check: https://github.com/devd/Academic-Writing-Check
+    - Grammarly: https://marketplace.visualstudio.com/items?itemName=znck.grammarly
 - Use GIT for version control, fork from this repos.
 - Make sure your Makefile is working correctly and compiles the documents
 - All images go to the subfolder figures

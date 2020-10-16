@@ -1,6 +1,6 @@
 .PHONY: all latex bibtex view nonstop clean distclean
 
-TARGET=wavelet_pooling
+TARGET=paper
 SOURCE=$(TARGET).tex
 NONSTOP=-interaction nonstopmode -halt-on-error -file-line-error
 

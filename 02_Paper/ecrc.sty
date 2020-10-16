@@ -122,7 +122,7 @@
 
 \def\reprintline{%
     \parbox[t]{\@tempdima}{\centering%
-    \raisebox{20pt}{\includegraphics{SDlogo-\jtype p}}\\[-12pt]
+    \raisebox{20pt}{\includegraphics{./img/SDlogo-\jtype p}}\\[-12pt]
     \mbox{\footnotesize\@journalname~xx~(xxxx)~xxx-xxx}%
     }}
 
@@ -161,14 +161,14 @@
 
 \def\dummyjnllogo{%
       \parbox[c][61pt][t]{\dummylogowidth}%
-{\hspace*{-25.5pt}\includegraphics[]{Procir}}
+{\hspace*{-25.5pt}\includegraphics[]{./img/Procir}}
 }
 
-\def\elslogo{\includegraphics{elsevier-logo-\jtype p}}
+\def\elslogo{\includegraphics{./img/elsevier-logo-\jtype p}}
 \def\sdlogo{\vbox{{\fontsize{9pt}{11pt}\sffamily\selectfont{Available online at www.sciencedirect.com\par}}\vspace*{3.3mm}
-\includegraphics{SDlogo-\jtype p}}}
+\includegraphics{./img/SDlogo-\jtype p}}}
 \def\jnllogo{\IfFileExists{\@jid logo}%
-   {\includegraphics{\@jid logo}}%
+   {\includegraphics{./img/\@jid logo}}%
    {\dummyjnllogo}%
    }
 
