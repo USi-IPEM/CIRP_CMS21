@@ -1,6 +1,6 @@
 # Predictive analytics paper
 
-## NOTES ON PAPER WRITING
+### NOTES ON PAPER WRITING
 Rename the paper.tex file into your paper name. Follow the steps below:
 - Use a Spell Checker with US English as spelling language
 - Make sure you use a neat Text IDE:
@@ -15,12 +15,12 @@ Rename the paper.tex file into your paper name. Follow the steps below:
 - Place the reviews as txt files in the folder reviews.
 - Place related work pdfs into the folder related work using the bitex key as filename.
 
-## SETTING UP AUTOFORMAT
+### SETTING UP AUTOFORMAT
 Run the following commands:
 chmod +x setup_autoformat.sh
 ./setup_autoformat.sh
 Choose wrap around after 120 columns.
 
-## IDEAS ON HOW TO WRITE A NICE PAPER
+### IDEAS ON HOW TO WRITE A NICE PAPER
 Take a look at:
 https://github.com/mnielsen/notes-on-writing/blob/master/notes_on_writing.md
