@@ -281,7 +281,13 @@ Data  is collected from the demonstration cell and analyzed
 
 
 \subsection{Classifier optimization and testing}
-We work with a total of 462 measurements. 
+We work with a total of 132 measurements. Each containing arm and belt data
+logs of individual cell runs. 20 samples are set aside at random for testing 
+purposes, leaving 112 training samples. The random seed is set to 1 
+
+We compare a total of three different classifier architectures on the data.
+A Support Vector Machine (SVM), a multilinear perceptron and a Random Forest
+structure. 
 \begin{table}
        \begin{tabular}{ c c }
               Support Vector Machine & 95.\% \\
@@ -289,7 +295,15 @@ We work with a total of 462 measurements.
               Random Forest          & 100\%
        \end{tabular}
        \caption{Method comparison for fault detection using the industry demo data test set.}
+       \label{tab:class_comp}
 \end{table}
+Results are shown in table~\ref{tab:class_comp}. For 55 of the total 132 samples
+quality measurements indicate a problem. This sets the 
+baseline over the entire data set, that would be obtained by simply labeling all samples
+as good. Over the entire data set, we require to classify more than 58.3\% of the data correctly.
+The test set contains eight incorrect samples. We would therefore expect the naive classifier
+to produce a 60\% accuracy, which we have to beat. In Table~\ref{tab:class_comp},
+we observe that this is indeed the case for all three approaches evaluated here.
 
 \section{Conclusion}
 
