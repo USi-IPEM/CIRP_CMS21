@@ -127,11 +127,11 @@
       linkcolor=blue,
       citecolor=blue,
       urlcolor=blue}
-
-\newcommand{\AP}[1]{{\color{green} {\bf (AP: #1)}}}
+\usepackage{xcolor}
+\newcommand{\AP}[1]{{\color{blue} {\bf (AP: #1)}}}
 \newcommand{\LS}[1]{{\color{purple} {\bf (LS: #1)}}}
-\newcommand{\MW}[1]{{\color{red} {\bf (MW: #1)}}}
-\newcommand{\JG}[1]{{\color{orange} {\bf (JG: #1)}}}
+\newcommand{\MW}[1]{{\color{teal} {\bf (MW: #1)}}}
+\newcommand{\JG}[1]{{\color{green} {\bf (JG: #1)}}}
 \newcommand{\DSL}[1]{{\color{blue} {\bf (DSL: #1)}}}
 
 \begin{document}
@@ -218,48 +218,58 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \section{Introduction} % 1 Page (incl authors, abstract)
 
-% a)	Products’ quality must always be guaranteed.
-% b)	In certain cases (especially in series assembly production) there is a delay between quality inspection and end of the production process  high potential for producing scrap 
-% c)	By doing quality inspection based on samples, there is still a risk of sending NOK parts to customers
-% d)	Cost of quality check might be expensive
-% e)	Quality assurance is normally done at the end of production (for assembly processes)   
-% f)	Early prediction of the production’s quality  would help to decrease the amount of scrap  and the risk of sending NOK parts to customers
-% g)	Variable predictions by using machine learning models is currently widely used in diverse fields due to its accurate predictions  with the data collected from the machines, prediction models can be implemented for specific predicted values
-\AP{TEST}
+\AP{\begin{itemize}
+       \item	Products’ quality must always be guaranteed.
+       \item	In certain cases (especially in series assembly production) there is a delay between quality inspection
+              and end of the production process high potential for producing scrap 
+       \item	By doing quality inspection based on samples, there is still a risk of sending NOK parts to customers
+       \item	The cost of quality checks might be expensive
+       \item	Quality assurance is normally done at the end of production (for assembly processes)   
+       \item	Early prediction of the production’s quality  would help to decrease the amount of scrap  and the risk of sending NOK parts to customers
+       \item	Variable predictions by using machine learning models is currently widely used in diverse fields due to its accurate predictions with the data collected from the machines, 
+              prediction models can be implemented for specific predicted values
+\end{itemize}}
 
 \section{Related Works} % 1 Page \Lennart
 
 \subsection{Quality check in production} % Basic books (find summarize) basic concepts
 
-% a)	How quality check is done in production
-%        i)	Concepts and sampling plan
-%        ii)	Attributive vs Variable measurements [VM has higher measurement accuracy, reason why it’s better to use regression model]
-
+\AP{
+\begin{itemize}
+\item How quality check is done in production
+\item Concepts and sampling plan
+\item Attributive vs Variable measurements [VM has higher measurement accuracy, reason why it’s better to use regression model]
+\end{itemize}}
 
 \subsection{Predictive analytics in production}
 
-% Predictive analytics as concepts
-% Implementation in production
-%   - Predictive Maintenance
-%   - Scheduling
-%   - Other
+\AP{
+Predictive analytics as concepts. Implementation in production
+\begin{itemize}
+       \item Predictive Maintenance
+       \item Scheduling
+       \item Other
+\end{itemize}       
+If happens to be something with P.A. Quality Check
+\begin{itemize}
+       \item	Predictive analytics in production focusing in QA
+       \item	Existing approaches and methods
+\end{itemize}      
+Note: Ideal is to find a gap in literature, that proves why do we do it and why it is important
+}
 
-% If happens to be something with P.A. Quality Check
-% b)	Predictive analytics in production focusing in QA
-%        i)	Existing approaches and methods
-
-% Note: Ideal is to find a gap in literature, that proves why do we do it and why it is important
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
 
-% What is the demozelle and why it is relevant as study case
-% a)	Description of the assemble process in the Demozelle 
-% Incl pictures
-
+\AP{
+What is the demozelle and why it is relevant as study case
+Description of the assemble process in the Demozelle 
+Incl pictures
+}
 \section{Methods} %3/4 Page
 
-% b)	Data  is collected from the demonstration cell and analyzed 
-% c)	ML model [regression] is trained [type of model tbd]
+Data  is collected from the demonstration cell and analyzed 
+
 \subsection{Measurement}
 
 
@@ -271,7 +281,7 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 
 \subsection{Classifier optimization and testing}
-
+We work with a total of 462 measurements. 
 \begin{table}
        \begin{tabular}{ c c }
               Support Vector Machine & 95.\% \\
@@ -285,7 +295,7 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \subsection{Lesson Learned} % 1/2 Page
 
-% h)	Explain experiences by doing the research
+\AP{explain experiences by doing the research}
 
 \section{Conclusion} % 1/2 Page
 
