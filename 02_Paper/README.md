@@ -25,3 +25,11 @@ Choose wrap around after 120 columns.
 ### IDEAS ON HOW TO WRITE A NICE PAPER
 Take a look at:
 https://github.com/mnielsen/notes-on-writing/blob/master/notes_on_writing.md
+
+### CIRP_CMS21
+Conference Deadline: 15th Dec 2020
+
+Expected internal release date:
+  - 30th Nov 2020
+
+Paper length: 6 Pages
