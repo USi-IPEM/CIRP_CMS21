@@ -39,6 +39,12 @@
 \usepackage{ecrc}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
+\usepackage[mode=buildnew]{standalone}% requires -shell-escape
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dateplot}
+\pgfplotsset{compat=newest}
 
 %% The ecrc package defines commands needed for running heads and logos.
 %% For running heads, you can set the journal name, the volume, the starting page and the authors
@@ -255,11 +261,16 @@ If happens to be something with P.A. Quality Check
        \item	Predictive analytics in production focusing in QA
        \item	Existing approaches and methods
 \end{itemize}      
-Note: Ideal is to find a gap in literature, that proves why do we do it and why it is important
+Note: Ideal is to find a gap in the literature, that proves why do we do it and why it is important
 }
 
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
+\begin{figure}
+       \includestandalone[width=.45\textwidth]{img/cell_data_plot}
+       \caption{Robot arm movement patterns.}
+\end{figure}
+
 
 \AP{
 What is the demozelle and why it is relevant as study case
@@ -283,27 +294,34 @@ Data  is collected from the demonstration cell and analyzed
 \subsection{Classifier optimization and testing}
 We work with a total of 132 measurements. Each containing arm and belt data
 logs of individual cell runs. 20 samples are set aside at random for testing 
-purposes, leaving 112 training samples. The random seed is set to 1 
+purposes, leaving 112 training samples. The random number generator seed is
+set to one in order to ensure the train and test set splits are identical 
+for all experiments.
 
 We compare a total of three different classifier architectures on the data.
 A Support Vector Machine (SVM), a multilinear perceptron and a Random Forest
-structure. 
+structure. All three methods are trained using standard hyperparameters.
+\footnote{In order to allow exact reproduction of these results source
+code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
 \begin{table}
+       \centering
        \begin{tabular}{ c c }
               Support Vector Machine & 95.\% \\
               Multilinear Perceptron & 95.\% \\
-              Random Forest          & 100\%
+              Random Forest          & 100.\%
        \end{tabular}
-       \caption{Method comparison for fault detection using the industry demo data test set.}
+       \caption{Method comparison for our annomaly detection task 
+                using the industry demo data test set.}
        \label{tab:class_comp}
 \end{table}
 Results are shown in table~\ref{tab:class_comp}. For 55 of the total 132 samples
 quality measurements indicate a problem. This sets the 
 baseline over the entire data set, that would be obtained by simply labeling all samples
 as good. Over the entire data set, we require to classify more than 58.3\% of the data correctly.
-The test set contains eight incorrect samples. We would therefore expect the naive classifier
+The test set contains eight incorrect samples. We would therefore expect any naive classifier
 to produce a 60\% accuracy, which we have to beat. In Table~\ref{tab:class_comp},
 we observe that this is indeed the case for all three approaches evaluated here.
+The random forest performed best in this case.
 
 \section{Conclusion}
 
