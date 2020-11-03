@@ -267,8 +267,22 @@ Note: Ideal is to find a gap in the literature, that proves why do we do it and 
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
 \begin{figure}
-       \includestandalone[width=.45\textwidth]{img/cell_data_plot}
-       \caption{Robot arm movement patterns. \MW{TODO: Explain what is happening here.}}
+\caption{The industry simulation cell. \MW{TODO: Find image.}}
+\label{fig:ind_cell}
+\end{figure}
+
+\begin{figure}
+       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
+       \caption{Robot arm movement patterns. We show the movement of the 
+                cell's robot arm, its grippers and an encoding of the overall
+                position in the system. The changes in the grip flag are triggered,
+                when the gripper opens or closes. Zero indicates an open, while
+                one indicates a closed gripper. The position flags marks the state
+                of the cell's arm.  0 means the black disk is in store,
+                one that the black disk is in the gate, two that the white disk
+                is in store and three that the white disk is located in gate.
+             }
+\label{fig:robot_pos_cell}
 \end{figure}
 
 
@@ -285,13 +299,25 @@ Data  is collected from the demonstration cell and analyzed
 
 
 \subsection{Machine Learning}
+We compare Support Vector Machines (SVM), Multilinear Perceptrons
+\cite{bishop2006pattern} as well as Random forests in the task of
+quality prediction. 
 
 \section{Experiments}
 
 \subsection{Recording the data}
 
 
-\subsection{Classifier optimization and testing}
+\subsection{Classifier optimization and testing}\label{sec:ml_exp}
+The robot's position at disc drop is marked in 
+Figure~\ref{fig:robot_pos_cell}. The quality prediction problem is 
+framed as a classification task. The input vectors which we feed into our
+classifiers consists of the arm positions at the disc drops for both
+discs in three dimensions, as well as the largest recorded belt speed
+of all three belts. The interpretation of the quality measurement is 
+used as the training target. It can be good or bad which we encode as 
+zero and one.
+
 We work with a total of 132 measurements. Each containing arm and belt data
 logs of individual cell runs. 20 samples are set aside at random for testing 
 purposes, leaving 112 training samples. The random number generator seed is
@@ -330,5 +356,10 @@ The random forest performed best in this case.
 \AP{explain experiences by doing the research}
 
 \section{Conclusion} % 1/2 Page
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{bib}
 
 \end{document}
