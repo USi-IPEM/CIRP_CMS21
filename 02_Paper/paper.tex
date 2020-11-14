@@ -242,24 +242,25 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 The quality control of production processes and products is one part of the general quality management
 and contains the measures and activities needed to fulfill the quality requirements \cite{illes2017new}.
-Currently there are three main concepts: off-line quality control, statistical process control
-and acceptance sampling. Off-line quality control is the first step in the quality control, 
-because it starts in the developing and designing phase of a new product or process. The main goal is
-to select and adjust the process parameters in a way to minimize the deviation between the production outputs
-and the desired results. Thus the process parameters don't have to be determined while production
-begins and the possibility of defect products decrease.
-The statistical process control (SPC) is used for a target-performance comparison. In case of a discrepancy 
-between target and performance, the SPC is taking remedial actions. This concept of quality control
-also provides information on whether a new product can also be produced using the existing production process.
-If a real-time application is needed, e.g. to execute corrective actions due to product quality discrepancies,
-online statistical process control can be used \cite{mitra2016fundamentals}.
-The third concept is represented by the acceptance sampling. 
-...
+According to Illés, currently there are three etablished tools and methods of quality control \cite{illes2017new}:
+The Statsitical Process Control (SPC), Auditing and Total Quality Control (TQC).   
+The SPC is used for checking the quality of the products with statistical techniques and contains methods like acceptance sampling or
+quality control charts \cite{selvamuthu2018introduction}. it can take place before and after a manufacturing process
+as off-line SPC or implemented in the manufacturing process as in-line SPC.
+With SPC, large batches can be checked, but it is only possible, if the variance of the product quality is small enough,
+to ensure process capability \cite{kahle2013zuverlässigkeitsanalyse}.
+Auditing, in this case especially product and process auditing, is the most fundamental quality control technique. 
+Product and process auditing is the independent examination of product and process quality to provide information. This is executed by
+an independent auditor, based on sampling, or checking records. But the auditor is just reporting incorrect processes or products.
+The required adapting is done by others \cite{fox1993quality}. This is associated with higher costs compared to a quality control
+based on a machine learning model.The concept of TQC is to extend the scope of quality control to the whole company and product life cycle,
+by involving all departments of the organization \cite{illes2017new}.
 The quality characteristics of a product can be classified as variables or attributes.
 Variables are measurable characteristics, which are shown as numbers. On the contrary,
-attributes are not measureable and can only take the value go or no-go. Often, even if the
-quality characteristics of a product are measureable, a go/no-go differentiation is faster and cheaper.
-
+attributes are not measureable and can only take the value go or no-go \cite{mitra2016fundamentals}. 
+The advantage of variable measurements are that in the event of a defective intermediate or end product, 
+precise measured values are available, which enable precise adjustment of the process parameters. 
+This allows the desired quality to be restored. With that in mind, a predictive quality control is a promising solution.
 
 \AP{
 \begin{itemize}
@@ -288,8 +289,8 @@ Note: Ideal is to find a gap in the literature, that proves why do we do it and 
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
 
-In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case} %This sentence can be deleted if needed.
-In addition case-based research approahes have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). %@Lennart: hier müssen entsprechend Beispiele eingetragen werden
+In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
+In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). %@Lennart: hier müssen entsprechend Beispiele eingetragen werden
 Our case is a production demonstration cell composed of conveyer belts, a universal robot and a wide range of sensor technology. The demonstration cell is executing an stylized assembly process where two disks are to be stacked on top of each other. 
 The quality of the pseudo products is evaluated via the concentricity of both
 parts to be assembled. The demonstration cell is configured to imitate certain situations that occur in real applications. For example, it is possible to 
