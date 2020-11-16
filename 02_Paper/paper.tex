@@ -138,7 +138,7 @@
 \newcommand{\LS}[1]{{\color{purple} {\bf (LS: #1)}}}
 \newcommand{\MW}[1]{{\color{teal} {\bf (MW: #1)}}}
 \newcommand{\JG}[1]{{\color{green} {\bf (JG: #1)}}}
-\newcommand{\DSL}[1]{{\color{blue} {\bf (DSL: #1)}}}
+\newcommand{\DSt}[1]{{\color{orange} {\bf (DSt: #1)}}}
 
 \begin{document}
 \begin{frontmatter}
@@ -183,7 +183,7 @@
 \author[a]{Alejandro R. Pérez M.}
 \author[a]{Lennart Schmallenbach}
 \author[b,c]{Jochen Garcke}
-\author[b]{Daniela Steffes-Lai}
+\author[b]{Daniela Steffes-lai}
 \author[b,d]{Moritz Wolter}
 
 %\ead{author@institute.xxx}
@@ -242,13 +242,13 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 The quality control of production processes and products is one part of the general quality management
 and contains the measures and activities needed to fulfill the quality requirements \cite{illes2017new}.
-According to Illés, currently there are three etablished tools and methods of quality control \cite{illes2017new}:
-The Statsitical Process Control (SPC), Auditing and Total Quality Control (TQC).   
+According to Illés, currently there are three established tools and methods of quality control \cite{illes2017new}:
+The Statistical Process Control (SPC), Auditing, and Total Quality Control (TQC).   
 The SPC is used for checking the quality of the products with statistical techniques and contains methods like acceptance sampling or
-quality control charts \cite{selvamuthu2018introduction}. it can take place before and after a manufacturing process
+quality control charts \cite{selvamuthu2018introduction}. It can take place before and after a manufacturing process
 as off-line SPC or implemented in the manufacturing process as in-line SPC.
 With SPC, large batches can be checked, but it is only possible, if the variance of the product quality is small enough,
-to ensure process capability \cite{kahle2013zuverlässigkeitsanalyse}.
+to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
 Auditing, in this case especially product and process auditing, is the most fundamental quality control technique. 
 Product and process auditing is the independent examination of product and process quality to provide information. This is executed by
 an independent auditor, based on sampling, or checking records. But the auditor is just reporting incorrect processes or products.
@@ -258,7 +258,7 @@ by involving all departments of the organization \cite{illes2017new}.
 The quality characteristics of a product can be classified as variables or attributes.
 Variables are measurable characteristics, which are shown as numbers. On the contrary,
 attributes are not measureable and can only take the value go or no-go \cite{mitra2016fundamentals}. 
-The advantage of variable measurements are that in the event of a defective intermediate or end product, 
+The advantage of variable measurements is that in the event of a defective intermediate or end product, 
 precise measured values are available, which enable precise adjustment of the process parameters. 
 This allows the desired quality to be restored. With that in mind, a predictive quality control is a promising solution.
 
@@ -290,11 +290,11 @@ Note: Ideal is to find a gap in the literature, that proves why do we do it and 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
 
 In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
-In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). %@Lennart: hier müssen entsprechend Beispiele eingetragen werden
+In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). % @Lennart: hier müssen entsprechend Beispiele eingetragen werden
 Our case is a production demonstration cell composed of conveyer belts, a universal robot and a wide range of sensor technology. The demonstration cell is executing an stylized assembly process where two disks are to be stacked on top of each other. 
 The quality of the pseudo products is evaluated via the concentricity of both
 parts to be assembled. The demonstration cell is configured to imitate certain situations that occur in real applications. For example, it is possible to 
-simulate failures in the motors, problems with the conveyor belts or incorrect positioning of an object by the robot arm, which causes anomalies in the vibration sensors, temperature rise, fluctuations in the air pressure system and other deviations. Based on the sensor values and process parameters want to predict the concentricity of the assembled parts prior to actual the quality check. 
+simulate failures in the motors, problems with the conveyor belts or incorrect positioning of an object by the robot arm, which causes anomalies in the vibration sensors, temperature rise, fluctuations in the air pressure system and other deviations. Based on the sensor values and process parameters, we want to predict the concentricity of the assembled parts prior to actual quality check. 
 Due to its manageable size and high degree of scalability,
 findings gained with the demonstration cell can be transferred to various real
 assembly processes and use cases.
@@ -311,7 +311,7 @@ assembly processes and use cases.
                 position in the system. The changes in the grip flag are triggered,
                 when the gripper opens or closes. Zero indicates an open, while
                 one indicates a closed gripper. The position flags marks the state
-                of the cell's arm.  0 means the black disk is in store,
+                of the cell's arm. 0 means the black disk is in store,
                 one that the black disk is in the gate, two that the white disk
                 is in store and three that the white disk is located in gate.
              }
@@ -328,10 +328,12 @@ Incl pictures
 
 \section{Methods} %3/4 Page
 
-Data  is collected from the demonstration cell and analyzed 
+Data  is collected from the demonstration cell and analyzed.
 
 \subsection{Measurement}
-
+\DSt{
+- what is this section about?
+}
 
 \subsection{Machine Learning}
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
@@ -342,7 +344,9 @@ quality prediction.
 \section{Experiments}
 
 \subsection{Recording the data}
-
+\DSt{
+- could we include collection via OPCUA server? or manually? 
+}
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
 The robot's position at disc drop is marked in 
@@ -393,7 +397,12 @@ The random forest performed best in this case.
 
 \section{Conclusion} % 1/2 Page
 
-
+\section*{Acknowledgments}
+This project was partly supported by the german and european IKT.NRW
+project "`ManuBrain"' 
+\DSt{
+do we need to include ManuBrain reference here?
+}
 
 \bibliographystyle{abbrv}
 \bibliography{bib}
