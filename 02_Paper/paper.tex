@@ -273,11 +273,19 @@ This allows the desired quality to be restored. With that in mind, a predictive 
 
 Predictive analytics discover according to Delen and Damirkan explanatory and predictive patterns which represents 
 the inherent relationships between data inputs and outputs, using data and mathematical techniques \cite{delen2013data}. 
-This offers a wide range of applications. In the context of industrial or production enviroments, this includes for example 
-predictive maintenance of machines, the increase of organization performance, production efficiency or improving product design %Quellen einfügen.
+This offers a wide range of applications. In the context of industrial or production enviroments, this includes in the areas of Processes, Products and Machines & Assets for example 
+predictive maintenance, product design or optimization of routing and scheduling \cite{krauss2019machine}. 
 Predictive analytics combined with quality control can be a powerful tool, because it is an improvement compared with the mentioned earlier currently
 etablished quality control methods, in terms of speed, accuracy and time delay.
-%...
+So far, only in exceptional cases in the literature is a combination of predictive analytics and quality control found \cite{aumi2012model, ritter1992neue}. With regard to general approaches to the use of predictive analytics,
+for example in the form of machine learning in quality prediction, there is a lack in the literature. 
+Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
+The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
+the collection and processing of the data from the process parameters in continous and a few different ML algorithms are used for prediction, 
+in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
+In addition, it is described in detail how the collected data was collected, prepared and processed.
+
+
 
 \AP{
 Predictive analytics as concepts. Implementation in production
@@ -297,12 +305,14 @@ Note: Ideal is to find a gap in the literature, that proves why do we do it and 
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
 
-In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
+In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. 
+One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
 In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). % @Lennart: hier müssen entsprechend Beispiele eingetragen werden
-Our case is a production demonstration cell composed of conveyer belts, a universal robot and a wide range of sensor technology. The demonstration cell is executing an stylized assembly process where two disks are to be stacked on top of each other. 
-The quality of the pseudo products is evaluated via the concentricity of both
-parts to be assembled. The demonstration cell is configured to imitate certain situations that occur in real applications. For example, it is possible to 
-simulate failures in the motors, problems with the conveyor belts or incorrect positioning of an object by the robot arm, which causes anomalies in the vibration sensors, temperature rise, fluctuations in the air pressure system and other deviations. Based on the sensor values and process parameters, we want to predict the concentricity of the assembled parts prior to actual quality check. 
+Our case is a production demonstration cell composed of conveyer belts, a universal robot and a wide range of sensor technology.
+The demonstration cell is executing an stylized assembly process where two disks are to be stacked on top of each other. 
+The quality of the pseudo products is evaluated via the concentricity of both parts to be assembled. The demonstration cell is configured to imitate certain situations that occur in real applications.
+For example, it is possible to simulate failures in the motors, problems with the conveyor belts or incorrect positioning of an object by the robot arm, which causes anomalies in the vibration sensors, 
+temperature rise, fluctuations in the air pressure system and other deviations. Based on the sensor values and process parameters, we want to predict the concentricity of the assembled parts prior to actual quality check. 
 Due to its manageable size and high degree of scalability,
 findings gained with the demonstration cell can be transferred to various real
 assembly processes and use cases.
