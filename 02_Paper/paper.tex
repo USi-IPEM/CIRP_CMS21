@@ -303,22 +303,36 @@ Note: Ideal is to find a gap in the literature, that proves why do we do it and 
 }
 
 
-\section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page \OneAim doc bases
+\section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
 In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. 
 One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
 In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). % @Lennart: hier müssen entsprechend Beispiele eingetragen werden
-Our case is a production demonstration cell composed of conveyer belts, a universal robot and a wide range of sensor technology.
-The demonstration cell is executing an stylized assembly process where two disks are to be stacked on top of each other. 
-The quality of the pseudo products is evaluated via the concentricity of both parts to be assembled. The demonstration cell is configured to imitate certain situations that occur in real applications.
-For example, it is possible to simulate failures in the motors, problems with the conveyor belts or incorrect positioning of an object by the robot arm, which causes anomalies in the vibration sensors, 
-temperature rise, fluctuations in the air pressure system and other deviations. Based on the sensor values and process parameters, we want to predict the concentricity of the assembled parts prior to actual quality check. 
-Due to its manageable size and high degree of scalability,
-findings gained with the demonstration cell can be transferred to various real
-assembly processes and use cases.
+\AP{ 
+       - How does the previous sentences apply to the democell?
+       - This suits better in the methods section}
+
+Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
+The assembly process done at this demostration cell consist on stacking two disk of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disk. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
+By considering that malfunctions can occurs during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
+
+\begin{itemize}
+       \item Assemble errors due to robotic arm
+       \item Bearing damage on the conveyor belt
+       \item Resistance on the conveyor belt
+       \item Leakage in the compressed air system
+       \item Productivity limit reached
+       \item Missing material
+\end{itemize}
+
+Those simulated failures have a real impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticiable shifting on pieces' position as well as the stop of the process.
+
+The continous data collection and clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learching implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assambled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and high degree of scalability. This would be an step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assambled pieces.
+
 
 \begin{figure}
-\caption{The industry simulation cell. \MW{TODO: Find image.}}
+       \includegraphics[width=.45\textwidth]{img/demozelle}
+       \caption{The industry 4.0 demonstration cell at the University of Siegen}
 \label{fig:ind_cell}
 \end{figure}
 
@@ -336,13 +350,7 @@ assembly processes and use cases.
 \label{fig:robot_pos_cell}
 \end{figure}
 
-
-\AP{
-What is the demozelle and why it is relevant as study case
-Description of the assemble process in the Demozelle 
-Incl pictures
-}
-
+\AP{ @Moritz: Why is the figure 2 whithin the area of the Demozelle section?}
 
 \section{Methods} %3/4 Page
 
@@ -411,7 +419,16 @@ The random forest performed best in this case.
 
 \subsection{Lesson Learned} % 1/2 Page
 
-\AP{explain experiences by doing the research}
+\AP{explain experiences by doing the research
+
+- Connection problem between devices
+- Missing tags  
+- Interpretation of data: preprocessing   
+   - What data is relevant?
+- Data sample size
+- ML implementation @Moritz
+
+}
 
 \section{Conclusion} % 1/2 Page
 
