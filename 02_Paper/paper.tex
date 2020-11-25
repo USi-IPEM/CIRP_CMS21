@@ -245,17 +245,22 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 The quality control of production processes and products is one part of the general quality management
 and contains the measures and activities needed to fulfill the quality requirements \cite{illes2017new}.
 According to Illés, currently there are three established tools and methods of quality control \cite{illes2017new}:
-The Statistical Process Control (SPC), Auditing, and Total Quality Control (TQC).   
-The SPC is used for checking the quality of the products with statistical techniques and contains methods like acceptance sampling or
-quality control charts \cite{selvamuthu2018introduction}. It can take place before and after a manufacturing process
+The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC).   
+The SPC is used to monitor the production process using recorded data values for the quality characteristics and to indicate any significant changes
+in the quality characteristics in the production process \cite{selvamuthu2018introduction}. It can take place before and after a manufacturing process
 as off-line SPC or implemented in the manufacturing process as in-line SPC.
-With SPC, large batches can be checked, but it is only possible, if the variance of the product quality is small enough,
+With SPC, large batches can be checked, but it is only possible, if the variance of the process and product parameters is small enough,
 to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
 Auditing, in this case especially product and process auditing, is the most fundamental quality control technique. 
 Product and process auditing is the independent examination of product and process quality to provide information. This is executed by
-an independent auditor, based on sampling, or checking records. But the auditor is just reporting incorrect processes or products.
-The required adapting is done by others \cite{fox1993quality}. This is associated with higher costs compared to a quality control
-based on a machine learning model.The concept of TQC is to extend the scope of quality control to the whole company and product life cycle,
+an independent auditor, based on sampling, or checking records. But the auditor is just reporting incorrect processes or products. The required adapting is done by others \cite{fox1993quality}.
+Both statistical methods and hundred percent controls can be applied as an audit tool.
+Statistical methods such as acceptance sampling or quality control charts represent a compromise between zero and hundred percent control \cite{selvamuthu2018introduction, kurniati2015quality}.
+While the SPC mostly optimizes the capability of the process, for example the acceptance plan prevents the nonconforming product to be pass and then delivered to the next process or the customer \cite{kurniati2015quality}.
+In the case of a hundred percent control, this is associated with higher costs and a higher requirement of time, compared to a quality control based on a machine learning model.
+Statistical methods are faster as hundred percent controls, but have the same problem like the SPC: Because they are based on assumptions, this methods are prone to errors,
+if the variance of the product quality is to high.
+The concept of TQC is to extend the scope of quality control to the whole company and product life cycle,
 by involving all departments of the organization \cite{illes2017new}.
 The quality characteristics of a product can be classified as variables or attributes.
 Variables are measurable characteristics, which are shown as numbers. On the contrary,
@@ -275,15 +280,15 @@ This allows the desired quality to be restored. With that in mind, a predictive 
 
 Predictive analytics discover according to Delen and Damirkan explanatory and predictive patterns which represents 
 the inherent relationships between data inputs and outputs, using data and mathematical techniques \cite{delen2013data}. 
-This offers a wide range of applications. In the context of industrial or production environments, this includes in the areas of Processes, Products and Machines and Assets for example 
+This offers a wide range of applications. In the context of industrial or production enviroments, this includes in the areas of Processes, Products and Machines and Assets for example 
 predictive maintenance, product design or optimization of routing and scheduling \cite{krauss2019machine}. 
-Predictive analytics combined with quality control can be a powerful tool because it is an improvement compared with the mentioned earlier currently
-established quality control methods, in terms of speed, accuracy and time delay.
+Predictive analytics combined with quality control can be a powerful tool, because it is an improvement compared with the mentioned earlier currently
+etablished quality control methods, in terms of speed, accuracy and time delay.
 So far, only in exceptional cases in the literature is a combination of predictive analytics and quality control found \cite{aumi2012model, ritter1992neue}. With regard to general approaches to the use of predictive analytics,
 for example in the form of machine learning in quality prediction, there is a lack in the literature. 
 Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
 The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
-the collection and processing of the data from the process parameters in continuous and a few different ML algorithms are used for prediction, 
+the collection and processing of the data from the process parameters in continous and a few different ML algorithms are used for prediction, 
 in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
 In addition, it is described in detail how the collected data was collected, prepared and processed.
 
@@ -304,7 +309,6 @@ If happens to be something with P.A. Quality Check
 Note: Ideal is to find a gap in the literature, that proves why do we do it and why it is important
 }
 
-\AP{ - Research Question and research hypotesis}
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
@@ -312,15 +316,15 @@ In our work we applied a case-based research approach \cite{yin2017case} to answ
 One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
 In addition case-based research approaches have already been successfully applied in the area of quality prediction based on process parameters (see, for example, ....). % @Lennart: hier müssen entsprechend Beispiele eingetragen werden
 \AP{ 
-       - To answer the question, we apply a case base research. Then explain 
-}
+       - How does the previous sentences apply to the democell?
+       - This suits better in the methods section}
 
 Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
-The assembly process done at this demonstration cell consist on stacking two disks of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
+The assembly process done at this demostration cell consist on stacking two disk of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disk. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
 By considering that malfunctions can occurs during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
 
 \begin{itemize}
-       \item Assemble errors due to the robotic arm
+       \item Assemble errors due to robotic arm
        \item Bearing damage on the conveyor belt
        \item Resistance on the conveyor belt
        \item Leakage in the compressed air system
@@ -328,9 +332,9 @@ By considering that malfunctions can occurs during real production processes at 
        \item Missing material
 \end{itemize}
 
-Those simulated failures have a real impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
+Those simulated failures have a real impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticiable shifting on pieces' position as well as the stop of the process.
 
-The continuous data collection and the clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and the high degree of scalability. This would be a step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
+The continous data collection and clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learching implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assambled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and high degree of scalability. This would be an step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assambled pieces.
 
 
 \begin{figure}
@@ -339,7 +343,34 @@ The continuous data collection and the clear correlation between the machine par
 \label{fig:ind_cell}
 \end{figure}
 
+<<<<<<< HEAD
 \section{Machine Learning Methods} %3/4 Page
+=======
+\begin{figure}
+       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
+       \caption{Robot arm movement patterns. We show the movement of the 
+                cell's robot arm, its grippers and an encoding of the overall
+                position in the system. The changes in the grip flag are triggered,
+                when the gripper opens or closes. Zero indicates an open, while
+                one indicates a closed gripper. The position flags marks the state
+                of the cell's arm. 0 means the black disk is in store,
+                one that the black disk is in the gate, two that the white disk
+                is in store and three that the white disk is located in gate.
+             }
+\label{fig:robot_pos_cell}
+\end{figure}
+
+\AP{ @Moritz: Why is the figure 2 whithin the area of the Demozelle section?}
+
+\section{Methods} %3/4 Page
+
+Data  is collected from the demonstration cell and analyzed.
+
+\subsection{Measurement}
+\DSt{
+- what is this section about?
+}
+>>>>>>> 5272fc99b92062cad1141c5f767ee0d54ba8d267
 
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
 \cite{bishop2006pattern} as well as Random forests in the task of
@@ -348,13 +379,9 @@ quality prediction.
 
 \section{Experiments}
 
-\subsection{Recording the data} %collecting the data
+\subsection{Recording the data}
 \DSt{
 - could we include collection via OPCUA server? or manually? 
-}
-
-\AP{
-       - AUExpert manually/ automated
 }
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
@@ -401,7 +428,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               Multilinear Perceptron & 95.\% \\
               Random Forest          & 100.\%
        \end{tabular}
-       \caption{Method comparison for our anomaly detection task 
+       \caption{Method comparison for our annomaly detection task 
                 using the industry demo data test set.}
        \label{tab:class_comp}
 \end{table}
@@ -421,16 +448,20 @@ The random forest performed best in this case.
 \AP{explain experiences by doing the research
 
 - Connection problem between devices
+<<<<<<< HEAD
    - Network connection
    - Device restriction: SIM4000, SIEMENS. 
    - Server Timestamp syncr.
 - Interpretation of data: preprocessing
+=======
+- Missing tags  
+- Interpretation of data: preprocessing   
+>>>>>>> 5272fc99b92062cad1141c5f767ee0d54ba8d267
    - What data is relevant?
    - Missing data tags: modifying PLC and robot code to have tags -> key point
         - Without label we cannot use supervised ML methods
 - Dataset size
 - ML implementation @Moritz
-
 
 }
 
@@ -438,12 +469,9 @@ The random forest performed best in this case.
 
 \section*{Acknowledgments}
 This project was partly supported by the german and european IKT.NRW
-project "ManuBrain"
+project "`ManuBrain"' 
 \DSt{
 do we need to include ManuBrain reference here?
-}
-\AP{
-Expand EFRE @stn
 }
 
 \bibliographystyle{abbrv}
