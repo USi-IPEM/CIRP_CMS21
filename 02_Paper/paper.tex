@@ -136,6 +136,7 @@
 \usepackage{xcolor}
 \newcommand{\AP}[1]{{\color{blue} {\bf (AP: #1)}}}
 \newcommand{\LS}[1]{{\color{purple} {\bf (LS: #1)}}}
+\newcommand{\FS}[1]{{\color{cyan} {\bf (FS: #1)}}}
 \newcommand{\MW}[1]{{\color{teal} {\bf (MW: #1)}}}
 \newcommand{\JG}[1]{{\color{green} {\bf (JG: #1)}}}
 \newcommand{\DSt}[1]{{\color{orange} {\bf (DSt: #1)}}}
@@ -240,6 +241,7 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \subsection{Quality check in production} % Basic books (find summarize) basic concepts
 
+
 The quality control of production processes and products is one part of the general quality management
 and contains the measures and activities needed to fulfill the quality requirements \cite{illes2017new}.
 According to Illés, currently there are three established tools and methods of quality control \cite{illes2017new}:
@@ -337,32 +339,8 @@ The continuous data collection and the clear correlation between the machine par
 \label{fig:ind_cell}
 \end{figure}
 
-\begin{figure}
-       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
-       \caption{Robot arm movement patterns. We show the movement of the 
-                cell's robot arm, its grippers, and the encoding of the overall
-                position in the system. The changes in the grip flag are triggered,
-                when the gripper opens or closes. Zero indicates an open, while
-                one indicates a closed gripper. The position flags marks the state
-                of the cell's arm. 0 means the black disk is in store,
-                one that the black disk is at the gate, two that the white disk
-                is in store and three that the white disk is located at the gate.
-             }
-\label{fig:robot_pos_cell}
-\end{figure}
+\section{Machine Learning Methods} %3/4 Page
 
-\AP{ @Moritz: Why is figure 2 within the area of the Demozelle section?}
-
-\section{Methods} %3/4 Page
-
-Data  is collected from the demonstration cell and analyzed.
-
-\subsection{Measurement}
-\DSt{
-- what is this section about?
-}
-
-\subsection{Machine Learning}
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
 \cite{bishop2006pattern} as well as Random forests in the task of
 quality prediction. 
@@ -380,6 +358,21 @@ quality prediction.
 }
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
+
+\begin{figure}
+       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
+       \caption{Robot arm movement patterns. We show the movement of the 
+                cell's robot arm, its grippers, and the encoding of the overall
+                position in the system. The changes in the grip flag are triggered,
+                when the gripper opens or closes. Zero indicates an open, while
+                one indicates a closed gripper. The position flags marks the state
+                of the cell's arm. 0 means the black disk is in store,
+                one that the black disk is at the gate, two that the white disk
+                is in store and three that the white disk is located at the gate.
+             }
+\label{fig:robot_pos_cell}
+\end{figure}
+
 The robot's position at disc drop is marked in 
 Figure~\ref{fig:robot_pos_cell}. The quality prediction problem is 
 framed as a classification task. The input vectors which we feed into our
@@ -388,6 +381,7 @@ discs in three dimensions, as well as the largest recorded belt speed
 of all three belts. The interpretation of the quality measurement is 
 used as the training target. It can be good or bad which we encode as 
 zero and one.
+
 
 We work with a total of 132 measurements. Each containing arm and belt data
 logs of individual cell runs. 20 samples are set aside at random for testing 
@@ -430,10 +424,11 @@ The random forest performed best in this case.
    - Network connection
    - Device restriction: SIM4000, SIEMENS. 
    - Server Timestamp syncr.
-- Missing data tags: modifying PLC and robot code to have tags
 - Interpretation of data: preprocessing
    - What data is relevant?
-- Data sample size
+   - Missing data tags: modifying PLC and robot code to have tags -> key point
+        - Without label we cannot use supervised ML methods
+- Dataset size
 - ML implementation @Moritz
 
 
