@@ -42,6 +42,7 @@
 \usepackage[mode=buildnew]{standalone}% requires -shell-escape
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{booktabs}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=newest}
@@ -302,7 +303,7 @@ Based on an explorative literature review on this matter, the short outcome is t
        }
 
 The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
-the collection and processing of the data from the process parameters in continous and a few different ML algorithms are used for prediction, 
+the collection and processing of the data from the process parameters in continuous and a few different ML algorithms are used for prediction, 
 in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
 In addition, it is described in detail how the collected data was collected, prepared and processed.
 
@@ -318,7 +319,7 @@ In addition case-based research approaches have already been successfully applie
        - This suits better in the methods section}
 
 Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
-The assembly process done at this demostration cell consist on stacking two disk of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disk. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
+The assembly process done at this demonstration cell consist on stacking two disks of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
 By considering that malfunctions can occur during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
 
 \begin{itemize}
@@ -344,27 +345,34 @@ The continuous data collection and clear correlation between the machine paramet
 \section{Machine Learning Methods} %3/4 Page
 
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
-\cite{bishop2006pattern} as well as Random forests in the task of
-quality prediction. 
-\subsection{Multilinear perceptrons}
+\cite{bishop2006pattern} as well as random forests in the task of
+quality prediction. All three will be introduced next.
+
+\subsection{Multilayer perceptrons}
 These feedforward neural networks typically combine multiple layers
-and activation functions. A layer contains a large weight matrix and
+and activation functions \cite{bishop2006pattern}.
+A layer contains a large weight matrix and
 a bias vector. To evaluate the layer the input vector must be
 multiplied with the weight matrix before the bias vector is added.
 Each layer is typically followed by an activation function 
 which adds non-linearity to the network graph. Rectified linear units
 (ReLUs) are zero for negative inputs leave positive inputs unchanged.
-Due to their enormous popularity, we utilize ReLUs here as well.
+ReLUs are the recommended activation function for modern neural
+networks \cite{goodfellow2016deep} we use these here as well.
 Since the linear parts of the ReLU and the linear matrix multiplication
 are differentiable we can employ gradient descent to train our 
 classifier.
 
 \subsection{Support Vector Machines}
-Support Vector Machines offer a convex alternative to MLPs \cite{Suykens2002least}.
+Support Vector Machines (SVM) offer a convex alternative to MLPs \cite{Suykens2002least}.
 A convex classifier is guaranteed to converge to a global solution regardless 
 of its initialization. 
+The Kernel trick allows SVM to solve non-linear classification problems \cite{Suykens2002least} by mapping implicitly mapping the inputs into a higher feature space. Radial basis functions (RBF) are commonly chosen as kernels
+\cite{Suykens2002least} we choose to follow this practice as well.
 
 \subsection{Random Forests}
+
+
 
 \section{Experiments}
 
@@ -413,11 +421,12 @@ structure. All three methods are trained using standard hyperparameters.
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
 \begin{table}
        \centering
-       \begin{tabular}{ c c }
-              Baseline & 64 \% \\
+       \begin{tabular}{ c c } \toprule
+              Approach         & accuracy \\ \midrule
+              Na\"ive-Baseline & 64 \% \\
               Support Vector Machine & 82 \% \\
-              Multilinear Perceptron & 88 \% \\
-              Random Forest          & 98 \%
+              Multilayer Perceptron & 88 \% \\
+              Random Forest          & 98 \% \\ \bottomrule
        \end{tabular}
        \caption{Comparison of Support Vector Machine (SVM), Multilinear Perceptron and 
                 Random Forest classification on our annomaly detection task. 
