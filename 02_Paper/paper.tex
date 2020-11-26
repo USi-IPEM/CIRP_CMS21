@@ -239,26 +239,30 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \section{Related Works} % 1 Page \Lennart
 
-\subsection{Quality check in production} % Basic books (find summarize) basic concepts
+\subsection{Quality check in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
 
 
-The quality control of production processes and products is one part of the general quality management
-and contains the measures and activities needed to fulfill the quality requirements \cite{illes2017new}.
-According to Illés, currently there are three established tools and methods of quality control \cite{illes2017new}:
+The quality control of production processes and products is one fundamental part of the general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{illes2017new}.
+According to Illés, there are three established tools and methods of quality control \cite{illes2017new}:
 The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC).   
-The SPC is used to monitor the production process using recorded data values for the quality characteristics and to indicate any significant changes
-in the quality characteristics in the production process \cite{selvamuthu2018introduction}. It can take place before and after a manufacturing process
-as off-line SPC or implemented in the manufacturing process as in-line SPC.
-With SPC, large batches can be checked, but it is only possible, if the variance of the process and product parameters is small enough,
-to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
-Auditing, in this case especially product and process auditing, is the most fundamental quality control technique. 
-Product and process auditing is the independent examination of product and process quality to provide information. This is executed by
-an independent auditor, based on sampling, or checking records. But the auditor is just reporting incorrect processes or products. The required adapting is done by others \cite{fox1993quality}.
+The SPC is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes
+in the quality characteristics in the production process \cite{selvamuthu2018introduction}. This method can take place right before and/or after a manufacturing process and be implemented as an "off-line" or "in-line" SPC.
+\AP{@Lennart, last sentence is still quite confising to me}
+
+The biggest advantage of working with SPC is that large batches can be checked without major time impact on the QC process, however, this would be only possible if the variance of the process product parameters is small enough, to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
+
+\AP{100\% method is not introduced}
+
+Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
+an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by other than the auditor \cite{fox1993quality}.
+
 Both statistical methods and hundred percent controls can be applied as an audit tool.
+
 Statistical methods such as acceptance sampling or quality control charts represent a compromise between zero and hundred percent control \cite{selvamuthu2018introduction, kurniati2015quality}.
+
 While the SPC mostly optimizes the capability of the process, for example the acceptance plan prevents the nonconforming product to be pass and then delivered to the next process or the customer \cite{kurniati2015quality}.
 In the case of a hundred percent control, this is associated with higher costs and a higher requirement of time, compared to a quality control based on a machine learning model.
-Statistical methods are faster as hundred percent controls, but have the same problem like the SPC: Because they are based on assumptions, this methods are prone to errors,
+Statistical methods are faster as \AP{as "or" "than"} hundred percent controls, but have the same problem like the SPC: Because they are based on assumptions, this methods are prone to errors,
 if the variance of the product quality is to high.
 The concept of TQC is to extend the scope of quality control to the whole company and product life cycle,
 by involving all departments of the organization \cite{illes2017new}.
@@ -278,37 +282,30 @@ This allows the desired quality to be restored. With that in mind, a predictive 
 
 \subsection{Predictive analytics in production}
 
-Predictive analytics discover according to Delen and Damirkan explanatory and predictive patterns which represents 
-the inherent relationships between data inputs and outputs, using data and mathematical techniques \cite{delen2013data}. 
-This offers a wide range of applications. In the context of industrial or production enviroments, this includes in the areas of Processes, Products and Machines and Assets for example 
-predictive maintenance, product design or optimization of routing and scheduling \cite{krauss2019machine}. 
-Predictive analytics combined with quality control can be a powerful tool, because it is an improvement compared with the mentioned earlier currently
-etablished quality control methods, in terms of speed, accuracy and time delay.
-So far, only in exceptional cases in the literature is a combination of predictive analytics and quality control found \cite{aumi2012model, ritter1992neue}. With regard to general approaches to the use of predictive analytics,
-for example in the form of machine learning in quality prediction, there is a lack in the literature. 
-Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
+According to Delen and Damirkan, predictive analytics (PA) consist on unravel the inherent relationships, if any, between data input and output by using data and mathematical techniques \cite{delen2013data}.
+
+PA offers a wide range of applications, and it can be implemented as long as there is enough data available. By conosidering industrial and production environment, PA would be a great asset due to the high flexibility and high amound of data available comming from processes, single machines or cells, producs, and others. Some commmon industrial applications of PA at the industry are focused products (design and optimization), machine (predictive maintenance) and production (scheduling) \cite{krauss2019machine}.
+
+Applications that combines PA with QC might be a great improvement in the quality control process because it is an improvement compared with the earlier mentioned methods \ref{sec:qcp}, in terms of speed, accuracy and time delay. 
+
+The outcome of an explorative literature review on this matter, shows that the findings that combines PA and QC are very scarce in literature. This could be in great part, due to the novelty of the area \cite{aumi2012model, ritter1992neue}. Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
+
+Based on an explorative literature review on this matter, the short outcome is that the findings that combines PA and QC are very scarce in literature. This could be in great part, due to the novelty of the area  \cite{aumi2012model, ritter1992neue}. Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
+
+\AP{
+       - Introduce research question
+       - why do we do it?
+       - what do we expect to find or prove
+       - the motivation is clear
+       
+       }
+
 The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
 the collection and processing of the data from the process parameters in continous and a few different ML algorithms are used for prediction, 
 in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
 In addition, it is described in detail how the collected data was collected, prepared and processed.
 
-
-
-\AP{
-Predictive analytics as concepts. Implementation in production
-\begin{itemize}
-       \item Predictive Maintenance
-       \item Scheduling
-       \item Other
-\end{itemize}       
-If happens to be something with P.A. Quality Check
-\begin{itemize}
-       \item	Predictive analytics in production focusing in QA
-       \item	Existing approaches and methods
-\end{itemize}      
-Note: Ideal is to find a gap in the literature, that proves why do we do it and why it is important
-}
-
+\AP{Last paragraph goes in intro}
 
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
@@ -343,34 +340,7 @@ The continous data collection and clear correlation between the machine paramete
 \label{fig:ind_cell}
 \end{figure}
 
-<<<<<<< HEAD
 \section{Machine Learning Methods} %3/4 Page
-=======
-\begin{figure}
-       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
-       \caption{Robot arm movement patterns. We show the movement of the 
-                cell's robot arm, its grippers and an encoding of the overall
-                position in the system. The changes in the grip flag are triggered,
-                when the gripper opens or closes. Zero indicates an open, while
-                one indicates a closed gripper. The position flags marks the state
-                of the cell's arm. 0 means the black disk is in store,
-                one that the black disk is in the gate, two that the white disk
-                is in store and three that the white disk is located in gate.
-             }
-\label{fig:robot_pos_cell}
-\end{figure}
-
-\AP{ @Moritz: Why is the figure 2 whithin the area of the Demozelle section?}
-
-\section{Methods} %3/4 Page
-
-Data  is collected from the demonstration cell and analyzed.
-
-\subsection{Measurement}
-\DSt{
-- what is this section about?
-}
->>>>>>> 5272fc99b92062cad1141c5f767ee0d54ba8d267
 
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
 \cite{bishop2006pattern} as well as Random forests in the task of
@@ -383,6 +353,8 @@ quality prediction.
 \DSt{
 - could we include collection via OPCUA server? or manually? 
 }
+
+
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
 
