@@ -319,7 +319,7 @@ In addition case-based research approaches have already been successfully applie
 
 Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
 The assembly process done at this demostration cell consist on stacking two disk of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disk. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
-By considering that malfunctions can occurs during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
+By considering that malfunctions can occur during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
 
 \begin{itemize}
        \item Assemble errors due to robotic arm
@@ -332,7 +332,7 @@ By considering that malfunctions can occurs during real production processes at 
 
 Those simulated failures have a real impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
 
-The continous data collection and clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and a high degree of scalability. This would be an step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
+The continuous data collection and clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and a high degree of scalability. This would be a step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
 
 
 \begin{figure}
@@ -346,7 +346,25 @@ The continous data collection and clear correlation between the machine paramete
 We compare Support Vector Machines (SVM), Multilinear Perceptrons
 \cite{bishop2006pattern} as well as Random forests in the task of
 quality prediction. 
+\subsection{Multilinear perceptrons}
+These feedforward neural networks typically combine multiple layers
+and activation functions. A layer contains a large weight matrix and
+a bias vector. To evaluate the layer the input vector must be
+multiplied with the weight matrix before the bias vector is added.
+Each layer is typically followed by an activation function 
+which adds non-linearity to the network graph. Rectified linear units
+(ReLUs) are zero for negative inputs leave positive inputs unchanged.
+Due to their enormous popularity, we utilize ReLUs here as well.
+Since the linear parts of the ReLU and the linear matrix multiplication
+are differentiable we can employ gradient descent to train our 
+classifier.
 
+\subsection{Support Vector Machines}
+Support Vector Machines offer a convex alternative to MLPs \cite{Suykens2002least}.
+A convex classifier is guaranteed to converge to a global solution regardless 
+of its initialization. 
+
+\subsection{Random Forests}
 
 \section{Experiments}
 
@@ -382,37 +400,37 @@ of all three belts. The interpretation of the quality measurement is
 used as the training target. It can be good or bad which we encode as 
 zero and one.
 
-
-We work with a total of 132 measurements. Each containing arm and belt data
-logs of individual cell runs. 20 samples are set aside at random for testing 
-purposes, leaving 112 training samples. The random number generator seed is
-set to one in order to ensure the train and test set splits are identical 
+We work with a total of 528 measurements. Each containing arm and belt data
+logs of individual cell runs. 50 samples are set aside at random for testing 
+purposes, leaving 478 training samples. The random number generator seed is
+set to one to ensure the train and test set splits are identical 
 for all experiments.
 
 We compare a total of three different classifier architectures on the data.
-A Support Vector Machine (SVM), a multilinear perceptron and a Random Forest
+A Support Vector Machine (SVM), a multilinear perceptron (MLP) and a Random Forest
 structure. All three methods are trained using standard hyperparameters.
 \footnote{In order to allow exact reproduction of these results source
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
 \begin{table}
        \centering
        \begin{tabular}{ c c }
-              Support Vector Machine & 95.\% \\
-              Multilinear Perceptron & 95.\% \\
-              Random Forest          & 100.\%
+              Baseline & 64 \% \\
+              Support Vector Machine & 82 \% \\
+              Multilinear Perceptron & 88 \% \\
+              Random Forest          & 98 \%
        \end{tabular}
-       \caption{Method comparison for our annomaly detection task 
-                using the industry demo data test set.}
+       \caption{Comparison of Support Vector Machine (SVM), Multilinear Perceptron and 
+                Random Forest classification on our annomaly detection task. 
+                The first row shows the performance of naively predicting a broken piece
+                every time.}
        \label{tab:class_comp}
 \end{table}
-Results are shown in table~\ref{tab:class_comp}. For 55 of the total 132 samples
+Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples
 quality measurements indicate a problem. This sets the 
-baseline over the entire data set, that would be obtained by simply labeling all samples
-as good. Over the entire data set, we require to classify more than 58.3\% of the data correctly.
-The test set contains eight incorrect samples. We would therefore expect any naive classifier
-to produce a 60\% accuracy, which we have to beat. In Table~\ref{tab:class_comp},
-we observe that this is indeed the case for all three approaches evaluated here.
-The random forest performed best in this case.
+baseline over the entire data set, which would be obtained by simply labeling all samples
+as faulty. Over the test set, we require to classify more than 64\% of the data correctly.
+We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to beat. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here. We found the random forest performed best followed by the multilinear
+perceptron and the support vector machine. 
 
 \section{Conclusion}
 
@@ -429,18 +447,18 @@ The random forest performed best in this case.
    - Missing data tags: modifying PLC and robot code to have tags -> key point
         - Without label we cannot use supervised ML methods
 - Dataset size
-- ML implementation @Moritz
+} \\
+\textbf{Machine Learning}; careful measurement and  meaningful preprocessing
+of our cell-date was key to the successful application of all three algorithms.
+Without the labels the problem could not have been framed as a supervised 
+classification problem. 
 
-}
 
 \section{Conclusion} % 1/2 Page
 
 \section*{Acknowledgments}
 This project was partly supported by the German and European IKT.NRW
 project "`ManuBrain"' 
-\DSt{
-do we need to include ManuBrain reference here?
-}
 
 \bibliographystyle{abbrv}
 \bibliography{bib}
