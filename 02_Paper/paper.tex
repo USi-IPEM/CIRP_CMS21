@@ -248,48 +248,45 @@ In addition, it is described in detail how the collected data was collected, pre
 \subsection{Quality check in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
 
 
-The quality control of production processes and products is one fundamental part of the general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{illes2017new}.
+The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{illes2017new}.
 According to Illés, there are three established tools and methods of quality control \cite{illes2017new}:
 The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC).   
-The SPC is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes
-in the quality characteristics in the production process \cite{selvamuthu2018introduction}. This method can also take place before the actual manufacturing process in form of an "off-line SPC". During the designing phase of a process or product,
-off-line SPC procedures are aiming to select and choose a controllable product and process parameters to increase the quality of the outcoming product \cite{mitra2016fundamentals}.
-\AP{@Lennart, last sentence is still quite confusing to me}
+The SPC is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes in the quality characteristics in the production process \cite{selvamuthu2018introduction}. SPC methods can also take place before the actual manufacturing process, this is commonly known as "off-line SPC". 
+
+During the design phase of a process or product, off-line SPC procedures are deployed. Those procedures aim to increase the quality of the outcoming product by choosing controllable products and  process parameter \cite{mitra2016fundamentals}.
 
 The biggest advantage of working with SPC is that large batches can be checked without major time impact on the QC process, however, this would be only possible if the variance of the process product parameters is small enough, to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
 
-The contrary method to any statistical method, is the hundred percent control, where every product is controlled and binary sorted as an OK or Non-OK part.
-Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
-an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by other than the auditor \cite{fox1993quality}.
+Another conservative technique to perform the quality check would be to check 100\% of the produced parts. On this method, every product is controlled and binary sorted as an OK or Non-OK part. However, this has the disadvantage of high cost related to personal or specialized material and in certain cases, could lead to a delay in production.
 
-Both statistical methods and hundred percent controls can be applied as an audit tool.
+Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
+an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by other person than the auditor \cite{fox1993quality}. 
+
+%Both statistical methods and hundred percent controls can be applied as an audit tool.
 
 Statistical methods such as acceptance sampling or quality control charts represent a compromise between zero and hundred percent control \cite{selvamuthu2018introduction, kurniati2015quality}.
 
 While the SPC mostly optimizes the capability of the process, for example the acceptance plan prevents the nonconforming product to be pass and then delivered to the next process or the customer \cite{kurniati2015quality}.
 In the case of a hundred percent control, this is associated with higher costs and a higher requirement of time, compared to a quality control based on a machine learning model.
-Statistical methods are faster than hundred percent controls, but have the same problem like the SPC: Because they are based on assumptions, this methods are prone to errors,
-if the variance of the product quality is to high.
-The concept of TQC is to extend the scope of quality control to the whole company and product life cycle,
-by involving all departments of the organization \cite{illes2017new}.
+Generally, statistical methods are faster than hundred percent controls, however, their disadvantage is that those methods are based on assumptions. those assumptions might lead to errors if the variance of the product quality higher than expected.
+
+The concept of TQC is to extend the scope of quality control to the whole company and product life cycle, by involving all departments of the organization \cite{illes2017new}.
 The quality characteristics of a product can be classified as variables or attributes.
-Variables are measurable characteristics, which are shown as numbers. On the contrary,
-attributes are not measurable and can only take the value go or no-go \cite{mitra2016fundamentals}. 
-The advantage of variable measurements is that in the event of a defective intermediate or end product, 
-precise measured values are available, which enable precise adjustment of the process parameters. 
+Variables are measurable characteristics, which are shown as numbers. On the contrary, attributes are not measurable and can only take the binary values like "go" or "no-go" \cite{mitra2016fundamentals}. 
+The advantage of variable measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable precise adjustment of the process parameters. 
 This allows the desired quality to be restored. With that in mind, predictive quality control is a promising solution.
 
 \subsection{Predictive analytics in production}
 
-According to Delen and Damirkan, predictive analytics (PA) consist on unravel the inherent relationships, if any, between data input and output by using data and mathematical techniques \cite{delen2013data}.
+According to Delen and Damirkan, predictive analytics (PA) consist on unravel the inherent relationships (if any) between input and output by using data and mathematical techniques \cite{delen2013data}.
 
-PA offers a wide range of applications, and it can be implemented as long as there is enough data available. By considering industrial and production environment, PA would be a great asset due to the high flexibility and high amound of data available coming from processes, single machines or cells, products, and others. Some common industrial applications of PA at the industry are focused products (design and optimization), machine (predictive maintenance) and production (scheduling) \cite{krauss2019machine}.
+PA offers a wide range of applications, and it can be implemented as long as there is enough data available. By considering the industrial and production environment, PA would be a great asset due to the high flexibility and high amount of data available coming from processes, single machines or cells, products, and others. Some common industrial applications of PA at the industry are focused products (design and optimization), machines (predictive maintenance) and production (scheduling) \cite{krauss2019machine}.
 
 Applications that combines PA with QC might be a great improvement in the quality control process because it is an improvement compared with the earlier mentioned methods \ref{sec:qcp}, in terms of speed, accuracy and time delay. 
 
 The outcome of an explorative literature review on this matter, shows that the findings that combines PA and QC are very scarce in the literature. This could be in great part, due to the novelty of the area \cite{aumi2012model, ritter1992neue}. Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
 
-Based on an explorative literature review on this matter, the short outcome is that the findings that combine PA and QC are very scarce in the literature. This could be in great part, due to computer power limitations in early research and the recent increase of ML applications on this area  \cite{aumi2012model, ritter1992neue}. Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
+Based on an explorative literature review on this matter, the short outcome is that the findings that combine PA and QC are very scarce in the literature. This could be in great part, due to computer power limitations in early research and the recent increase of ML applications on this area. Related works, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated}; product quality prediction in a process chain \cite{krauss2019machine}; model development for predictive quality control of batch processes \cite{aumi2012model}; and ways of process modeling on quality prediction and assurance of chipboard \cite{ritter1992neue}
 
 \AP{
        - Introduce research question
@@ -298,6 +295,10 @@ Based on an explorative literature review on this matter, the short outcome is t
        - the motivation is clear
        
        }
+
+
+      
+       
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
 In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. 
