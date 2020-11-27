@@ -238,6 +238,11 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
               prediction models can be implemented for specific predicted values
 \end{itemize}}
 
+The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
+the collection and processing of the data from the process parameters in continuous and a few different ML algorithms are used for prediction, 
+in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
+In addition, it is described in detail how the collected data was collected, prepared and processed.
+
 \section{Related Works} % 1 Page \Lennart
 
 \subsection{Quality check in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
@@ -274,13 +279,6 @@ The advantage of variable measurements is that in the event of a defective inter
 precise measured values are available, which enable precise adjustment of the process parameters. 
 This allows the desired quality to be restored. With that in mind, predictive quality control is a promising solution.
 
-\AP{
-\begin{itemize}
-\item How quality check is done in production
-\item Concepts and sampling plan
-\item Attributive vs Variable measurements [VM has higher measurement accuracy, reason why it’s better to use regression model]
-\end{itemize}}
-
 \subsection{Predictive analytics in production}
 
 According to Delen and Damirkan, predictive analytics (PA) consist on unravel the inherent relationships, if any, between data input and output by using data and mathematical techniques \cite{delen2013data}.
@@ -300,14 +298,6 @@ Based on an explorative literature review on this matter, the short outcome is t
        - the motivation is clear
        
        }
-
-The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
-the collection and processing of the data from the process parameters in continuous and a few different ML algorithms are used for prediction, 
-in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
-In addition, it is described in detail how the collected data was collected, prepared and processed.
-
-\AP{Last paragraph goes in intro}
-
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
 In our work we applied a case-based research approach \cite{yin2017case} to answer the research question. 
@@ -462,9 +452,6 @@ Without the labels the problem could not have been framed as a supervised
 classification problem.
 
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to double the samples, until we progressively increased the dataset size by indexing the new samples to the older data. 
-
-
-\section{Conclusion} % 1/2 Page
 
 \section*{Acknowledgments}
 This project was partly supported by the German and European IKT.NRW
