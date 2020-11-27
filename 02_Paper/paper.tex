@@ -423,11 +423,18 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
                 every time.}
        \label{tab:class_comp}
 \end{table}
+
+\begin{figure}
+\caption{\MW{TODO: Add confusion matrix.}}
+\end{figure}
+
 Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples
 quality measurements indicate a problem. This sets the 
 baseline over the entire data set, which would be obtained by simply labeling all samples
 as faulty. Over the test set, we require to classify more than 64\% of the data correctly.
-We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to beat. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here. We found the random forest performed best followed by the multilinear
+We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to beat. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here.
+\MW{discuss confusion matrix.}
+We found the random forest performed best followed by the multilinear
 perceptron and the support vector machine. 
 
 \section{Conclusion}
