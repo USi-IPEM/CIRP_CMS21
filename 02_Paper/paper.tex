@@ -248,13 +248,12 @@ According to Illés, there are three established tools and methods of quality co
 The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC).   
 The SPC is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes
 in the quality characteristics in the production process \cite{selvamuthu2018introduction}. This method can also take place before the actual manufacturing process in form of an "off-line SPC". During the designing phase of a process or product,
-off-line SPC procedures are aiming to select and choose controllable product and process parameters to increase the quality of the outcoming product \cite{mitra2016fundamentals}.
+off-line SPC procedures are aiming to select and choose a controllable product and process parameters to increase the quality of the outcoming product \cite{mitra2016fundamentals}.
 \AP{@Lennart, last sentence is still quite confusing to me}
 
 The biggest advantage of working with SPC is that large batches can be checked without major time impact on the QC process, however, this would be only possible if the variance of the process product parameters is small enough, to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
 
-\AP{100\% method is not introduced}
-The contrary method to any statistical method, is the hundred percent control, where every product is controlled and sorted by being an ok or non-ok part.
+The contrary method to any statistical method, is the hundred percent control, where every product is controlled and binary sorted as an OK or Non-OK part.
 Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
 an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by other than the auditor \cite{fox1993quality}.
 
@@ -445,22 +444,24 @@ perceptron and the support vector machine.
 
 \subsection{Lesson Learned} % 1/2 Page
 
-\AP{explain experiences by doing the research
+\textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data within each other due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
+To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system.
 
-- Connection problem between devices
-   - Network connection
-   - Device restriction: SIM4000, SIEMENS. 
-   - Server Timestamp syncr.
-- Interpretation of data: preprocessing
-   - What data is relevant?
-   - Missing data tags: modifying PLC and robot code to have tags -> key point
-        - Without label we cannot use supervised ML methods
-- Dataset size
-} \\
+\textbf{Data synchronization}; two OPC-UA servers were used on this implementation. This lead to a series of data synchronization problems due to differences on the internal clock of both servers.
+In order to solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, the input data for the ML model would have been useless and the model inaccurate. 
+
+\textbf{Data interpretation}; complex, time-consuming, and fundamental step on any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well of a basic correlation within the presented data.
+
+\textbf{Missing values}; in order to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact in the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap.
+
+\textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occurs, made complicated to have accurate data sampling from each assembly cycle. In order to overcome this uncertainty, we modify the machine program to raise specify flags whenever certain actions would be executed.
+
 \textbf{Machine Learning}; careful measurement and  meaningful preprocessing
 of our cell-date was key to the successful application of all three algorithms.
 Without the labels the problem could not have been framed as a supervised 
-classification problem. 
+classification problem.
+
+\textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to double the samples, until we progressively increased the dataset size by indexing the new samples to the older data. 
 
 
 \section{Conclusion} % 1/2 Page
