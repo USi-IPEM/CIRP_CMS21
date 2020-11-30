@@ -357,8 +357,13 @@ of its initialization.
 The Kernel trick allows SVM to solve non-linear classification problems \cite{Suykens2002least} by mapping implicitly mapping the inputs into a higher feature space. Radial basis functions (RBF) are commonly chosen as kernels
 \cite{Suykens2002least} we choose to follow this practice as well.
 
-\subsection{Random Forests}
-Random Forests \cite{breiman2001random} \MW{Will finish tomorrow.}
+\subsection{Decision Tree}
+Decision trees are binary trees, these binary trees work with the input
+features at the roots, resulting decisions are found by moving
+trough the tree to top leaves. At every branch in the tree a decision
+is made, until one arrives at the final conclusion \cite{Marsland2015Machine}.
+Decision trees are trained using  
+\MW{Will write more tomorrow.}
 
 
 \section{Experiments}
@@ -413,7 +418,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               Na\"ive-Baseline & 64 \% \\
               Support Vector Machine & 82 \% \\
               Multilayer Perceptron & 88 \% \\
-              Random Forest          & 98 \% \\ \bottomrule
+              Decision Tree         & 98 \% \\ \bottomrule
        \end{tabular}
        \caption{Comparison of Support Vector Machine (SVM), Multilinear Perceptron and 
                 Random Forest classification on our annomaly detection task. 
