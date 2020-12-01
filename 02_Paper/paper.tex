@@ -565,6 +565,17 @@ perceptron and the support vector machine.
 
 \section{Conclusion}
 
+Quality assurance is an important topic in production. Quality assurance methods in production might diverge one from each other, however, all of them seek to prove the product quality in one way or another. 
+
+Based on the literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each individual product until the next bach review might imply a considerable loss whenever NOK products are found. This based in the uncertainty of when did the error occurs and how many products are affected.
+
+By implementing ML models capable to predict the quality of the product, just by the initial conditions of the process would be a great asset for the industrial processes. Within the limits of our work, we are able to predict with 98\% certainty the product quality by implementing a supported-vector-machine with a 6-variables vector as input. 
+For further work, we expect to increase the certainty of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
+
+It is important to state that this prediction model is not yet ready to fully replace the statistical methods, not the hundred percent quality check method. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this will somehow compensate one of the disadvantages from statistical methods.
+
+It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
+
 \subsection{Lesson Learned} % 1/2 Page
 
 \textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data within each other due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
