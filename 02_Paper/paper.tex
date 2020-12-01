@@ -44,6 +44,9 @@
 \usepackage{pgfplots}
 \usepackage{booktabs}
 \usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=newest}
@@ -521,6 +524,7 @@ A Support Vector Machine (SVM), a multilinear perceptron (MLP) and a Random Fore
 structure. All three methods are trained using standard hyperparameters.
 \footnote{In order to allow exact reproduction of these results source
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
+
 \begin{table}
        \centering
        \begin{tabular}{ c c } \toprule
@@ -537,16 +541,77 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
        \label{tab:class_comp}
 \end{table}
 
-\begin{figure}
-\caption{\MW{TODO: Add confusion matrix.}}
-\end{figure}
+\begin{table}
+       \begin{subtable}[h]{0.3\textwidth}
+              \centering
+              \begin{adjustbox}{width=1.6\textwidth}
+              \begin{tabular}{l|l|c|c|c}
+                     \multicolumn{2}{c}{}&\multicolumn{2}{c}{True Values}&\\
+                     \cline{3-4}
+                     \multicolumn{2}{c|}{}& OK & NOK &\multicolumn{1}{c}{Total}\\
+                     \cline{2-4}
+                     \multirow{2}{*}{Predicted Values}& OK & $18$ & $0$ & $18+0 = 18$\\
+                     \cline{2-4}
+                     & NOK & $8$ & $24$ & $8+24 = 32$\\
+                     \cline{2-4}
+                     \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$18+8 = 26$} & \multicolumn{    1}{c}{$0+24 = 24$} & \multicolumn{1}{c}{$50$}\\
+              \end{tabular}
+              \end{adjustbox}
+              \caption{SVM.}
+              \label{tab:SVM_conf_matrix}
+       \end{subtable}
+       \begin{subtable}[h]{0.3\textwidth}
+              \centering
+              \begin{adjustbox}{width=1.6\textwidth}
+              \begin{tabular}{l|l|c|c|c}
+                     \multicolumn{2}{c}{}&\multicolumn{2}{c}{True Values}&\\
+                     \cline{3-4}
+                     \multicolumn{2}{c|}{}& OK & NOK &\multicolumn{1}{c}{Total}\\
+                     \cline{2-4}
+                     \multirow{2}{*}{Predicted Values}& OK & $18$ & $0$ & $18+0 = 18$\\
+                     \cline{2-4}
+                     & NOK & $6$ & $26$ & $6+26 = 32$\\
+                     \cline{2-4}
+                     \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$18+6 = 24$} & \multicolumn{    1}{c}{$0+26 = 26$} & \multicolumn{1}{c}{$50$}\\
+              \end{tabular}
+              \end{adjustbox}
+              \caption{MLP.}
+              \label{tab:MPL_conf_matrix}
+       \end{subtable}
+       \begin{subtable}[h]{0.3\textwidth}
+              \centering
+              \begin{adjustbox}{width=1.6\textwidth}
+              \begin{tabular}{l|l|c|c|c}
+                     \multicolumn{2}{c}{}&\multicolumn{2}{c}{True Values}&\\
+                     \cline{3-4}
+                     \multicolumn{2}{c|}{}& OK & NOK &\multicolumn{1}{c}{Total}\\
+                     \cline{2-4}
+                     \multirow{2}{*}{Predicted Values}& OK & $17$ & $1$ & $17+1 = 18$\\
+                     \cline{2-4}
+                     & NOK & $0$ & $32$ & $0+32 = 32$\\
+                     \cline{2-4}
+                     \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$17+0 = 17$} & \multicolumn{    1}{c}{$1+32 = 33$} & \multicolumn{1}{c}{$50$}\\
+              \end{tabular}
+              \end{adjustbox}
+              \caption{Decision Tree.}
+              \label{tab:Tree_conf_matrix}
+       \end{subtable}
+       \caption{Confusion matrix result of the prediction of 50 data-points.}
+       \label{tab:Confusion_matrix}
+\end{table}
+
 
 Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples
 quality measurements indicate a problem. This sets the 
 baseline over the entire data set, which would be obtained by simply labeling all samples
 as faulty. Over the test set, we require to classify more than 64\% of the data correctly.
 We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to beat. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here.
-\MW{discuss confusion matrix.}
+
+Based on the MLP prediction results presented on Table.~\subref{tab:MPL_conf_matrix} shows that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represents the 12\% of the test sample and the true predictions constitute a 88\% of the test data.
+
+Based on the prediction results presented on Table,~\subref{tab:SVM_conf_matrix , tab:MPL_conf_matrix, tab:Tree_conf_matrix}
+
+
 We found the random forest performed best followed by the multilinear
 perceptron and the support vector machine. 
 
@@ -582,7 +647,7 @@ of our cell-date was key to the successful application of all three algorithms.
 Without the labels the problem could not have been framed as a supervised 
 classification problem.
 
-\textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until acumulate around 15 hours of data.
+\textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
 \section*{Acknowledgments}
 This project was partly supported by the German and European IKT.NRW
