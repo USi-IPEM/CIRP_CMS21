@@ -299,7 +299,7 @@ In addition case-based research approaches have already been successfully applie
        - Review
 
 Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
-The assembly process done at this demonstration cell consist on stacking two disks of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
+The assembly process done at this demonstration cell consist on stacking two disks of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks Figure~\ref{fig:ind_cell}. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
 By considering that malfunctions can occur during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
 
 \begin{itemize}
@@ -360,6 +360,15 @@ Random Forests \cite{breiman2001random} \MW{Will finish tomorrow.}
 \DSt{
 - could we include collection via OPCUA server? or manually? 
 }
+
+Industrial projects requires to work with a variety of sensors and controllers. Thus, it might occurs incompatibility between technologies. In order to avoid that problem, universal protocols are often found at industrial projects. The industrial 4.0 demonstration cell data is shared via protocol OPC-UA. The Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram between sensors and controllers.
+
+\begin{figure}
+       \includegraphics[width=.45\textwidth]{img/demozelle_conex_diagram.png}
+       \caption{Industry 4.0 demostration cell: Connection diagram (simplified)
+             }
+\label{fig:demo_conn_diag}
+\end{figure}
 
 
 
