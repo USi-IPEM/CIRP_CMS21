@@ -227,29 +227,11 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \section{Introduction} % 1 Page (incl authors, abstract)
 
-\AP{\begin{itemize}
-       \item	Products’ quality must always be guaranteed.
-       \item	In certain cases (especially in series assembly production) there is a delay between quality inspection
-              and end of the production process high potential for producing scrap 
-       \item	By doing quality inspection based on samples, there is still a risk of sending NOK parts to customers
-       \item	The cost of quality checks might be expensive
-       \item	Quality assurance is normally done at the end of production (for assembly processes)   
-       \item	Early prediction of the production’s quality  would help to decrease the amount of scrap  and the risk of sending NOK parts to customers
-       \item	Variable predictions by using machine learning models is currently widely used in diverse fields due to its accurate predictions with the data collected from the machines, 
-              prediction models can be implemented for specific predicted values
-\end{itemize}}
+Product features such as reliability, durability, or complete functionality determine to a large extent the success and profit of companies on the market. That is why it is highly important for companies to ensure that every product meet the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the revision of every produced piece, either by automated or manual methods, or by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods. Which still has a considerable risk of not detecting NOK parts and sending them to costumers \cite{mitra2016fundamentals, fox1993quality, kahle2013zuverlaessigkeitsanalyse}.
 
-Product features such as reliability and durability or complete functionality determine to a large extent the success and profit of a company on the market.
-In addition, product quality is a company's showcase. Therefore, the established standard must be ensured by careful quality assurance.
-Traditional methods of quality control, such as 100\% control, may conflict with other production goals, such as production speed and low reject rates.
-When choosing the right quality control tools, a compromise must be made in most cases. For example, a higher production speed requires statistical quality control. Statistical methods, however,
-do not provide one hundred percent certainty that the required product quality will be achieved.
-A new approach based on quality prediction using ML algorithms provides a remedy here.
+Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect the production goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
 
-The few existing approaches are extended by this paper in that a demonstrator executes an industry-unspecific production/assembly process,
-the collection and processing of the data from the process parameters in continuous and a few different ML algorithms are used for prediction, 
-in order to determine, which algorithms are most advantageous for predicting the quality of an outcoming product. 
-In addition, it is described in detail how the collected data was collected, prepared and processed.
+With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
 
 This paper is divided in 6 sections:
 
