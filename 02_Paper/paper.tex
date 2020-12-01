@@ -43,6 +43,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{booktabs}
+\usepackage{adjustbox}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=newest}
@@ -369,11 +370,62 @@ Decision trees are trained using
 \section{Experiments}
 
 \subsection{Data acquisition}
-\DSt{
-- could we include collection via OPCUA server? or manually? 
-}
 
-Industrial projects requires to work with a variety of sensors and controllers. Thus, it might occurs incompatibility between technologies. In order to avoid that problem, universal protocols are often found at industrial projects. The industrial 4.0 demonstration cell data is shared via protocol OPC-UA. The Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram between sensors and controllers.
+Industrial projects requires to work with a variety of sensors and controllers. Thus, it might occurs incompatibility between technologies. In order to avoid that problem, universal protocols are often implemented at industrial projects. This is the case for our industrial 4.0 demonstration cell, which shares data via protocol OPC-UA. 
+
+Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is shared independently from two OPC-UA servers. This in order to represent the interaction between multiple servers in real production environments. 
+
+The first step to collect the data is to list all the variables of interest and to map their source, see Table.~\ref{tab:data_source} . For this research, we focussed on the following data:
+
+\begin{table}
+       \centering
+       \begin{adjustbox}{width=.45\textwidth}
+       \begin{tabular}{ c c c } \toprule
+              \textbf{Data of interest} & \textbf{Server Source} & \textbf{Variable}\\ \midrule
+              Conveyor speed       & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+              \begin{description}
+                     \item Conveyor-Gate 1
+                     \item Conveyor-QC 2
+                     \item Conveyor-Store/Magazine
+                     \end{description}
+                     \end{minipage} \\
+              UR3 Position         & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+              \begin{description}
+                     \item $xyz$ Gripper position
+                     \end{description}
+                     \end{minipage} \\ 
+              Action Flags         & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+              \begin{description}
+                     \item UR3 gripper open/close
+                     \item Grab/drop disk based on disk type
+                     \end{description}
+                     \end{minipage} \\
+              Quality control      & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+              \begin{description}
+                     \item OK-NOK label
+                     \item $xy$ disk deviation from center point
+                     \item absolute disk deviation
+                     \end{description}
+                     \end{minipage} \\
+              Gate position        & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+              \begin{description}
+                     \item Position
+                     \item Speed
+                     \item Safe to go
+                     \end{description}
+                     \end{minipage} \\
+              Store/Magazine       & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+                     \begin{description}
+                     \item Disk Size
+                     \end{description}
+                   \end{minipage} \\ \bottomrule
+       \end{tabular}
+       \end{adjustbox}
+       \caption{Industriy 4.0 demonstration cell: Relevant data with its reference source server}
+       \label{tab:data_source}
+\end{table}
+
+The data was collected manually by using the software "UAExperts"
 
 \begin{figure}
        \includegraphics[width=.45\textwidth]{img/demozelle_conex_diagram.png}
