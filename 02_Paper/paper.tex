@@ -375,46 +375,46 @@ Industrial projects requires to work with a variety of sensors and controllers. 
 
 Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is shared independently from two OPC-UA servers. This in order to represent the interaction between multiple servers in real production environments. 
 
-The first step to collect the data is to list all the variables of interest and to map their source, see Table.~\ref{tab:data_source} . For this research, we focussed on the following data:
+The first step to collect the data is to list all the variables of interest and to map their source. The second step is to determine the use cases of interest.  On this research, we focussed on the data described on Table.~\ref{tab:data_source} and the six use cases described on Table.~\ref{tab:use_cases}. The data was manually collected by using the software "UAExperts". Aproximately 15 hours of data was collected, by equally sampling each use case during the data acquisition time.
 
 \begin{table}
        \centering
        \begin{adjustbox}{width=.45\textwidth}
        \begin{tabular}{ c c c } \toprule
               \textbf{Data of interest} & \textbf{Server Source} & \textbf{Variable}\\ \midrule
-              Conveyor speed       & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+              Conveyor speed       & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
-                     \item Conveyor-Gate 1
-                     \item Conveyor-QC 2
-                     \item Conveyor-Store/Magazine
+                     \item Conveyor: Gate
+                     \item Conveyor: QC
+                     \item Conveyor: Store
                      \end{description}
-                     \end{minipage} \\
-              UR3 Position         & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+                     \end{minipage} \\ \hline
+              UR3 Position         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
                      \item $xyz$ Gripper position
                      \end{description}
-                     \end{minipage} \\ 
-              Action Flags         & Siemens PLC       & \begin{minipage}[c]{0.4\textwidth}
+                     \end{minipage} \\ \hline
+              Action Flags         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
                      \item UR3 gripper open/close
                      \item Grab/drop disk based on disk type
                      \end{description}
-                     \end{minipage} \\
-              Quality control      & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+                     \end{minipage} \\ \hline
+              Quality control      & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
                      \item OK-NOK label
                      \item $xy$ disk deviation from center point
-                     \item absolute disk deviation
+                     \item Absolute disk deviation
                      \end{description}
-                     \end{minipage} \\
-              Gate position        & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+                     \end{minipage} \\ \hline
+              Gate position        & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
                      \item Position
                      \item Speed
                      \item Safe to go
                      \end{description}
-                     \end{minipage} \\
-              Store/Magazine       & SICK SIM4000      & \begin{minipage}[c]{0.4\textwidth}
+                     \end{minipage} \\ \hline
+              Store       & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
                      \begin{description}
                      \item Disk Size
                      \end{description}
@@ -425,7 +425,52 @@ The first step to collect the data is to list all the variables of interest and 
        \label{tab:data_source}
 \end{table}
 
-The data was collected manually by using the software "UAExperts"
+\begin{table}
+       \centering
+       \begin{tabular}{ c c } \toprule
+              Use Case        & Description \\ \midrule
+              Use Case 1  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Slow
+                                   \item Robot position: OK
+                            \end{description}
+                            \end{minipage}  \\ \hline
+              Use Case 2  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Slow
+                                   \item Robot position: NOK
+                            \end{description}
+                            \end{minipage}  \\ \hline
+              Use Case 3  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Fast
+                                   \item Robot position: OK
+                            \end{description}
+                            \end{minipage}  \\ \hline
+              Use Case 4  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Fast
+                                   \item Robot position: NOK
+                            \end{description}
+                            \end{minipage}  \\ \hline
+              Use Case 5  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Too Fast
+                                   \item Robot position: OK
+                            \end{description}
+                            \end{minipage}  \\ \hline
+              Use Case 6  & \begin{minipage}[t]{0.25\textwidth}
+                            \begin{description}
+                                   \item Conveyor speed: Too Fast
+                                   \item Robot position: NOK
+                            \end{description}
+                            \end{minipage}  \\ \bottomrule
+       \end{tabular}
+       \caption{Industrial 4.0 demostration cell: Controlled use-cases.
+       Use cases with Robot position: NOK and Conveyor speed: Too Fast will result in NOK pieces.}
+       \label{tab:use_cases}
+\end{table}
+
 
 \begin{figure}
        \includegraphics[width=.45\textwidth]{img/demozelle_conex_diagram.png}
@@ -434,7 +479,24 @@ The data was collected manually by using the software "UAExperts"
 \label{fig:demo_conn_diag}
 \end{figure}
 
+\subsection{Data preprocessing}
 
+Once enough data is collected, the next step is to clean the raw data and organize it accordingly. For our case, that means to merge the data collected from the two OPC-UA servers, synchronize the time stamps. Since our systems are not completely synchronized, it was needed to calculate the delta-time based between servers based on the base clock from each server. Once the delta-time was determined, a time-stamp function was implemented to correct the time-shift between samples and be able to merge all the data without incompatibilities.
+
+Data tags interpretation is an important step in the preprocessing process. The raw data collected from the sensors is sometimes tagged by an alphanumeric code. In order to work with the data, it was needed to implement diverse functions wich have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensors code based in a predefined dictionary settle by the authors. This last step, could be optional in other implementations, however, it proves to be a great addition for testing purposes.
+
+Once the data is clean and compiled in one directory, the next step would be to split the data based on the assembly cycle. For our purposed, we split the dataset in individual data-samples with help of the action tags included in the dataset \ref{tab:data_source}. Subsequently, each data-sample is automatically checked for missing sensor values and discarded if so. At this point we have a series de data-samples, which each of them is based in time series. However, we are not interested in a time series analysis, therefore it would be needed to compress each time-series based data-sample in an atemporal data-sample.
+
+To eliminate time as a variable in our dataset, we defined a series of rules:
+
+\begin{itemize}
+       \item Robot position ($xyz$) while dropping the disk in the storage area
+       \item Mean conveyor speed per conveyor band
+       \item Absolute deviation ($xy$) at the quality control check
+       \item Absolute quality check result: OK - NOK
+\end{itemize}
+
+Each time-series sample was evaluated based on the rules stated above, and the result of each evaluation was considered as our atemporal data-sample, which would be used by our classifier.
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
 
