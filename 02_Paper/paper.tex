@@ -342,19 +342,30 @@ are differentiable we can employ gradient descent to train our
 classifier.
 
 \subsection{Support Vector Machines}
-Support Vector Machines (SVM) offer a convex alternative to MLPs \cite{Suykens2002least}.
-A convex classifier is guaranteed to converge to a global solution regardless 
-of its initialization. 
-The Kernel trick allows SVM to solve non-linear classification problems \cite{Suykens2002least} by mapping implicitly mapping the inputs into a higher feature space. Radial basis functions (RBF) are commonly chosen as kernels
+Support Vector Machines (SVM) attempt to separate data
+along hyperplanes \cite{aggarwal2015data}. 
+SVM offer a convex alternative to MLPs \cite{Suykens2002least}.
+A convex classifier is guaranteed to converge to a global solution
+regardless of its initialization.
+Non-separable data can become separable if projected to a different
+possibly high dimensional space trough a Kernel function.
+The Kernel trick allows SVM to solve some non-linear
+classification problems \cite{Suykens2002least}
+Radial basis functions (RBF) are commonly chosen as kernels
 \cite{Suykens2002least} we choose to follow this practice as well.
 
 \subsection{Decision Tree}
 Decision trees are binary trees, these binary trees work with the input
-features at the roots, resulting decisions are found by moving
-trough the tree to top leaves. At every branch in the tree a decision
-is made, until one arrives at the final conclusion \cite{Marsland2015Machine}.
-Decision trees are trained using  
-\MW{Will write more tomorrow.}
+features at the roots, decisions are made by moving
+up the tree to top leaves. At every branch in the tree, a decision
+is made, until one arrives at the decision \cite{Marsland2015Machine}.
+For numerical input features, each decision partitions the data
+\cite{aggarwal2015data}. For example by comparison to a threshold value.
+To construct the tree these cutoff values have to be chosen
+at every branch. The construction problem turns into an optimization 
+problem when a split criterion is introduced. Common choices are 
+cross-entropy of Gini-coefficient \cite{aggarwal2015data}.
+During construction, the chosen function must be minimized. 
 
 
 \section{Experiments}
