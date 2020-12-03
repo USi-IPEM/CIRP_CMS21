@@ -230,9 +230,11 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \section{Introduction} % 1 Page (incl authors, abstract)
 
-Product features such as reliability, durability, or complete functionality determine to a large extent the success and profit of companies on the market. That is why it is highly important for companies to ensure that every product meet the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the revision of every produced piece, either by automated or manual methods, or by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods. Which still has a considerable risk of not detecting NOK parts and sending them to costumers \cite{mitra2016fundamentals, fox1993quality, kahle2013zuverlaessigkeitsanalyse}.
+For companies aiming at quality leadership, the final quality of any goods produced is vital for market success. That is why it is highly important for companies to ensure that every product meets the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the inspection of every produced piece (100\% control), either by automated or manual methods, by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods, or by reducing the risk of mistakes by intentionally modifying the process to avoid human errors. This bears a considerable risk of not detecting faulty-parts (NOK) and sending them to costumers \cite{fox1993quality, Robinson2011UsingPT}.
 
-Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect the production goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
+Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect have a considerable impact in the production, due to the 
+
+goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
 
 With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
 
@@ -249,10 +251,9 @@ This paper is divided in 6 sections:
 
 \section{Related Works} % 1 Page \Lennart
 
-\subsection{Quality check in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
+\subsection{Quality control in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
 
-The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{illes2017new}.
-According to Illés, there are three established tools and methods of quality control \cite{illes2017new}:
+The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements. According to Illés, there are three established tools and methods of quality control \cite{illes2017new}:
 The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC).   
 The SPC is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes in the quality characteristics in the production process \cite{selvamuthu2018introduction}. SPC methods can also take place before the actual manufacturing process, this is commonly known as "off-line SPC". 
 
@@ -645,10 +646,9 @@ classification problem.
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
 \section*{Acknowledgments}
-This project was partly supported by the German and European IKT.NRW
-project "`ManuBrain"' 
+This work was funded by the European Regional Development Fund (ERDF) with the project name "ManuBrain" 
 
-\bibliographystyle{abbrv}
+\bibliographystyle{ieeetr} %elsarticle-harv} %abbrv
 \bibliography{bib}
 
 \end{document}
