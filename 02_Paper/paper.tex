@@ -244,13 +244,12 @@ This paper is divided in 6 sections:
        \item \textbf{The case industry 4.0 demonstration cell}, describe the demonstration cell used on this project. It answer the question of where to test predictive analytics in a controlled environment and why our system is a valid platform for this implementation.
        \item \textbf{Machine learning Methods}, explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree.
        \item \textbf{Experiments}, describe the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing.
-       \item \textbf{Conclusion}, express the remarks and diskoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
+       \item \textbf{Conclusion}, express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
 \end{itemize}
 
 \section{Related Works} % 1 Page \Lennart
 
 \subsection{Quality check in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
-
 
 The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{illes2017new}.
 According to Illés, there are three established tools and methods of quality control \cite{illes2017new}:
@@ -486,7 +485,7 @@ Once enough data is collected, the next step is to clean the raw data and organi
 
 Data tags interpretation is an important step in the preprocessing process. The raw data collected from the sensors is sometimes tagged by an alphanumeric code. In order to work with the data, it was needed to implement diverse functions wich have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensors code based in a predefined dictionary settle by the authors. This last step, could be optional in other implementations, however, it proves to be a great addition for testing purposes.
 
-Once the data is clean and compiled in one directory, the next step would be to split the data based on the assembly cycle. For our purposed, we split the dataset in individual data-samples with help of the action tags included in the dataset Table.~\ref{tab:data_source}. Subsequently, each data-sample is automatically checked for missing sensor values and diskarded if so. At this point we have a series de data-samples, which each of them is based in time series. However, we are not interested in a time series analysis, therefore it would be needed to compress each time-series based data-sample in an atemporal data-sample.
+Once the data is clean and compiled in one directory, the next step would be to split the data based on the assembly cycle. For our purposed, we split the dataset in individual data-samples with help of the action tags included in the dataset Table.~\ref{tab:data_source}. Subsequently, each data-sample is automatically checked for missing sensor values and discarded if so. At this point we have a series de data-samples, which each of them is based in time series. However, we are not interested in a time series analysis, therefore it would be needed to compress each time-series based data-sample in an atemporal data-sample.
 
 To eliminate time as a variable in our dataset, we defined a series of rules:
 
