@@ -321,9 +321,20 @@ The continuous data collection and the clear correlation between the machine par
 
 \section{Machine Learning Methods} %3/4 Page
 
-We compare Support Vector Machines (SVM), Multilinear Perceptrons
-\cite{bishop2006pattern} as well as random forests in the task of
-quality prediction. All three will be introduced next.
+To study which implementation would be more suitable for industrial application, we compare Support Vector Machines (SVM), Multilinear Perceptrons as well as random forests on the task of quality prediction. All three will be introduced next.
+
+\subsection{Support Vector Machines}
+Support Vector Machines (SVM) attempt to separate data
+along hyperplanes \cite{aggarwal2015data}. 
+SVM offer a convex alternative to MLPs \cite{Suykens2002least}.
+A convex classifier is guaranteed to converge to a global solution
+regardless of its initialization.
+Non-separable data can become separable if projected to a different
+possibly high dimensional space through a Kernel function.
+The Kernel trick allows SVM to solve some non-linear
+classification problems \cite{Suykens2002least}.
+Radial basis functions (RBF) are commonly chosen as kernels
+\cite{Suykens2002least}, therefore, we choose to follow this practice as well.
 
 \subsection{Multilayer perceptrons}
 These feedforward neural networks typically combine multiple layers
@@ -340,21 +351,8 @@ Since the linear parts of the ReLU and the linear matrix multiplication
 are differentiable we can employ gradient descent to train our 
 classifier.
 
-\subsection{Support Vector Machines}
-Support Vector Machines (SVM) attempt to separate data
-along hyperplanes \cite{aggarwal2015data}. 
-SVM offer a convex alternative to MLPs \cite{Suykens2002least}.
-A convex classifier is guaranteed to converge to a global solution
-regardless of its initialization.
-Non-separable data can become separable if projected to a different
-possibly high dimensional space trough a Kernel function.
-The Kernel trick allows SVM to solve some non-linear
-classification problems \cite{Suykens2002least}
-Radial basis functions (RBF) are commonly chosen as kernels
-\cite{Suykens2002least} we choose to follow this practice as well.
-
 \subsection{Decision Tree}
-Decision trees are binary trees, these binary trees work with the input
+Decision trees are essentially binary trees, which work with the input
 features at the roots, decisions are made by moving
 up the tree to top leaves. At every branch in the tree, a decision
 is made, until one arrives at the decision \cite{Marsland2015Machine}.
@@ -624,12 +622,12 @@ The outcome of the models shows that the random forest performed best followed b
 
 % Quality assurance is an important topic in production. Quality assurance methods in production might diverge one from each other, however, all of them seek to prove the product quality in one way or another. 
 
-Based on the literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each individual product until the next bach review might imply a considerable loss whenever NOK products are found. This based in the uncertainty of when did the error occurs and how many products are affected.
+Based on the literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw-back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each product until the next bach review might imply a considerable loss whenever NOK products are found. This is based on the uncertainty of when did the error occurs and how many products are affected.
 
-By implementing ML models capable to predict the quality of the product, just by the initial conditions of the process would be a great asset for the industrial processes. Within the limits of our work, we are able to predict with 98\% certainty the product quality by implementing a decision tree model with a 6-variables vector as input. 
+By implementing ML models capable to predict the quality of the product, just by the initial conditions of the process would be a great asset for the industrial processes. Within the limits of our work, we predict with 98\% certainty the product quality by implementing a decision tree model with a 6-variables vector as input. 
 However, our decision for industrial applications would be the MLP with 88\% accuracy as to guarantee the QC and avoid labeling a NOK piece as OK. For further work, we expect to increase the certainty of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
 
-It is important to state that this prediction model is not yet ready to fully replace the statistical methods, not the hundred percent quality check method. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this will somehow compensate one of the disadvantages from statistical methods.
+It is important to state that this prediction model is not yet ready to fully replace the statistical methods, not the hundred percent quality check method. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this will somehow compensate one disadvantage the statistical methods have.
 
 It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
 
@@ -641,15 +639,15 @@ To overcome the situation stated above, it was necessary to reprogram big sectio
 \textbf{Data synchronization}; two OPC-UA servers were used on this implementation. This lead to a series of data synchronization problems due to differences on the internal clock of both servers.
 In order to solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, determining the production cycle would have been impossible and the input data for the ML model would have been useless, and the model inaccurate. 
 
-\textbf{Data interpretation}; this process is considered complex, time-consuming, and fundamental step on any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well of a basic correlation within the presented data.
+\textbf{Data interpretation}; this process is considered complicate, time-consuming, and fundamental step on any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well a basic correlation within the presented data.
 
-\textbf{Missing values}; in order to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact in the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap.
+\textbf{Missing values}; to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact on the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap.
 
 \textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occurs, made complicated to have accurate data sampling from each assembly cycle. In order to overcome this uncertainty, we modify the machine program to raise specify flags whenever certain actions would be executed.
 
 \textbf{Machine Learning}; careful measurement and  meaningful preprocessing
 of our cell-date was key to the successful application of all three algorithms.
-Without the labels the problem could not have been framed as a supervised 
+Without the labels, the problem could not have been framed as a supervised 
 classification problem.
 
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
