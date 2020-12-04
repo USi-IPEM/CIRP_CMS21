@@ -232,14 +232,13 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 For companies aiming at quality leadership, the final quality of any goods produced is vital for market success. That is why it is highly important for companies to ensure that every product meets the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the inspection of every produced piece (100\% control), either by automated or manual methods, by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods, or by reducing the risk of mistakes by intentionally modifying the process to avoid human errors. This bears a considerable risk of not detecting faulty-parts (NOK) and sending them to costumers \cite{fox1993quality, Robinson2011UsingPT}.
 
-Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect have a considerable impact in the production, due to the 
+Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect have a considerable impact in the production, due to the \AP{review}
 
 goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
 
 With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
 
 This paper is divided in 6 sections:
-
 \begin{itemize}
        \item \textbf{Introduction}, states the motivation of the project as well as the problem it intended to be addressed.
        \item \textbf{Related Works}, covers the methods used in quality check in production, as well as the bases of predictive analytics in production.
@@ -372,11 +371,11 @@ During construction, the chosen function must be minimized.
 
 \subsection{Data acquisition}
 
-Industrial projects requires to work with a variety of sensors and controllers. Thus, it might occurs incompatibility between technologies. In order to avoid that problem, universal protocols are often implemented at industrial projects. This is the case for our industrial 4.0 demonstration cell, which shares data via protocol OPC-UA. 
+Industrial projects require to work with a variety of sensors and controllers. Thus, might occur incompatibility between technologies. To avoid that problem, universal protocols are often implemented at industrial projects. This is the case for our industrial 4.0 demonstration cell, which shares data via protocol OPC-UA. 
 
-Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is shared independently from two OPC-UA servers. This in order to represent the interaction between multiple servers in real production environments. 
+Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is shared independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
 
-The first step to collect the data is to list all the variables of interest and to map their source. The second step is to determine the use cases of interest.  On this research, we focussed on the data described on Table.~\ref{tab:data_source} and the six use cases described on Table.~\ref{tab:use_cases}. The data was manually collected by using the software "UAExperts". Approximately 15 hours of data was collected, by equally sampling each use case during the data acquisition time.
+The first step to collect the data is to list all the variables of interest and to map their source. The second step is to determine the use cases of interest.  This research focussed on the data described in Table.~\ref{tab:data_source} and the six use cases described in Table.~\ref{tab:use_cases}. The data was manually collected by using the software "UAExperts". Approximately 15 hours of data was collected, by equally sampling each use case during the data acquisition time.
 
 \begin{table}
        \centering
@@ -422,7 +421,7 @@ The first step to collect the data is to list all the variables of interest and 
                    \end{minipage} \\ \bottomrule
        \end{tabular}
        \end{adjustbox}
-       \caption{Industriy 4.0 demonstration cell: Relevant data with its reference source server}
+       \caption{Industriy 4.0 demonstration cell: Relevant data linked with its reference source server.}
        \label{tab:data_source}
 \end{table}
 
@@ -475,7 +474,7 @@ The first step to collect the data is to list all the variables of interest and 
 
 \begin{figure}
        \includegraphics[width=.45\textwidth]{img/demozelle_conex_diagram.png}
-       \caption{Industry 4.0 demostration cell: Connection diagram (simplified)
+       \caption{Industry 4.0 demostration cell: Connection diagram (simplified).
              }
 \label{fig:demo_conn_diag}
 \end{figure}
@@ -568,7 +567,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
                      \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$18+8 = 26$} & \multicolumn{    1}{c}{$0+24 = 24$} & \multicolumn{1}{c}{$50$}\\
               \end{tabular}
               \end{adjustbox}
-              \caption{SVM.}
+              \caption{Support Vector Machine.}
               \label{tab:SVM_conf_matrix}
        \end{subtable}
        \begin{subtable}[h]{0.3\textwidth}
@@ -586,7 +585,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
                      \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$18+6 = 24$} & \multicolumn{    1}{c}{$0+26 = 26$} & \multicolumn{1}{c}{$50$}\\
               \end{tabular}
               \end{adjustbox}
-              \caption{MLP.}
+              \caption{Multilayer Perceptron.}
               \label{tab:MPL_conf_matrix}
        \end{subtable}
        \begin{subtable}[h]{0.3\textwidth}
@@ -607,7 +606,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               \caption{Decision Tree.}
               \label{tab:Tree_conf_matrix}
        \end{subtable}
-       \caption{Confusion matrix result of the prediction of 50 data-points.}
+       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs and predictions. The tables read from the upper left cell as: true-positive, false-positive, false-negative, true-negative.}
        \label{tab:Confusion_matrix}
 \end{table}
 
@@ -659,7 +658,7 @@ classification problem.
 \section*{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) with the project name "ManuBrain" 
 
-\bibliographystyle{ieeetr} %elsarticle-harv} %abbrv
+\bibliographystyle{elsarticle-harv} %elsarticle-harv} %abbrv
 \bibliography{bib}
 
 \end{document}
