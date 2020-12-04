@@ -516,14 +516,14 @@ Each time-series sample was evaluated based on the rules stated above, and the r
 The robot's position at disk drop is marked in 
 Figure~\ref{fig:robot_pos_cell}. The quality prediction problem is 
 framed as a classification task. The input vectors which we feed into our
-classifiers consists of the arm positions at the disk drops for both
+classifiers consist of the arm positions at the disk drops for both
 disks in three dimensions, as well as the largest recorded belt speed
 of all three belts. The interpretation of the quality measurement is 
-used as the training target. It can be good or bad which we encode as 
+used as the training target. It can be OK or NOK which we encode as 
 zero and one.
 
 We work with a total of 528 measurements. Each containing arm and belt data
-logs of individual cell runs. 50 samples are set aside at random for testing 
+logs of individual cell run. 50 samples are set aside at random for testing 
 purposes, leaving 478 training samples. The random number generator seed is
 set to one to ensure the train and test set splits are identical 
 for all experiments.
@@ -531,7 +531,7 @@ for all experiments.
 We compare a total of three different classifier architectures on the data.
 A Support Vector Machine (SVM), a multilinear perceptron (MLP) and a Random Forest
 structure. All three methods are trained using standard hyperparameters.
-\footnote{In order to allow exact reproduction of these results source
+\footnote{To allow exact reproduction of these results source
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
 
 \begin{table}
@@ -614,11 +614,11 @@ Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test sam
 quality measurements indicate a problem. This sets the 
 baseline over the entire data set, which would be obtained by simply labeling all samples
 as faulty. Over the test set, we require to classify more than 64\% of the data correctly.
-We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to beat. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here.
+We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to surpass. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here.
 
-Based on the MLP prediction results presented on Table.~\subref{tab:MPL_conf_matrix} shows that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represents the 12\% of the test sample and the true predictions constitute 88\% of the test data.
+Based on the MLP prediction results presented on Table.~\subref{tab:MPL_conf_matrix} shows that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represent the 12\% of the test sample and the true predictions constitute 88\% of the test data.
 
-The outcome of the models shows that the random forest performed best followed by the multilinear perceptron and the support vector machine. However, by reviewing the confusion matrices presented on Table,~\ref{tab:Confusion_matrix}, multilinear perceptron would be the option of choice to be implemented at industrial applications due to the 0\% ratio in false-positive results.
+The outcome of the models shows that the random forest performed best followed by the multilinear perceptron and the support vector machine. However, by reviewing the confusion matrices presented in Table,~\ref{tab:Confusion_matrix}, multilinear perceptron would be the preferred solution to be implemented at industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
 
 \section{Conclusion}
 
