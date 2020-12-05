@@ -281,22 +281,19 @@ This allows the desired quality to be restored. With that in mind, predictive qu
 
 \subsection{Predictive analytics in production}
 
-According to Delen and Damirkan, predictive analytics (PA) consist on unravel the inherent relationships (if any) between input and output by using data and mathematical techniques \cite{delen2013data}.
+According to Delen and Damirkan, predictive analytics (PA) unravel the inherent relationships (if any) between input and output by using data and mathematical techniques \cite{delen2013data}.
+PA offers a wide range of applications, and it can be implemented as long as the provided data are sufficiently available. By considering the industrial and production environment, PA would be a great asset due to the high flexibility and high amount of data available coming from processes, single machines or cells, products, and others. Some common industrial applications of PA in the industry are focused products (design and optimization), machines (predictive maintenance) and production (scheduling) \cite{krauss2019machine}.
 
-PA offers a wide range of applications, and it can be implemented as long as there is enough data available. By considering the industrial and production environment, PA would be a great asset due to the high flexibility and high amount of data available coming from processes, single machines or cells, products, and others. Some common industrial applications of PA at the industry are focused products (design and optimization), machines (predictive maintenance) and production (scheduling) \cite{krauss2019machine}.
+Applications that combine PA with QC might improve the current QC processes. By employing machine learning (ML) techniques \ref{sec:ML}, together with traditional methods \ref{sec:qcp}, it would be possible to upgrade the currents QC methods, and improve the cost-efficiency relationship in the QC process.
 
-Applications that combines PA with QC might be a great improvement in the quality control process because it is an improvement compared with the earlier mentioned methods \ref{sec:qcp}, in terms of speed, accuracy and time delay. 
+Based on an explorative literature review on this matter, the short outcome is that the findings that combine PA and QC are very scarce in the literature. This could be in great part, due to computer power limitations in early research and the recent increase of ML applications in this area. Related works, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and product quality prediction in a process chain \cite{krauss2019machine}, Aumi focussed on the model development for predictive quality control of batch processes \cite{aumi2012model}, and Ritter studied the ways of process modeling on quality prediction and assurance of chipboard \cite{ritter1992neue}. 
 
-The outcome of an explorative literature review on this matter, shows that the findings that combines PA and QC are very scarce in the literature. This could be in great part, due to the novelty of the area \cite{aumi2012model, ritter1992neue}. Related work, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and a product quality prediction in a process chain \cite{krauss2019machine}. 
-
-Based on an explorative literature review on this matter, the short outcome is that the findings that combine PA and QC are very scarce in the literature. This could be in great part, due to computer power limitations in early research and the recent increase of ML applications on this area. Related works, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated}; product quality prediction in a process chain \cite{krauss2019machine}; model development for predictive quality control of batch processes \cite{aumi2012model}; and ways of process modeling on quality prediction and assurance of chipboard \cite{ritter1992neue}. Considering the lack of literature, our goal is to decrease this gap on the research area by implementing a functional predictive model in quality assurance for an assembly process, as well as describing the lesson learned during this implementation.
+By considering the lack of literature, our goal is to decrease this gap in the research area by implementing a functional predictive model in quality assurance for an assembly process, as well as describing the lesson learned during this implementation. To do so, we need to select the right testing platform. This platform should represent real industrial applications and be able to handle a certain level of complexity. In our work, we applied a case-based research approach \cite{yin2017case} to answer the research question \AP{what research question?}. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
        
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
-To test our theories, we need to select the right testing platform. This platform should represent real industrial applications and be able to handle a certain level of complexity. In our work, we applied a case-based research approach \cite{yin2017case} in order to answer the research question. One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
-
-Our case of study is an abstraction of an assembly process at the industry. The industry 4.0 demonstration cell is composed by three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
-The assembly process done at this demonstration cell consist on stacking two disks of different size on the top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks Figure~\ref{fig:ind_cell}. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
+Our case of study is an abstraction of an assembly process of the industry. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
+The assembly process done at this demonstration cell consists in stacking two disks of different sizes on top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks Figure~\ref{fig:ind_cell}. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
 By considering that malfunctions can occur during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
 
 \begin{itemize}
@@ -319,7 +316,7 @@ The continuous data collection and the clear correlation between the machine par
 \label{fig:ind_cell}
 \end{figure}
 
-\section{Machine Learning Methods} %3/4 Page
+\section{Machine Learning Methods} \label{sec:ML} %3/4 Page
 
 To study which implementation would be more suitable for industrial application, we compare Support Vector Machines (SVM), Multilinear Perceptrons as well as random forests on the task of quality prediction. All three will be introduced next.
 
