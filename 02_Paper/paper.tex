@@ -293,22 +293,25 @@ In our work, we applied a case-based research approach \cite{yin2017case} to ans
        
 \section{The case industry 4.0 demonstration cell} % (taken from title) % 3/4 Page
 
-Our case of study is an abstraction of an assembly process of the industry. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm, a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. 
-The assembly process done at this demonstration cell consists in stacking two disks of different sizes on top of each other. The quality of the pseudo products is later evaluated by the laser scanner by evaluating the concentricity of both disks Figure~\ref{fig:ind_cell}. If the disk's concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it shall be classified as NOK.
-By considering that malfunctions can occur during real production processes at industries, our demonstration cell is able to simulate failures in diverse areas, such as:
+
+Our case of study is an abstraction of an assembly process of the industry. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm (UR3), a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200, see Figure~\ref{fig:ind_cell}. 
+The executed abstracted assembly process consists of stacking two disks of different sizes on top of each other. These pseudo product quality are later determined by the laser scanner by evaluating the concentricity of both disks. If the disks' concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it is classified as NOK.
+By considering that malfunctions can occur during industrial production processes, our demonstration cell can simulate failures in diverse areas, such as:
 
 \begin{itemize}
-       \item Assemble errors due to the robotic arm
-       \item Bearing damage on the conveyor belt
-       \item Resistance on the conveyor belt
-       \item Leakage in the compressed air system
-       \item Productivity limit reached
-       \item Missing material
+       \item Assembly errors due to the robotic arm: incorrectly positioned disks.
+       \item Bearing damage on the conveyor belts: vibration changes in the conveyor belt motors.
+       \item Resistance on the conveyor belts: temperature changes in the conveyor belt motors.
+       \item Malfunction of the gate door due to leakage in the compressed air system: cylinder stroke at the assembly barrier is slower.
+       \item Faster operating point: disks shift position due to the high belt speeds.
+       \item Missing material at the end of the warehouse: production stop due to lack of material.
 \end{itemize}
 
-Those simulated failures have a real impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
+Those simulated failures have an impact in the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
 
-The continuous data collection and the clear correlation between the machine parameter is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. The findings gained with the demonstration cell can be transferred to various real assembly processes and use cases, due to its manageable size and a high degree of scalability. This would be a step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
+The continuous data collection and the clear correlation between the machine parameters is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. 
+%Last paragraph to review. stn would likely remove it.
+We expect the findings gained with the demonstration cell to be transferred to various real assembly processes and use cases, due to its manageable size and a high degree of scalability. This would be a step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
 
 
 \begin{figure}
