@@ -230,13 +230,13 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 
 \section{Introduction} % 1 Page (incl authors, abstract)
 
-For companies aiming at quality leadership, the final quality of any goods produced is vital for market success. That is why it is highly important for companies to ensure that every product meets the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the inspection of every produced piece (100\% control), either by automated or manual methods, by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods, or by reducing the risk of mistakes by intentionally modifying the process to avoid human errors. This bears a considerable risk of not detecting faulty-parts (NOK) and sending them to costumers \cite{fox1993quality, Robinson2011UsingPT}.
+% For companies aiming at quality leadership, the final quality of any goods produced is vital for market success. That is why it is highly important for companies to ensure that every product meets the expected requirements. Throughout the years, diverse methods for quality control (QC) have been presented and implemented in production. Some of those methods prove to be highly effective, but costly, i.e. the inspection of every produced piece (100\% control), either by automated or manual methods, by doing quality inspections based on a portion of the produced pieces and extend the results based on statistical methods, or by reducing the risk of mistakes by intentionally modifying the process to avoid human errors. This bears a considerable risk of not detecting faulty-parts (NOK) and sending them to costumers \cite{fox1993quality, Robinson2011UsingPT}.
 
-Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect have a considerable impact in the production, due to the \AP{review}
+% Whenever a QC method is selected, it is important to remark that compromises must be made in most cases. For example, traditional methods like controlling every produced piece might affect have a considerable impact in the production, due to the \AP{review}
 
-goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
+% goals by delaying the production speed at the cost of lower rejection rates On the other hand, higher production speeds normally requires statistical quality control methods. However, those methods do not provide one hundred percent certainty that the required product quality will be achieved \cite{selvamuthu2018introduction, kurniati2015quality}.
 
-With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
+% With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
 
 % This paper is divided in 6 sections:
 % \begin{itemize}
@@ -248,11 +248,7 @@ With the evolution of machine learning (ML) applications, we expect to enhance t
 %        \item \textbf{Conclusion}, express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
 % \end{itemize}
 
-\section{Related Works} % 1 Page \Lennart
-
-\subsection{Quality control in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
-
-The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements.
+The quality control (QC) of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements.
 % According to Illés, there are three established tools and methods of quality control:
 % The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC) \cite{illes2017new}. 
 According to Illés, there are diverse established tools and methods of quality control. Those methods would have a specific level of focus, from the product level, to the process-management level \cite{illes2017new}. In this paper, we focused on the methods related to the QC at the product level.
@@ -279,6 +275,51 @@ Another conservative technique to perform the quality check would be to check 10
 The quality characteristics of a product can be classified as variables or attributes.
 Attributes are qualitative measurable characteristics, i.e, color, texture, other. Variables are quantitative measurable characteristics, which are shown as numbers \cite{mitra2016fundamentals}. 
 The advantage of variable measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable precise adjustment of the process parameters, as well as the the posibility of observing trends in the collected data. This would enable the possibility to employ predictive models to determine the quality of the product before the QC process takes place. With that in mind, predictive quality control is a promising solution.
+
+With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
+
+This paper is divided in 6 sections:
+\begin{itemize}
+       \item \textbf{Introduction}, states the motivation of the project as well as the problem it intended to be addressed.
+       \item \textbf{Related Works}, covers the methods used in quality check in production, as well as the bases of predictive analytics in production.
+       \item \textbf{The case industry 4.0 demonstration cell}, describe the demonstration cell used on this project. It answer the question of where to test predictive analytics in a controlled environment and why our system is a valid platform for this implementation.
+       \item \textbf{Machine learning Methods}, explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree.
+       \item \textbf{Experiments}, describe the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing.
+       \item \textbf{Conclusion}, express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
+\end{itemize}
+
+
+\section{Related Works} % 1 Page
+
+% \subsection{Quality control in production} \label{sec:qcp} % Basic books (find summarize) basic concepts 
+
+% The quality control of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements.
+% % According to Illés, there are three established tools and methods of quality control:
+% % The Statistical Process Control (SPC), Auditing and Total Quality Control (TQC) \cite{illes2017new}. 
+% According to Illés, there are diverse established tools and methods of quality control. Those methods would have a specific level of focus, from the product level, to the process-management level \cite{illes2017new}. In this paper, we focused on the methods related to the QC at the product level.
+
+% The Statistical Process Control (SPC) method is normally used to monitor the production process using recorded data values for the quality characteristics, as well as to indicate any significant changes in the quality characteristics in the production process. SPC methods can also take place before the actual manufacturing process, this is commonly known as "off-line SPC" \cite{selvamuthu2018introduction}. 
+% During the design phase of a process or product, off-line SPC procedures are deployed. These procedures aim to increase the quality of the outcoming product by choosing conforming products and  process parameters \cite{mitra2016fundamentals}.
+% The biggest advantage of working with SPC is that large batches can be checked without major time impact on the QC process, however, this would be only possible if the variance of the process product parameters is small enough, to ensure process capability \cite{kahle2013zuverlaessigkeitsanalyse}.
+% It is important to remark that statistical methods such as acceptance sampling or quality control charts represent a compromise between zero and the hundred percent control \cite{selvamuthu2018introduction, kurniati2015quality}. Which means, if a batch is labeled as NOK, there is no specific reference of when did the error occurs and how many pieces are affected.
+
+% Another conservative technique to perform the quality check would be to check 100\% of the produced parts. In this method, every product is controlled and sorted at designated quality levels. However, this has the disadvantage of high cost related to personal or specialized material. Generally, this method is used when the consequences of letting a defective item through could be severe, e.g., for specialized equipment or when the cost of delivering faulty products is very high \cite{Hinckley1997QC}.
+
+% % Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
+% % an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by another person rather than the auditor \cite{fox1993quality}. 
+
+% %Both statistical methods and hundred percent controls can be applied as an audit tool.
+
+% % While the SPC mostly optimizes the capability of the process, for example, the acceptance plan prevents the nonconforming product to be passed and then delivered to the next process or the customer \cite{kurniati2015quality}.
+% % In the case of a hundred percent control, this is associated with higher costs and a higher requirement of time, compared to a quality control based on a machine learning model.
+
+% % Generally, statistical methods are faster than the hundred percent controls, however, their disadvantage is that those methods are based on assumptions. those assumptions might lead to errors if the variance of the product quality higher than expected.
+
+% % The concept of TQC is to extend the scope of quality control to the whole company and product life cycle, by involving all departments of the organization \cite{illes2017new}.
+
+% The quality characteristics of a product can be classified as variables or attributes.
+% Attributes are qualitative measurable characteristics, i.e, color, texture, other. Variables are quantitative measurable characteristics, which are shown as numbers \cite{mitra2016fundamentals}. 
+% The advantage of variable measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable precise adjustment of the process parameters, as well as the the posibility of observing trends in the collected data. This would enable the possibility to employ predictive models to determine the quality of the product before the QC process takes place. With that in mind, predictive quality control is a promising solution.
 
 \subsection{Predictive analytics in production}
 
