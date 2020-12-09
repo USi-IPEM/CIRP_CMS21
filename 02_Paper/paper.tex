@@ -366,20 +366,7 @@ The continuous data collection and the clear correlation between the machine par
 
 \section{Machine Learning Methods} \label{sec:ML} %3/4 Page
 
-To study which implementation would be more suitable for industrial application, we compare Support Vector Machines (SVM), Multilinear Perceptrons as well as random forests on the task of quality prediction. All three will be introduced next.
-
-\subsection{Support Vector Machines}
-Support Vector Machines (SVM) attempt to separate data
-along hyperplanes \cite{aggarwal2015data}. 
-SVM offer a convex alternative to MLPs \cite{Suykens2002least}.
-A convex classifier is guaranteed to converge to a global solution
-regardless of its initialization.
-Non-separable data can become separable if projected to a different
-possibly high dimensional space through a Kernel function.
-The Kernel trick allows SVM to solve some non-linear
-classification problems \cite{Suykens2002least}.
-Radial basis functions (RBF) are commonly chosen as kernels
-\cite{Suykens2002least}, therefore, we choose to follow this practice as well.
+To study which implementation would be more suitable for industrial applications, we compare Multilinear Perceptrons (MLPs), Support Vector Machines (SVM), as well as random forests on the task of quality prediction. All three will be introduced next.
 
 \subsection{Multilayer perceptrons}
 These feedforward neural networks typically combine multiple layers
@@ -395,6 +382,19 @@ networks \cite{goodfellow2016deep} we use these here as well.
 Since the linear parts of the ReLU and the linear matrix multiplication
 are differentiable we can employ gradient descent to train our 
 classifier.
+
+\subsection{Support Vector Machines}
+Support Vector Machines (SVM) attempt to separate data
+along hyperplanes \cite{aggarwal2015data}. 
+SVM offer a convex alternative to MLPs \cite{Suykens2002least}.
+A convex classifier is guaranteed to converge to a global solution
+regardless of its initialization.
+Non-separable data can become separable if projected to a different
+possibly high dimensional space through a Kernel function.
+The Kernel trick allows SVM to solve some non-linear
+classification problems \cite{Suykens2002least}.
+Radial basis functions (RBF) are commonly chosen as kernels
+\cite{Suykens2002least}, therefore, we choose to follow this practice as well.
 
 \subsection{Decision Tree}
 Decision trees are essentially binary trees, which work with the input
