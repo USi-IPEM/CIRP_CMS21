@@ -252,7 +252,7 @@ The advantage of variable measurements is that in the event of a defective inter
 
 With the evolution of machine learning (ML) applications \cite{goodfellow2016deep}, related works which combines QC and predictive models are becoming more relevant. The applications diversify from the analysis of the produced piece in search for defects \cite{Selmaier2019PQXray, Sohnius2019PASurfacequality}, to process oriented QC \cite{krauss2020automated, krauss2019machine, aumi2012model, ritter1992neue}.
 
-Considering the high amount of data available at today industries, an approach to improve the existent relationship between cost-efficiency and QC accuracy would be to implement a ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty pieces before the QC process is done, it would also strengthen the current QC methods by combining them as to compensate their weakness. While implementing ML models to QC, several challenges arise that have not yet been solved. In this paper, we address the following questions:
+Considering the high amount of data available at today industries, an approach to improve the existent relationship between cost-efficiency and QC accuracy would be to implement a ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty products before the QC process is done, it would also strengthen the current QC methods by combining them with QC predictive models as to compensate their current weakness. While implementing ML models to QC, several challenges arise that have not yet been solved. In this paper, we address the following questions:
 
 \begin{itemize}
        \item Where to test predictive analytics models in a controlled industrial environment?
@@ -267,7 +267,7 @@ Considering the high amount of data available at today industries, an approach t
 
 For this, we cover the methods used in quality check in production, as well as the bases of predictive analytics in production (Section.~\ref{sec:related_works}). 
 We describe a suitable insdustrial platform to implement the ML models (Section.~\ref{sec:democell}).
-Then we explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree (Section.~\ref{sec:ML}), followed by the description of the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing (Section.~\ref{sec:experiment}).
+Then, we explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree (Section.~\ref{sec:ML}), followed by the description of the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing (Section.~\ref{sec:experiment}).
 Finally we describe the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations (Section.~\ref{sec:conclusion}).
 
 % Our paper is structured as follow. Section.~\ref{sec:related_works} covers the methods used in quality check in production, as well as the bases of predictive analytics in production. Section.~\ref{sec:democell} describe the demonstration cell used on this project. It answer the question of where to test predictive analytics in a controlled environment and why our system is a valid platform for this implementation. Section.~\ref{sec:ML} explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree. Section.~\ref{sec:experiment} describe the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing. Finally Section.~\ref{sec:conclusion} express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
@@ -298,18 +298,6 @@ It is important to remark that statistical methods such as acceptance sampling o
 
 Another conservative technique to perform the quality check would be to check 100\% of the produced parts. In this method, every product is controlled and sorted at designated quality levels. However, this has the disadvantage of high cost related to personal or specialized material. Generally, this method is used when the consequences of letting a defective item through could be severe, e.g., for specialized equipment or when the cost of delivering faulty products is very high \cite{Hinckley1997QC}.
 
-% Product and process auditing is the independent examination of product and process quality to provide information and it is considered the most fundamental quality control technique. This method is executed by
-% an independent auditor, who based on sampling or checking records limits the finding on reporting incorrect processes procedures or products documentation. In a further step, the findings would be later corrected by another person rather than the auditor \cite{fox1993quality}. 
-
-%Both statistical methods and hundred percent controls can be applied as an audit tool.
-
-% While the SPC mostly optimizes the capability of the process, for example, the acceptance plan prevents the nonconforming product to be passed and then delivered to the next process or the customer \cite{kurniati2015quality}.
-% In the case of a hundred percent control, this is associated with higher costs and a higher requirement of time, compared to a quality control based on a machine learning model.
-
-% Generally, statistical methods are faster than the hundred percent controls, however, their disadvantage is that those methods are based on assumptions. those assumptions might lead to errors if the variance of the product quality higher than expected.
-
-% The concept of TQC is to extend the scope of quality control to the whole company and product life cycle, by involving all departments of the organization \cite{illes2017new}.
-
 The quality characteristics of a product can be classified as variables or attributes.
 Attributes are qualitative measurable characteristics, i.e, color, texture, other. Variables are quantitative measurable characteristics, which are shown as numbers \cite{mitra2016fundamentals}. 
 The advantage of variable measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable precise adjustment of the process parameters, as well as the possibility of observing trends in the collected data. This would enable the possibility to employ predictive models to determine the quality of the product before the QC process takes place. 
@@ -325,13 +313,6 @@ Applications that combine PA with QC might improve the current QC processes. By 
 
 Based on an explorative literature review on this matter, the short outcome is that the findings that combine PA and QC are very scarce in the literature. This could be in great part, due to computer power limitations in early research and the recent increase of ML applications in this area. 
 Most of the related works found, tends to be from recent years \cite{krauss2020automated, krauss2019machine, aumi2012model,Selmaier2019PQXray, Sohnius2019PASurfacequality, ritter1992neue}.
-% Related works, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and product quality prediction in a process chain \cite{krauss2019machine}, Aumi focussed on the model development for predictive quality control of batch processes \cite{aumi2012model},Ritter studied the ways of process modeling on quality prediction and assurance of chipboard \cite{ritter1992neue}, and others focused on one product quality analysis \cite{Selmaier2019PQXray, Sohnius2019PASurfacequality}.
-
-% By considering the lack of literature, our goal is to decrease this gap in the research area by implementing a functional predictive model in quality assurance for an assembly process, as well as describing the lesson learned during this implementation. To do so, we need to select the right testing platform. It has to have a clear production process, complete access to sensor data, and flexible enough to reprogram the process if necessary.
-% In our work, we applied a case-based research approach \cite{yin2017case} 
-% % to answer the research question \AP{what research question?}.
-% for our implementation.
-% One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed.
        
 \section{The case industry 4.0 demonstration cell}  \label{sec:democell}% (taken from title) % 3/4 Page
 
