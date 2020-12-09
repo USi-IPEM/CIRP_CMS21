@@ -414,11 +414,12 @@ During construction, the chosen function must be minimized.
 
 \subsection{Data acquisition}
 
-Industrial projects require to work with a variety of sensors and controllers. Thus, there is a risk of incompatibility between technologies. To avoid that problem, universal protocols are often implemented at industrial projects. This is the case for our industrial 4.0 demonstration cell, which shares data via protocol OPC-UA. 
+Industrial projects require to work with a variety of sensors and controllers. Thus, there is a risk of incompatibility between technologies. To avoid that problem, universal protocols are often implemented at industrial projects. This is the case for our industrial 4.0 demonstration cell, which shares data via the protocol OPC-UA. 
 
-Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is shared independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
+Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. For our case, the data is acquired independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
 
-The first step to collect the data is to list all the variables of interest and to map their source. The second step is to determine the use cases of interest.  This research focussed on the data described in Table.~\ref{tab:data_source} and the six use cases described in Table.~\ref{tab:use_cases}. The data was manually collected by using the software "UAExpert - v1.5.1". Approximately 15 hours of data were collected, while equally sampling each use case during the data acquisition time.
+In our implementation, we acquired the data in two steps.
+The first step was list all the variables of interest and to map their source. The second step was to determine the use cases of interest. Our study focussed on the data described in Table.~\ref{tab:data_source} and the six use cases described in Table.~\ref{tab:use_cases}. The data was manually collected by using the software "UAExpert - v1.5.1". Approximately 15 hours of data were collected, while equally sampling each use case during the data acquisition time.
 
 \begin{table}
        \centering
