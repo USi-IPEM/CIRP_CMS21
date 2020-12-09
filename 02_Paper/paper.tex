@@ -239,25 +239,38 @@ Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance 
 For companies aiming at quality leadership, the final quality of any goods produced is vital for market success. Thus, it is highly important for companies to ensure that every product meets the expected customer and legal requirements.
 The quality control (QC) of production processes and products is one fundamental part of general quality management. It contains the measures and activities needed to fulfill specific quality requirements \cite{mitra2016fundamentals}.
 
-Over the years, diverse methods to ensure the quality of products have been developed.
-Those methods can be grouped on process-oriented or product-oriented \cite{mitra2016fundamentals}.
-Among the most used process-oriented methods, we have auditing, Total Quality Control (TCQ) \cite{illes2017new}, and Poka-Yoke Techniques \cite{Robinson2011UsingPT}.
-For the product-oriented methods, we have the 100\% revision of each produced product \cite{Hinckley1997QC}, and statistical methods like the Statistical Process Control (SPC) \cite{selvamuthu2018introduction}.
+Over the years, diverse methods to ensure the quality of products have been developed \cite{mitra2016fundamentals}.
+Among the most used methods, we have Auditing, Total Quality Control (TCQ) \cite{illes2017new}, Poka-Yoke Techniques \cite{Robinson2011UsingPT}, the 100\% revision of each produced product \cite{Hinckley1997QC}, and statistical methods like the Statistical Process Control (SPC) \cite{selvamuthu2018introduction}.
+Independently of the method used, the goal is the same, identify and removed any defect or faulty pieces on the produced products before sending them to costumers \cite{mitra2016fundamentals}.
+However, the relationship between cost-efficiency vary from one method to another. This is noticeable, e.g., at the cost of highly specialized equipment for the products evaluation, or the cost of employes performing a manual inspection of the produced products versus the accuracy of detecting all faulty products \cite{Diego1998QCCost}.
 
+In general, the quality characteristics of a product can be classified as variables or attributes.
+"Attributes" are qualitative measurable characteristics, i.e, color, texture, other. On the other hand, "variables" are quantitative measurable characteristics, which are shown as numbers \cite{mitra2016fundamentals}. 
+The advantage of variable measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable precise adjustment of the process parameters, as well as the possibility of observing trends in the collected data. This would enable the possibility to employ predictive models to determine the quality of the product before the QC process takes place \cite{bishop2006pattern, krauss2019machine}.
 
+% Related works, e.g from Krauß focused on automated machine learning for predictive quality in production \cite{krauss2020automated} and product quality prediction in a process chain \cite{krauss2019machine}, Aumi focussed on the model development for predictive quality control of batch processes \cite{aumi2012model},Ritter studied the ways of process modeling on quality prediction and assurance of chipboard \cite{ritter1992neue}, and others focused on one product quality analysis \cite{Selmaier2019PQXray, Sohnius2019PASurfacequality}.
 
+With the evolution of machine learning (ML) applications \cite{goodfellow2016deep}, related works which combines QC and predictive models are becoming more relevant. The applications diversify from the analysis of the produced piece in search for defects \cite{Selmaier2019PQXray, Sohnius2019PASurfacequality}, to process oriented QC \cite{krauss2020automated, krauss2019machine, aumi2012model, ritter1992neue}.
 
+Considering the high amount of data available at today industries, an approach to improve the existent relationship between cost-efficiency and QC accuracy would be to implement a ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty pieces before the QC process is done, it would also strengthen the current QC methods by combining them as to compensate their weakness. While implementing ML models to QC, several challenges arise that have not yet been solved. In this paper, we address the following questions:
 
-With the evolution of machine learning (ML) applications, we expect to enhance the QC by predicting the product quality at the initial stage of production. This will not only reduce cost in production, and strengthen the QC process, it will also be part of the predictive analytics tools found in production, which is currently widely used in diverse fields due to its accurate predictions \cite{bishop2006pattern, krauss2019machine}.
+\begin{itemize}
+       \item Where to test predictive analytics models in a controlled industrial environment?
+       \item What to consider when evaluating the output from ML models for industrial applications? Accuracy vs Applicability
+       \item What steps should be follow as to prepared the data for predictive QC methods?
+       \item What findings and lessons are worth to consider for further applications in the area?
+\end{itemize}
 
-The aim of this paper is to implement a functional predictive model in quality assurance for an assembly process in a controlled environment. Within the scope of the implementation, we compare three different ML models accuracy, as well as their plausibility at industrial applications. 
-As result, we expect to to decrease the gap in literature on this research area, as well as to describe the based of our experiences for future works by describing the lesson learned during this implementation.
-In our work, we applied a case-based research approach \cite{yin2017case} 
-% to answer the research question \AP{what research question?}.
-for our implementation.
-One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed
+%% Next paragraph: not relevant based on kkb : "First of all, you do not use a CBR approach because those have a clear methodology to follow with the minimum requirement to explain how your findings relate to further cases which i do not find in the paper. Then, you never pick up that though again after this point, so why mention it at all? I suggest you throw it out."
+% For this, we applied a case-based research approach \cite{yin2017case} to answer the research questions.
+% One central motivation for a case-based research approach is to gain insights for real needs, rather than to develop theories without practical relevance \cite{cutcheon1993case}. %This sentence can be deleted if needed
 
-Our paper is structured as follow. Section.~\ref{sec:related_works} covers the methods used in quality check in production, as well as the bases of predictive analytics in production. Section.~\ref{sec:democell} describe the demonstration cell used on this project. It answer the question of where to test predictive analytics in a controlled environment and why our system is a valid platform for this implementation. Section.~\ref{sec:ML} explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree. Section.~\ref{sec:experiment} describe the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing. Finally Section.~\ref{sec:conclusion} express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
+For this, we cover the methods used in quality check in production, as well as the bases of predictive analytics in production (Section.~\ref{sec:related_works}). 
+We describe a suitable insdustrial platform to implement the ML models (Section.~\ref{sec:democell}).
+Then we explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree (Section.~\ref{sec:ML}), followed by the description of the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing (Section.~\ref{sec:experiment}).
+Finally we describe the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations (Section.~\ref{sec:conclusion}).
+
+% Our paper is structured as follow. Section.~\ref{sec:related_works} covers the methods used in quality check in production, as well as the bases of predictive analytics in production. Section.~\ref{sec:democell} describe the demonstration cell used on this project. It answer the question of where to test predictive analytics in a controlled environment and why our system is a valid platform for this implementation. Section.~\ref{sec:ML} explains the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree. Section.~\ref{sec:experiment} describe the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing. Finally Section.~\ref{sec:conclusion} express the remarks and discoveries achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations.
 
 
 \section{Related Works} \label{sec:related_works}% 1 Page
