@@ -188,16 +188,17 @@
 \author[a]{Fabian Steinberg} 
 \author[a]{Alejandro R. Pérez M.*}
 \author[a]{Lennart Schmallenbach}
-\author[b,c]{Jochen Garcke}
+\author[b,c,d]{Jochen Garcke}
 \author[b]{Daniela Steffes-lai}
-\author[b,d]{Moritz Wolter}
+\author[b,c,e]{Moritz Wolter}
 
 %\ead{author@institute.xxx}
 
 \address[a]{Chair of International Production Engineering and Management (IPEM), Universität Siegen, Paul-Bonatz-Straße 9-11, Siegen - 57076, Germany}
 \address[b]{Fraunhofer Institute for Algorithms and Scientific Computing (SCAI), Schloss Birlinghoven 1, Sankt Augustin- 53757, Germany}
-\address[c]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn}
-\address[d]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn}
+\address[c]{Fraunhofer Center for Machine Learning, Schloss Birlinghoven 1, Sankt Augustin- 53757, Germany}
+\address[d]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn}
+\address[e]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn}
 
 \aucores{* Corresponding author. Tel.: +49-271-740-4509; fax: +49-271-740-2630. {\it E-mail address:} alejandro.perez@uni-siegen.de}
 
@@ -352,29 +353,29 @@ Before collecting the data, we need to find the variables of interest and mappin
        \begin{tabular}{ c c c } \toprule
               \textbf{Data of interest} & \textbf{Server Source} & \textbf{Variable}\\ \midrule
               Conveyor speed       & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-                     Conveyor: Gate \\
-                     Conveyor: QC \\
-                     Conveyor: Store
+                     - Conveyor: Gate \\
+                     - Conveyor: QC \\
+                     - Conveyor: Store
                      \end{minipage} \vspace{0.1cm} \\ \hline
               UR3 Position         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-                     $xyz$ Gripper position
+                     - $xyz$ Gripper position
                      \end{minipage} \vspace{0.1cm} \\ \hline
               Action Flags         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-                     UR3 gripper open/close \\
-                     Grab/drop disk based on disk type
+                     - UR3 gripper open/close \\
+                     - Grab/drop disk based on type
                      \end{minipage} \vspace{0.1cm} \\ \hline
               Quality control      & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-                     OK-NOK label \\
-                     $xy$ disk deviation from the center point \\
-                     Absolute disk deviation
+                     - OK-NOK label \\
+                     - $xy$ disk deviation from the center point \\
+                     - Absolute disk deviation
                      \end{minipage} \vspace{0.1cm} \\ \hline
               Gate position        & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-                     Position \\
-                     Speed \\
-                     Safe to go
+                     - Position \\
+                     - Speed \\
+                     - Safe to go
                      \end{minipage} \vspace{0.1cm} \\ \hline
               Store       & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-                     Disk Size
+                     - Disk Size
                      \end{minipage} \\ \bottomrule
        \end{tabular}
        \end{adjustbox}
