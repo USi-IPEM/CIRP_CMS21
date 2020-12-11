@@ -577,7 +577,9 @@ It is important to state that this prediction model is not yet ready to fully re
 
 \section{Lesson Learned} \label{sec:lessons} % 1/2 Page
 
-It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
+It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area. Difficulties at implementing ML models in production are also described by others authors \cite{paleyes2020challenges}.
+
+\vspace{0.2cm}
 
 \textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
 To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system.
@@ -597,8 +599,6 @@ Without the labels, the problem could not have been framed as a supervised
 classification problem.
 
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
-
-Difficulties at implementing ML models in production are also described by others authors \cite{paleyes2020challenges}.
 
 \section*{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
