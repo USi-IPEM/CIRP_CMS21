@@ -65,7 +65,7 @@
 
 %% Give the author list to appear in the running head
 %% Example \runauth{C.V. Radhakrishnan et al.}
-\runauth{Author name}
+\runauth{Peter Burggräf et al.}
 
 %% The choice of journal logo is determined by the \jid and \jnltitlelogo commands.
 %% A user-supplied logo with the name <\jid>logo.pdf will be inserted if present.
@@ -251,7 +251,7 @@ While implementing ML models to QC, several challenges arise that have not yet b
 For this, we cover the methods used in quality check in production, as well as the bases of predictive analytics in production (Section.~\ref{sec:related_works}). 
 We describe a suitable industrial platform to implement the ML models (Section.~\ref{sec:democell}).
 Then, we explain the three machine learning methods implemented on this work: Multilayer perceptrons, Support Vector Machines, Decision Tree (Section.~\ref{sec:ML}), followed by the description of the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing (Section.~\ref{sec:experiment}).
-Finally, we describe the remarks and findings achieved after the finalization of this project phase, as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations (Section.~\ref{sec:conclusion}).
+Finally, we describe the remarks and findings achieved after the finalization of this project phase (Section.~\ref{sec:conclusion}), as well as presents a list of lessons learned during the implementation of the project, which might be helpful on further implementations (Section.~\ref{sec:lessons}).
 
 \section{Related Works} \label{sec:related_works}% 1 Page
 
@@ -606,19 +606,19 @@ It is important to state that this prediction model is not yet ready to fully re
 
 It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
 
-\subsection{Lesson Learned} % 1/2 Page
+\section{Lesson Learned} \label{sec:lessons} % 1/2 Page
 
-\textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data within each other due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
+\textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
 To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system.
 
-\textbf{Data synchronization}; two OPC-UA servers were used on this implementation. This lead to a series of data synchronization problems due to differences on the internal clock of both servers.
-In order to solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, determining the production cycle would have been impossible and the input data for the ML model would have been useless, and the model inaccurate. 
+\textbf{Data synchronization}; two OPC-UA servers were used on this implementation. This lead to a series of data synchronization problems due to differences in the internal clock of both servers.
+To solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, determining the production cycle would have been impossible and the input data for the ML model would have been useless, and the model inaccurate. 
 
 \textbf{Data interpretation}; this process is considered complicated, time-consuming, and a fundamental step for any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well a basic correlation within the presented data.
 
 \textbf{Missing values}; to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact on the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap.
 
-\textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occurs, made complicated to have accurate data sampling from each assembly cycle. In order to overcome this uncertainty, we modify the machine program to raise specify flags whenever certain actions would be executed.
+\textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occur, made it complicated to have accurate data sampling from each assembly cycle. To overcome this uncertainty, we modified the machine program to raise specific flags whenever certain actions were executed.
 
 \textbf{Machine Learning}; careful measurement and  meaningful preprocessing
 of our cell-data was key to the successful application of all three algorithms.
@@ -628,7 +628,7 @@ classification problem.
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
 \section*{Acknowledgments}
-This work was funded by the European Regional Development Fund (ERDF) with the project name "ManuBrain" 
+This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
 
 \bibliographystyle{elsarticle-harv} %elsarticle-harv} %abbrv %IEEEtran
 \bibliography{bib}
