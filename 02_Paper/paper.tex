@@ -461,7 +461,6 @@ Once the data is clean and compiled in one directory, the next step was to split
 
 Each time-series sample collected is the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC is the very first moment the robotic arm grabs the black disk from the store area and the ending point is before grabbing the next black disk in the same area.
 To eliminate time as a variable in our dataset, it was needed to acquire the data at specific moments of the MAC. For that reason, we defined a set of sampling-conditions that helped us to collect the relevant data during the MAC:
-
 \begin{itemize}
        \item Value of the robot position ($xyz$) while dropping the disk in the storage area
        \item Mean conveyor speed value per conveyor band
@@ -478,8 +477,8 @@ Each time-series sample was evaluated based this sampling-condition, and the res
        \caption{Robot arm movement patterns. We show the movement of the 
                 cell's robot arm, its grippers, and the encoding of the overall
                 position in the system. The changes in the grip flag are triggered,
-                when the gripper opens or closes. Zero indicates an open, while
-                one indicates a closed gripper. The position flags marks the state
+                when the gripper opens or closes. 0 indicates an open, while
+                one indicates a closed gripper. The position flags mark the state
                 of the cell's arm. 0 means the black disk is in store,
                 one that the black disk is at the gate, two that the white disk
                 is in store and three that the white disk is located at the gate.
@@ -503,7 +502,7 @@ set to one to ensure the train and test set splits are identical
 for all experiments.
 
 We compare a total of three different classifier architectures on the data.
-A Support Vector Machine (SVM), a multilinear perceptron (MLP) and a Random Forest
+A Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Random Forest
 structure. All three methods are trained using standard hyperparameters.
 \footnote{To allow exact reproduction of these results source
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
@@ -517,12 +516,14 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               Multilayer Perceptron & 88 \% \\
               Decision Tree         & 98 \% \\ \bottomrule
        \end{tabular}
-       \caption{Comparison of Support Vector Machine (SVM), Multilinear Perceptron and 
+       \caption{Comparison of Support Vector Machine (SVM), Multilayer Perceptron and 
                 Random Forest classification on our anomaly detection task. 
                 The first row shows the performance of naively predicting a broken piece
                 every time.}
        \label{tab:class_comp}
 \end{table}
+
+\AP{According to Prof. Garcke, we should stick either with "Random Forest" or with "Decision Tree". I would like you, Moritz, to decide what would be the best for this case.}
 
 \begin{table}
        \begin{subtable}[h]{0.3\textwidth}
@@ -579,7 +580,7 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               \caption{Decision Tree.}
               \label{tab:Tree_conf_matrix}
        \end{subtable}
-       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper left cell as: true-positive, false-positive, false-negative, true-negative.}
+       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper-left cell to the right-cell as: true-positive, false-positive, false-negative, true-negative.}
        \label{tab:Confusion_matrix}
 \end{table}
 
@@ -590,9 +591,9 @@ baseline over the entire data set, which would be obtained by simply labeling al
 as faulty. Over the test set, we require to classify more than 64\% of the data correctly.
 We would therefore expect any naive classifier to produce at least 64\% accuracy, which we have to surpass. In Table~\ref{tab:class_comp}, we observe that this is indeed the case for all three approaches evaluated here.
 
-Based on the MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} shows that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represent the 12\% of the test sample and the true predictions constitute 88\% of the test data.
+Based on the MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represent the 12\% of the test sample and the true predictions constitute 88\% of the test data.
 
-The outcome of the models shows that the random forest performed best followed by the multilinear perceptron and the support vector machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, multilinear perceptron would be the preferred solution to be implemented at industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
+The outcome of the models shows that the random forest performed best followed by the multilayer perceptron and the support vector machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, multilayer perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
 
 \section{Conclusion} \label{sec:conclusion}
 
