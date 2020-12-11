@@ -352,11 +352,9 @@ Before collecting the data, we need to find the variables of interest and mappin
        \begin{tabular}{ c c c } \toprule
               \textbf{Data of interest} & \textbf{Server Source} & \textbf{Variable}\\ \midrule
               Conveyor speed       & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-              \begin{description}
-                     \item Conveyor: Gate
-                     \item Conveyor: QC
-                     \item Conveyor: Store
-                     \end{description}
+                     Conveyor: Gate \\
+                     Conveyor: QC \\
+                     Conveyor: Store
                      \end{minipage} \\ \hline
               UR3 Position         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
               \begin{description}
@@ -364,30 +362,22 @@ Before collecting the data, we need to find the variables of interest and mappin
                      \end{description}
                      \end{minipage} \\ \hline
               Action Flags         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-              \begin{description}
-                     \item UR3 gripper open/close
-                     \item Grab/drop disk based on disk type
-                     \end{description}
+                     UR3 gripper open/close \\
+                     Grab/drop disk based on disk type
                      \end{minipage} \\ \hline
               Quality control      & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-              \begin{description}
-                     \item OK-NOK label
-                     \item $xy$ disk deviation from the center point
-                     \item Absolute disk deviation
-                     \end{description}
+                     OK-NOK label \\
+                     $xy$ disk deviation from the center point \\
+                     Absolute disk deviation
                      \end{minipage} \\ \hline
               Gate position        & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-              \begin{description}
-                     \item Position
-                     \item Speed
-                     \item Safe to go
-                     \end{description}
+                     Position \\
+                     Speed \\
+                     Safe to go
                      \end{minipage} \\ \hline
               Store       & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
-                     \begin{description}
-                     \item Disk Size
-                     \end{description}
-                   \end{minipage} \\ \bottomrule
+                     Disk Size
+                     \end{minipage} \\ \bottomrule
        \end{tabular}
        \end{adjustbox}
        \caption{Industry 4.0 demonstration cell: Relevant data linked with its reference source server.}
