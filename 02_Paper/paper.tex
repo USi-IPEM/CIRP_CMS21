@@ -206,7 +206,7 @@
 Quality assurance (QA) is an important task in manufacturing to assess whether products 
 meet their specifications. However, QA might be expensive, time-consuming, incomplete, or delayed.
 This paper presents a solution for predictive analytics in QA based on machine sensor values during
-production while employing machine-learning models based on logistic regression in a controlled environment. 
+production while employing specialized machine-learning models for classification in a controlled environment. 
 Furthermore, we present lessons learned while implementing this model, which helps to reduce complexity in
 further industrial applications. The paper’s outcome proves that the developed model was able to predict
 product quality, as well as to identify the correlation between machine-status and faulty product occurrence.
@@ -270,7 +270,7 @@ By employing machine learning (ML) techniques (Section.~\ref{sec:ML}), together 
   
 \section{The case industry 4.0 demonstration cell}  \label{sec:democell}% (taken from title) % 3/4 Page
 
-Our case of study is an abstraction of an assembly process of the industry. This case of study is a highly flexible and transparent platform regarding software and hardware access and manipulation. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm (UR3), a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200, see Figure~\ref{fig:ind_cell}. 
+Our case study is an abstraction of an assembly process of the industry. This case study is a highly flexible and transparent platform regarding software and hardware access and manipulation. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm (UR3), a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200, see Figure~\ref{fig:ind_cell}. 
 The executed abstracted assembly process consists of stacking two disks of different sizes on top of each other. The corresponding pseudo product quality is later determined by the laser scanner by evaluating the concentricity of both disks. If the disks' concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it is classified as NOK.
 By considering that malfunctions can occur during industrial production processes, our demonstration cell can simulate failures in diverse areas, such as:
 
@@ -286,9 +286,6 @@ By considering that malfunctions can occur during industrial production processe
 Those simulated failures have an impact on the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
 
 The continuous data collection and the clear correlation between the machine parameters and the quality of the product, is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), prior to the actual quality check done by the laser scanner. 
-%Last paragraph to review. stn would likely remove it.
-% We expect the findings gained with the demonstration cell to be transferred to various real assembly processes and use cases, due to its manageable size and a high degree of scalability. This would be a step forwards for future implementations at the industry, where the quality predictions might determine early enough, the next steps for the assembled pieces.
-
 
 \begin{figure}
        \includegraphics[width=.45\textwidth]{img/demozelle}
@@ -462,7 +459,7 @@ Once the data is clean and compiled in one directory, the next step was to split
 Each time-series sample collected is the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC is the very first moment the robotic arm grabs the black disk from the store area and the ending point is before grabbing the next black disk in the same area.
 To eliminate time as a variable in our dataset, it was needed to acquire the data at specific moments of the MAC. For that reason, we defined a set of sampling-conditions that helped us to collect the relevant data during the MAC:
 \begin{itemize}
-       \item Value of the robot position ($xyz$) while dropping the disk in the storage area
+       \item Value of the robot position ($xyz$) while dropping both disks in the storage area
        \item Mean conveyor speed value per conveyor band
        \item Absolute deviation ($xy$) value at the quality control check
        \item Absolute quality control value: OK - NOK
