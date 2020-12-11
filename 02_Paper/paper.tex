@@ -205,7 +205,7 @@
 \begin{abstract}
 %% Text of abstract
 Quality assurance (QA) is an important task in manufacturing to assess whether products 
-meet their specifications. However, QA might be expensive, time-consuming, incomplete, or delayed.
+meet their specifications. However, QA might be expensive, time-consuming, or incomplete.
 This paper presents a solution for predictive analytics in QA based on machine sensor values during
 production while employing specialized machine-learning models for classification in a controlled environment. 
 Furthermore, we present lessons learned while implementing this model, which helps to reduce complexity in
@@ -214,7 +214,7 @@ product quality, as well as to identify the correlation between machine-status a
 \end{abstract}
 
 \begin{keyword}
-Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance \sep Logistic Regression 
+Machine-Learning \sep Predictive Quality \sep Production \sep Quality Assurance \sep Classification
 
 %% keywords here, in the form: keyword \sep keyword
 
@@ -297,7 +297,8 @@ The continuous data collection and the clear correlation between the machine par
 
 \section{Machine Learning Methods} \label{sec:ML} %3/4 Page
 
-To study which implementation would be more suitable for industrial applications, we compare Multilayer Perceptrons (MLPs), Support Vector Machines (SVM), as well as decision trees on the task of quality prediction. All three will be introduced next.
+To study which implementation would be more suitable for industrial applications, we compare Multilayer Perceptrons (MLPs), Support Vector Machines (SVM), as well as decision trees on the task of quality prediction. 
+All three will be introduced next.
 
 \subsection{Multilayer perceptrons}
 These feedforward neural networks typically combine multiple layers
@@ -341,9 +342,7 @@ During construction splits minimizing the chosen function are chosen.
 
 \subsection{Data acquisition}
 
-Industrial projects require to work with a variety of sensors and controllers from different manufacturers. Thus, there is a risk of incompatibility between technologies. To avoid that problem, universal protocols are often implemented in industrial projects. This is the case for our industry 4.0 demonstration cell, which shares data via the protocol OPC-UA. 
-
-The Figure~\ref{fig:robot_pos_cell} describes a simplified version of the real connection diagram of the demonstration cell. In our case, the data is acquired independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
+Industrial projects require to work with a variety of sensors and controllers from different manufacturers. Thus, the risk of incompatibility between technologies increases. To avoid these problems, universal protocols are often implemented in industrial projects. Figure~\ref{fig:demo_conn_diag} describes a simplified version of the real connection diagram of the demonstration cell. In our case, the data is acquired independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
 
 Before collecting the data, we need to find the variables of interest and mapping their source, as well as to determine the use cases of interest. Our study focussed on the data described in Table~\ref{tab:data_source} and the six use cases described in Table~\ref{tab:use_cases}. The data was manually collected by using the software "UAExpert - v1.5.1". Approximately 15 hours of data were collected in different sessions, while equally sampling each use case during the data acquisition stage.
 
@@ -427,9 +426,9 @@ Before collecting the data, we need to find the variables of interest and mappin
 
 \subsection{Data preprocessing}
 
-Once the data was collected, the next step was to clean the raw data and organize it accordingly \cite{goodfellow2016deep}. In our case, that means to merge the data collected from the two OPC-UA servers, and synchronize the time-stamp. Since our systems were not completely synchronized, as common in practice, it was needed to calculate the delta-time between servers by referencing each server's base clock. Once the delta-time was determined, a time-stamp function was implemented to correct the time-shift between samples and be able to merge all the data without incompatibilities.
+Once the data was collected, the next step was to clean the raw data and organize it accordingly \cite{bishop2006pattern}. In our case, that means to merge the data collected from the two OPC-UA servers, and synchronize the time-stamp. Since our systems were not completely synchronized, as common in practice, it was needed to calculate the delta-time between servers by referencing each server's base clock. Once the delta-time was determined, a time-stamp function was implemented to correct the time-shift between samples and be able to merge all the data without incompatibilities.
 
-Data tags interpretation is an important step in the preprocessing process \cite{goodfellow2016deep}. The raw data collected from the sensors is usually tagged by an alphanumeric code predefined by the sensor manufacturer. To work with the data, it was needed to implement diverse functions which have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensor code tags based on human-readable words predefined by the authors. This last step, might be optional in other implementations, however, it proves to be a great addition for testing purposes.
+Data tags interpretation is an important step in the preprocessing process \cite{bishop2006pattern}. The raw data collected from the sensors is usually tagged by an alphanumeric code predefined by the sensor manufacturer. To work with the data, it was needed to implement diverse functions which have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensor code tags based on human-readable words predefined by the authors. This last step, might be optional in other implementations, however, it proves to be a great addition for testing purposes.
 
 Once the data is clean and compiled in one directory, the next step was to split the data based on the assembly cycle. For our purpose, we split the dataset into individual data-samples with help of the action tags included in the dataset Table~\ref{tab:data_source}. Subsequently, each data-sample is automatically checked for missing sensor values and discarded if so. At this point, we have a series of data-samples based on time series. However, we are not interested in a time series analysis, since having the time parameter would not necessarily improve the prediction results, but rather make the approach more complex, and more data would be needed, therefore it was needed to compress each time-series based data-sample into atemporal data-samples.
 
@@ -550,7 +549,7 @@ structure. All three methods are trained using standard hyperparameters, which w
               \caption{Decision Tree.}
               \label{tab:Tree_conf_matrix}
        \end{subtable}
-       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper-left cell to the right-cell as: true-positive, false-positive, false-negative, true-negative.}
+       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper-left cell as: true-positive, false-positive, false-negative, true-negative.}
        \label{tab:Confusion_matrix}
 \end{table}
 
@@ -576,9 +575,9 @@ However, our decision for industrial applications would be the MLP with 88\% acc
 
 It is important to state that this prediction model is not yet ready to fully replace the statistical methods, nor the hundred percent quality check method, since this research is still in its early stages and needs further development. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this might compensate for disadvantages of the statistical methods.
 
-It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
-
 \section{Lesson Learned} \label{sec:lessons} % 1/2 Page
+
+It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area.
 
 \textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
 To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system.
