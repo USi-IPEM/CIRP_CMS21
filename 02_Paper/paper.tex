@@ -295,7 +295,7 @@ The continuous data collection and the clear correlation between the machine par
 
 \section{Machine Learning Methods} \label{sec:ML} %3/4 Page
 
-To study which implementation would be more suitable for industrial applications, we compare Multilinear Perceptrons (MLPs), Support Vector Machines (SVM), as well as random forests on the task of quality prediction. All three will be introduced next.
+To study which implementation would be more suitable for industrial applications, we compare Multilayer Perceptrons (MLPs), Support Vector Machines (SVM), as well as decision trees on the task of quality prediction. All three will be introduced next.
 
 \subsection{Multilayer perceptrons}
 These feedforward neural networks typically combine multiple layers
@@ -477,7 +477,7 @@ set to one to ensure the train and test set splits are identical
 for all experiments.
 
 We compare a total of three different classifier architectures on the data.
-A Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Random Forest
+A Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Decision Tree
 structure. All three methods are trained using standard hyperparameters.
 \footnote{To allow exact reproduction of these results source
 code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}}
@@ -492,13 +492,11 @@ code is available at \url{https://github.com/manubrain/Demo-Cell-Classification}
               Decision Tree         & 98 \% \\ \bottomrule
        \end{tabular}
        \caption{Comparison of Support Vector Machine (SVM), Multilayer Perceptron and 
-                Random Forest classification on our anomaly detection task. 
+                Decision Tree classification on our anomaly detection task. 
                 The first row shows the performance of naively predicting a broken piece
                 every time.}
        \label{tab:class_comp}
 \end{table}
-
-\AP{According to Prof. Garcke, we should stick either with "Random Forest" or with "Decision Tree". I would like you, Moritz, to decide what would be the best for this case.}
 
 \begin{table}
        \begin{subtable}[h]{0.3\textwidth}
@@ -568,7 +566,7 @@ We would therefore expect any naive classifier to produce at least 64\% accuracy
 
 Based on the MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model is not 100\% accurate, the percentage of false-positive predictions is 0\%. The false-negative results represent the 12\% of the test sample and the true predictions constitute 88\% of the test data.
 
-The outcome of the models shows that the random forest performed best followed by the multilayer perceptron and the support vector machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, multilayer perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
+The outcome of the models shows that the decision tree performed best followed by the multilayer perceptron and the support vector machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, multilayer perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
 
 \section{Conclusion} \label{sec:conclusion}
 
