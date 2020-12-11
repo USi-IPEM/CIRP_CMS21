@@ -310,8 +310,8 @@ which adds non-linearity to the network graph. Rectified linear units
 ReLUs are the recommended activation function for modern neural
 networks \cite{goodfellow2016deep} we use these here as well.
 Since the linear parts of the ReLU and the linear matrix multiplication
-are differentiable we can employ gradient descent to train our 
-classifier.
+are differentiable we can employ stochastic gradient
+descent to train our classifier.
 
 \subsection{Support Vector Machines}
 Support Vector Machines (SVM) attempt to separate data
@@ -332,10 +332,9 @@ features at the roots, decisions are made by moving
 up the tree to top leaves. At every branch in the tree, a decision
 is made, until one arrives at the decision \cite{Marsland2015Machine}.
 For numerical input features, each decision partitions the data
-\cite{aggarwal2015data}. For example by comparison to a threshold value.
+\cite{aggarwal2015data}, for example by comparison to a threshold value.
 To construct the tree these cutoff values have to be chosen at every branch. The construction problem turns into an optimization problem when a split criterion is introduced. Common choices are cross-entropy of Gini-coefficient \cite{aggarwal2015data}.
-During construction, the chosen function must be minimized. 
-
+During construction splits minimizing the chosen function are chosen. 
 
 \section{Experiments} \label{sec:experiment}
 
