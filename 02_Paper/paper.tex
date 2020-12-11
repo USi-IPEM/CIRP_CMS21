@@ -197,8 +197,8 @@
 \address[a]{Chair of International Production Engineering and Management (IPEM), Universität Siegen, Paul-Bonatz-Straße 9-11, Siegen - 57076, Germany}
 \address[b]{Fraunhofer Institute for Algorithms and Scientific Computing (SCAI), Schloss Birlinghoven 1, Sankt Augustin- 53757, Germany}
 \address[c]{Fraunhofer Center for Machine Learning, Schloss Birlinghoven 1, Sankt Augustin- 53757, Germany}
-\address[d]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn}
-\address[e]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn}
+\address[d]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn, Germany}
+\address[e]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn, Germany}
 
 \aucores{* Corresponding author. Tel.: +49-271-740-4509; fax: +49-271-740-2630. {\it E-mail address:} alejandro.perez@uni-siegen.de}
 
@@ -432,7 +432,7 @@ Data tags interpretation is an important step in the preprocessing process \cite
 
 Once the data is clean and compiled in one directory, the next step was to split the data based on the assembly cycle. For our purpose, we split the dataset into individual data-samples with help of the action tags included in the dataset Table~\ref{tab:data_source}. Subsequently, each data-sample is automatically checked for missing sensor values and discarded if so. At this point, we have a series of data-samples based on time series. However, we are not interested in a time series analysis, since having the time parameter would not necessarily improve the prediction results, but rather make the approach more complex, and more data would be needed, therefore it was needed to compress each time-series based data-sample into atemporal data-samples.
 
-Each time-series sample collected is the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC is the very first moment the robotic arm grabs the black disk from the store area and the ending point is before grabbing the next black disk in the same area.
+Each time-series sample collected is the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC is the very first moment the robotic arm grabs the white disk from the store area and the ending point is before grabbing the next white disk in the same area.
 To eliminate time as a variable in our dataset, it was needed to acquire the data at specific moments of the MAC. For that reason, we defined a set of sampling-conditions that helped us to collect the relevant data during the MAC:
 \begin{itemize}
        \item Value of the robot position ($xyz$) while dropping both disks in the storage area
@@ -571,7 +571,7 @@ The outcome of the models shows that the decision tree performed best followed b
 Based on the explorative literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw-back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each product until the next batch review might imply a considerable loss of the produced products whenever NOK products are found. This is based on the uncertainty of when did the error occur and how many products are affected.
 
 By implementing ML models capable to predict the quality of the product, based on just the initial conditions of the process would be a great asset for the industrial processes. Within the limits of our work, we predict with 98\% certainty the product quality by implementing a decision tree model with a 6-variables vector as input. 
-However, our decision for industrial applications would be the MLP with 88\% accuracy as to guarantee that all passed parts are OK and avoid labeling a NOK piece as OK. For further work, we expect to increase the accuracy of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
+However, our decision for industrial applications would be the MLP with 88\% accuracy, to guarantee that all passed parts are OK and avoid labeling a NOK piece as OK. For further work, we expect to increase the accuracy of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
 
 It is important to state that this prediction model is not yet ready to fully replace the statistical methods, nor the hundred percent quality check method, since this research is still in its early stages and needs further development. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this might compensate for disadvantages of the statistical methods.
 
@@ -597,6 +597,8 @@ Without the labels, the problem could not have been framed as a supervised
 classification problem.
 
 \textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
+
+Difficulties at implementing ML models in production are also described by others authors \cite{paleyes2020challenges}.
 
 \section*{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
