@@ -355,26 +355,24 @@ Before collecting the data, we need to find the variables of interest and mappin
                      Conveyor: Gate \\
                      Conveyor: QC \\
                      Conveyor: Store
-                     \end{minipage} \\ \hline
+                     \end{minipage} \vspace{0.1cm} \\ \hline
               UR3 Position         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
-              \begin{description}
-                     \item $xyz$ Gripper position
-                     \end{description}
-                     \end{minipage} \\ \hline
+                     $xyz$ Gripper position
+                     \end{minipage} \vspace{0.1cm} \\ \hline
               Action Flags         & Siemens PLC       & \begin{minipage}[t]{0.2\textwidth}
                      UR3 gripper open/close \\
                      Grab/drop disk based on disk type
-                     \end{minipage} \\ \hline
+                     \end{minipage} \vspace{0.1cm} \\ \hline
               Quality control      & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
                      OK-NOK label \\
                      $xy$ disk deviation from the center point \\
                      Absolute disk deviation
-                     \end{minipage} \\ \hline
+                     \end{minipage} \vspace{0.1cm} \\ \hline
               Gate position        & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
                      Position \\
                      Speed \\
                      Safe to go
-                     \end{minipage} \\ \hline
+                     \end{minipage} \vspace{0.1cm} \\ \hline
               Store       & SICK SIM4000      & \begin{minipage}[t]{0.2\textwidth}
                      Disk Size
                      \end{minipage} \\ \bottomrule
@@ -391,27 +389,27 @@ Before collecting the data, we need to find the variables of interest and mappin
               Use Case 1  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Slow \\
                                    Robot position: OK
-                            \end{minipage}  \\ \hline
+                            \end{minipage} \vspace{0.1cm}  \\ \hline
               Use Case 2  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Slow \\
                                    Robot position: NOK
-                            \end{minipage}  \\ \hline
+                            \end{minipage} \vspace{0.1cm}  \\ \hline
               Use Case 3  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Fast \\
                                    Robot position: OK
-                            \end{minipage}  \\ \hline
+                            \end{minipage} \vspace{0.1cm}  \\ \hline
               Use Case 4  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Fast \\
                                    Robot position: NOK
-                            \end{minipage}  \\ \hline
+                            \end{minipage} \vspace{0.1cm}  \\ \hline
               Use Case 5  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Too Fast \\
                                    Robot position: OK
-                            \end{minipage}  \\ \hline
+                            \end{minipage} \vspace{0.1cm}  \\ \hline
               Use Case 6  & \begin{minipage}[t]{0.25\textwidth}
                                    Conveyor speed: Too Fast \\
                                    Robot position: NOK
-                            \end{minipage}  \\ \bottomrule
+                            \end{minipage} \vspace{0.1cm} \\ \bottomrule
        \end{tabular}
        \caption{Industry 4.0 demostration cell: Controlled Use-Cases.
        Use-Cases with the value \textit{Robot position: NOK} and \textit{Conveyor speed: Too Fast} will result in NOK pieces.}
