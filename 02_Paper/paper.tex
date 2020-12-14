@@ -200,7 +200,7 @@
 \address[d]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn, Germany}
 \address[e]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn, Germany}
 
-\aucores{* Corresponding author. Tel.: +49-271-740-2630; fax: +49-271-740-2630. {\it E-mail address:} fabian.steinberg@uni-siegen.de}
+\aucores{* Corresponding author. Tel.: +49-271-740-2630; fax: +49-271-740-12628. {\it E-mail address:} fabian.steinberg@uni-siegen.de}
 
 \begin{abstract}
 %% Text of abstract
@@ -336,7 +336,7 @@ is made, until one arrives at the decision \cite{Marsland2015Machine}.
 For numerical input features, each decision partitions the data
 \cite{aggarwal2015data}, for example by comparison to a threshold value.
 To construct the tree these cutoff values have to be chosen at every branch. The construction problem turns into an optimization problem when a split criterion is introduced. Common choices are cross-entropy of Gini-coefficient \cite{aggarwal2015data}.
-During construction splits minimizing the chosen function are selected. 
+During the construction splits minimizing, the selected functions are chosen. 
 
 \section{Experiments} \label{sec:experiment}
 
@@ -430,13 +430,13 @@ Once the data was collected, the next step was to clean the raw data and organiz
 
 Data tags interpretation is an important step in the preprocessing process \cite{bishop2006pattern}. The raw data collected from the sensors is usually tagged by an alphanumeric code predefined by the sensor manufacturer. To work with the data, it was needed to implement diverse functions which have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensor code tags based on human-readable words predefined by the authors. This last step, might be optional in other implementations, however, it proves to be a great addition for testing purposes.
 
-Once the data was clean and compiled in one directory, the next step was to split the data based on the assembly cycle. For our purpose, we split the dataset into individual data-samples with help of the \textit{action tag}included in the dataset Table~\ref{tab:data_source}. Subsequently, each data-sample was automatically checked for missing sensor values and discarded if so.
+Once the data was cleaned and compiled in one directory, the next step was to split the data based on the assembly cycle. For our purpose, we split the dataset into individual data-samples with help of the \textit{action flags}included in the dataset Table~\ref{tab:data_source}. Subsequently, each data-sample was automatically checked for missing sensor values and discarded if so.
 % At this point, we have a series of data-samples based on time series. However, we are not interested in a time series analysis, since having the time parameter would not necessarily improve the prediction results, but rather make the approach more complex, and more data would be needed, therefore it was needed to compress each time-series based data-sample into atemporal data-samples.
 
 Each time-series sample was the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC was defined as the very first moment the robotic arm grabs the white disk from the store area and the ending point was defined as the starting of the subsequent MAC, the grabbing of the next white disk in the same area.
 To eliminate time as a variable in our dataset, it was needed to transform time-series into feature data suitable describing a MAC in a way that different MACs are easily comparable. For that reason, we defined a set of sampling-conditions that helped us to collect the relevant data during the MAC:
 \begin{itemize}
-       \item Value of the robot position ($xyz$) while dropping both disks in the conveyor - Gate
+       \item Value of the robot position ($xyz$) while dropping both disks in the \textit{conveyor - gate}
        \item Mean conveyor speed value per conveyor band
        \item Absolute deviation ($xy$) value at the quality control check
        \item Absolute quality control value: OK - NOK
@@ -475,8 +475,8 @@ purposes, leaving 478 training samples. The random number generator seed was
 set to one to ensure the train and test set splits are identical 
 for all experiments.
 
-We compared a total of three different classifier architectures on the data.
-A Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Decision Tree
+We compared a total of three different classifier architectures on the data,
+a Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Decision Tree
 structure. In this case, we chose to train all three models using exemplary 
 default hyperparameters, which we found to work.
 \footnote{To allow exact reproduction of our results source code
@@ -574,7 +574,7 @@ The outcome of the models showed that the Decision Tree performed best followed 
 
 Based on the explorative literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw-back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each product until the next batch review might imply a considerable loss of the produced products whenever NOK products are found. This is based on the uncertainty of when the error occurred and how many products are affected.
 
-By implementing ML models based on just the initial conditions of the process and capable to predict the quality of the product, would be a great asset for the industrial processes. Within the limits of our work, we predicted with 98\% certainty the product quality by implementing a Decision Tree model with a 6-variables vector as input. 
+Implementing ML models based on just the initial conditions of the process and capable to predict the quality of the product, would be a great asset for the industrial processes. Within the limits of our work, we predicted with 98\% certainty the product quality by implementing a Decision Tree model with a 6-variables vector as input. 
 However, our decision for industrial applications would be the MLP with 88\% accuracy, to guarantee that all passed parts are OK and avoid labeling NOK pieces as OK. For further work, we expect to increase the accuracy of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
 
 It is important to state that this prediction model is not yet ready to fully replace the statistical methods, nor the hundred percent quality check method, since this research is still in its early stages and needs further development. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this might compensate for disadvantages of the statistical methods.
@@ -601,16 +601,14 @@ of our cell-data was key to the successful application of all three algorithms.
 Without the labels, the problem could not have been framed as a supervised 
 classification problem.
 
-\textbf{Dataset size}; as the starting point we collected as many data points as the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
+\textbf{Dataset size}; as the starting point we collected as many data points like the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
 \section{Author Contributions}
 
-Pérez M. and Moritz performed writing - original draft, conceptualization, review, and editing; Investigation; Software and Data Curation.
-Schmallenbach performed writing - Review \& editing.
-Wagner, Heinbach, Steinberg, Steffes-lai, Garcke performed writing - Review.
+Pérez M. and Wolter performed writing - original draft, conceptualization, review, and editing; investigation; software and data curation.
+Schmallenbach performed writing - review \& editing.
+Wagner, Heinbach, Steinberg, Garcke, and Steffes-lai performed writing - review.
 Burggräf performed supervision of work.
-
-
 
 \section*{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
