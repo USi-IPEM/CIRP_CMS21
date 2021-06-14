@@ -1,0 +1,19 @@
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+\usepackage{amsmath}
+%\usetikzlibrary{...}% tikz package already loaded by 'tikz' option
+\begin{document}
+\begin{tikzpicture}
+  % generation
+  \node[draw, rectangle] at (0,0) (a){assembly};
+  % transmission
+  \node[draw, rectangle] at (2.5,0) (t){transport};
+  \draw[->] (a) -- (t);
+  % analysis
+  \node[draw, rectangle] at (2.5,2) (a2){analysis};
+  \draw[->] (t) -- (a2);
+
+  \node[draw, rectangle] at (0,2) (d){disassembly};
+  \draw[->] (a2) -- (d);
+  \draw[->] (d) -- (a);
+\end{tikzpicture}
+\end{document}

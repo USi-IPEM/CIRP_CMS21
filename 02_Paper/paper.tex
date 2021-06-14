@@ -262,7 +262,7 @@ According to Krauß, there is a wide range of applications for PA in the industr
 Some industrial applications of PA focues machines and assets (predictive maintenance, anomaly detection, self learning-machines) \cite{colledani2020production}, and process (scheduling, process design, predictive process control) \cite{krauss2019machine}.
 
 An explorative literature review on this matter reveals that publications that combine PA and QC became more relevant in the last six years. This could be due to computer power limitations in earlier research and the recent increase of ML applications in this area. The related work mostly belongs to two groups, defect analysis of produced pieces and process-oriented QC.
-Due to the recent advances in ML approaches specialized in image and pattern recognition \cite{bishop2006pattern} and the advent of standardized data collection~\cite{mourtzis2018towards}, a great number of publications focus on product-analysis based on images from cameras during the production process,
+Due to the recent advances in ML approaches specialized in image and pattern recognition \cite{bishop2006pattern} and the advent of standardized data collection~\cite{mourtzis2018towards}, a great number of publications focus on product analysis based on images from cameras during the production process,
 e.g., Escobar employed pattern recognition for defect detection in a binary classification problem based on a $l_1$-regularized logistic regression \cite{Carlos2018MLforQC}; Sohnius focussed on defect prediction within printed layers by employing supervised models based on features extracted directly from the machine code, and the scan of the layers surface \cite{Sohnius2019PASurfacequality}.
 Other authors focussed their research on process-oriented QC, e.g., 
 Krauß focussed on describing the ML pipeline to implement automated machine learning for predictive quality in production \cite{krauss2020automated}, and product quality prediction in a process chain \cite{krauss2019machine}; Aumi focussed on the model development for predictive quality control of batch processes \cite{aumi2012model}; Ritter studied the ways of process modeling on quality prediction, and assurance of chipboards \cite{ritter1992neue}.
@@ -273,7 +273,15 @@ By employing machine learning (ML) techniques (Section~\ref{sec:ML}), together w
 
 \section{The case: industry 4.0 demonstration cell}  \label{sec:democell}% (taken from title) % 3/4 Page
 
-Our case study is an abstraction of an assembly process of the industry. This case study is a highly flexible and transparent platform regarding software and hardware access and manipulation. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm (UR3), a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200, see Figure~\ref{fig:ind_cell}. 
+\begin{figure}
+\centering
+\includestandalone[width=.4\linewidth]{./img/flow_chart}
+\caption{Idealized flow-chart of our simulated manufacturing process loop. All process elements can be disturbed at any time.}
+\label{fig:ideal_cell}
+\end{figure}
+
+
+Our case study is an abstraction of an assembly process of the industry. This case study is a highly flexible and transparent platform regarding software and hardware access and manipulation. The industry 4.0 demonstration cell is composed of three independent conveyor belts, a robotic assembly arm (UR3), a laser scanner used for quality control as well as a wide range of sensors, all orchestrated by a SIEMENS PLC S7-1200. We show an idealized process flow-chart in Figure~\ref{fig:ideal_cell} and an illustration of the cell components in Figure~\ref{fig:ind_cell}. 
 The executed abstracted assembly process consists of stacking two disks of different sizes on top of each other. The corresponding pseudo product quality is later determined using the laser scanner and evaluating the concentricity of both disks. If the disks' concentricity is within a tolerance of 1.5mm, the piece is classified as OK, if not, it is classified as NOK.
 By considering that malfunctions can occur during industrial production processes, our demonstration cell can simulate failures in diverse areas, such as:
 
