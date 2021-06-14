@@ -493,10 +493,7 @@ default hyperparameters, which we found to work well.
               Multilayer Perceptron & 88 \% \\
               Decision Tree         & 98 \% \\ \bottomrule
        \end{tabular}
-       \caption{Comparison of Support Vector Machine (SVM), Multilayer Perceptron and 
-                Decision Tree classification on our anomaly detection task. 
-                The first row shows the performance of naively predicting a broken piece
-                every time.}
+       \caption{Comparison of Support Vector Machine (SVM), Multilayer Perceptron and Decision Tree classification on our anomaly detection task. }
        \label{tab:class_comp}
 \end{table}
 
@@ -559,12 +556,8 @@ default hyperparameters, which we found to work well.
        \label{tab:Confusion_matrix}
 \end{table}
 
-
-Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples
-quality measurements indicated a problem. This set the 
-baseline over the entire data set, which would be obtained by simply labeling all samples
-as faulty. For the test set, we required to classify more than 64\% of the data correctly.
-Therefore, we expected any naive classifier to produce at least 64\% accuracy, which we had to surpass. In Table~\ref{tab:class_comp}, we observe that this was indeed the case for all three approaches evaluated here.
+Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples quality measurements indicated a problem. 
+The first row shows the performance of naively predicting a broken piece every time. This accuracy sets the baseline over the entire data set, which would be obtained by simply labeling all samples as faulty. Therefore, we expected any naive classifier to produce at least 64\% accuracy, which we had to surpass. In Table~\ref{tab:class_comp}, we observe that this was indeed the case for all three approaches evaluated here. 
 
 The MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model was not 100\% accurate, the percentage of false-positive predictions was 0\%. The false-negative results represented 12\% of the test sample and the true predictions constituted 88\% of the test data.
 
