@@ -447,21 +447,14 @@ Each time-series sample was evaluated based this sampling-condition, and the res
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
 
 \begin{figure}
-       \includestandalone[width=.45\textwidth]{img/arm_data_plot}
-       \caption{Robot arm movement patterns. We show the movement of the 
-                cell's robot arm, its grippers, and the encoding of the overall
-                position in the system. The changes in the grip flag are triggered,
-                when the gripper opens or closes. 0 indicates an open, while
-                one indicates a closed gripper. The position flags mark the state
-                of the cell's arm. 0 means the black disk is in store,
-                one that the black disk is at the gate, two that the white disk
-                is in store and three that the white disk is located at the gate.
-             }
+\includestandalone[width=.45\textwidth]{img/arm_data_plot}
+\caption{Three dimensional robot arm movement patterns.}
 \label{fig:robot_pos_cell}
 \end{figure}
 
 The robot's position at disk drop is marked in 
-Figure~\ref{fig:robot_pos_cell}. The quality prediction problem was 
+Figure~\ref{fig:robot_pos_cell}. We show the movement of the cell's robot arm, its grippers, and the encoding of the overall position in the system.
+The changes in the grip flag are triggered, when the gripper opens or closes. 0 indicates an open, while one indicates a closed gripper. The position flags mark the state of the cell's arm. 0 means the black disk is in store, one that the black disk is at the gate, two that the white disk is in store and three that the white disk is located at the gate. The quality prediction problem was 
 framed as a classification task. The input vectors which we fed into our
 classifiers consist of the arm positions at the disk drops for both
 disks in three dimensions, as well as the largest recorded belt speed
@@ -614,7 +607,8 @@ Garcke, and Steffes-lai performed writing - review.
 \section*{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
 
-\bibliographystyle{elsarticle-harv} %elsarticle-harv} %abbrv %IEEEtran
+%\bibliographystyle{elsarticle-harv} %elsarticle-harv} %abbrv %IEEEtran
+\bibliographystyle{unsrt}
 \bibliography{bib}
 
 \end{document}
