@@ -246,9 +246,9 @@ The advantage of quantitative measurements is that in the event of a defective i
 With the evolution of machine learning (ML) applications \cite{bishop2006pattern}, approaches combining QC and predictive models are becoming more relevant. The applications range from the defect analysis of the produced piece \cite{Carlos2018MLforQC, Sohnius2019PASurfacequality}, to process-oriented QC \cite{krauss2020automated, krauss2019machine, aumi2012model, ritter1992neue}, see Section~\ref{sec:related_works}. 
 Independently of the research area previously stated, within the scope of the related works, there is no evidence of an evaluation framework for diverse ML techniques applied in QC process.
 
-Considering the high amount of data available in industries, one approach to reduce the inspection costs and simultaneously increase the accuracy of detecting faulty products would be to implement an ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty products before the QC process is performed, it would also strengthen the current QC methods by combining them with QC predictive models.
+% Considering the high amount of data available in industries, one approach to reduce the inspection costs and simultaneously increase the accuracy of detecting faulty products would be to implement an ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty products before the QC process is performed, it would also strengthen the current QC methods by combining them with QC predictive models.
 
-While implementing ML models to QC, several challenges arise that have not yet been sufficiently addressed, e.g., what to consider while evaluating the output from ML models for industrial applications? (model accuracy vs. applicability at industrial environments); what steps should be followed to prepare the data for predictive QC methods?; and what findings and lessons are worth considering for further applications in the area?. 
+Regarding the use of ML models in QC, several challenges arise that have not yet been sufficiently addressed, e.g., what to consider while evaluating the output from ML models for industrial applications? (model accuracy vs. applicability at industrial environments); what steps should be followed to prepare the data for predictive QC methods?; and what findings and lessons are worth considering for further applications in the area?. 
 For this, we cover the methods used for quality checks in production, as well as the bases of predictive analytics in production (Section~\ref{sec:related_works}). 
 We describe a suitable industrial platform to implement the ML models (Section~\ref{sec:democell}).
 Then, we explain the three machine learning methods implemented in this work: Multilayer perceptrons, Support Vector Machines, and a Decision Tree (Section~\ref{sec:ML}), followed by the description of the experiment process from the data acquisition and preprocessing, to the classifier optimization and testing (Section~\ref{sec:experiment}).
@@ -295,11 +295,11 @@ By considering that malfunctions can occur during industrial production processe
 \end{itemize}
 
 Those simulated failures have an impact on the data collected by the sensors. Anomalies can be observed at the vibration sensors, temperature rise, fluctuations in the air pressure system, noticeable shifting on pieces' position as well as the stop of the process.
-
 The continuous data collection and the clear correlation between the machine parameters and the quality of the product, is the ideal play-ground to implement a sandbox for machine learning implementations. With this in mind, our goal is to predict the quality of the product (concentricity of the assembled parts), before the actual quality check done by the laser scanner. 
 
 \begin{figure}
-       \includegraphics[width=.45\textwidth]{img/demozelle}
+       \centering
+       \includegraphics[width=.38\textwidth]{img/demozelle}
        \caption{The industry 4.0 demonstration cell at the University of Siegen}
 \label{fig:ind_cell}
 \end{figure}
@@ -352,9 +352,7 @@ During the construction splits minimizing, the selected functions are chosen.
 \subsection{Data acquisition}
 
 Industrial projects require to work with a variety of sensors and controllers from different manufacturers. Thus, the risk of incompatibility between technologies increases. To avoid these problems, universal protocols are often implemented in industrial projects. Figure~\ref{fig:demo_conn_diag} describes a simplified version of the real connection diagram of the demonstration cell. In our case, the data is acquired independently from two OPC-UA servers. This represents the interaction between multiple servers in real production environments. 
-
 Before collecting the data, we needed to find the variables of interest and map their source, as well as to determine the use cases of interest. Our study focussed on the data described in Table~\ref{tab:data_source} and the six use cases described in Table~\ref{tab:use_cases}. The data was manually collected by using the software "UAExpert - v1.5.1". Approximately 15 hours of data were collected in different sessions, while equally sampling each use case during the data acquisition stage.
-
 \begin{table}
        \centering
        \begin{adjustbox}{width=.45\textwidth}
@@ -390,7 +388,7 @@ Before collecting the data, we needed to find the variables of interest and map 
        \caption{Industry 4.0 demonstration cell: Relevant data linked with its reference source server.}
        \label{tab:data_source}
 \end{table}
-
+%
 \begin{table}
        \centering
        \begin{tabular}{ c c } \toprule
@@ -424,24 +422,19 @@ Before collecting the data, we needed to find the variables of interest and map 
        Use-Cases with the value \textit{Robot position: NOK} and \textit{Conveyor speed: Too Fast} will result in NOK pieces.}
        \label{tab:use_cases}
 \end{table}
-
-
+%
 \begin{figure}
        \includegraphics[width=.45\textwidth]{img/demozelle_conex_diagram.png}
        \caption{Industry 4.0 demostration cell: Connection diagram (simplified).
              }
 \label{fig:demo_conn_diag}
 \end{figure}
-
+%
 \subsection{Data preprocessing}
-
 Once the data was collected, the next step was to clean the raw data and organize it accordingly \cite{bishop2006pattern}. In our case, that means to merge the data collected from the two OPC-UA servers, and synchronize the time-stamp. Since our systems were not completely synchronized, as common in practice, it was needed to calculate the delta-time between servers by referencing each server's base clock. Once the delta-time was determined, a time-stamp function was implemented to correct the time-shift between samples and be able to merge all the data without incompatibilities.
-
 Data tags interpretation is an important step in the preprocessing process \cite{bishop2006pattern}. The raw data collected from the sensors is usually tagged by an alphanumeric code predefined by the sensor manufacturer. To work with the data, it was needed to implement diverse functions which have the task to clean the raw data in a more human-readable form. This means to remove samples out of clear boundaries and missing values, as well as to translate the sensor code tags based on human-readable words predefined by the authors. This last step, might be optional in other implementations, however, it proves to be a great addition for testing purposes.
-
 Once the data was cleaned and compiled in one directory, the next step was to split the data based on the assembly cycle. For our purpose, we split the dataset into individual data-samples with help of the \textit{action flags}included in the dataset Table~\ref{tab:data_source}. Subsequently, each data-sample was automatically checked for missing sensor values and discarded if so.
 % At this point, we have a series of data-samples based on time series. However, we are not interested in a time series analysis, since having the time parameter would not necessarily improve the prediction results, but rather make the approach more complex, and more data would be needed, therefore it was needed to compress each time-series based data-sample into atemporal data-samples.
-
 Each time-series sample was the result of data collected during one machine assembly cycle (MAC). The starting point of one MAC was defined as the very first moment the robotic arm grabs the white disk from the store area and the ending point was defined as the starting of the subsequent MAC, the grabbing of the next white disk in the same area.
 To eliminate time as a variable in our dataset, it was needed to transform time-series into feature data suitable describing a MAC in a way that different MACs are easily comparable. For that reason, we defined a set of sampling-conditions that helped us to collect the relevant data during the MAC:
 \begin{itemize}
@@ -450,13 +443,12 @@ To eliminate time as a variable in our dataset, it was needed to transform time-
        \item Absolute deviation ($xy$) value at the quality control check
        \item Absolute quality control value: OK - NOK
 \end{itemize}
-
 Each time-series sample was evaluated based this sampling-condition, and the result of each evaluation was considered as our atemporal data-sample, which we used as the base for our classifier.
 
 \subsection{Classifier optimization and testing}\label{sec:ml_exp}
 
 \begin{figure}
-\includestandalone[width=.45\textwidth]{img/arm_data_plot}
+\includestandalone[width=.425\textwidth]{img/arm_data_plot}
 \caption{Three dimensional robot arm movement patterns.}
 \label{fig:robot_pos_cell}
 \end{figure}
@@ -470,20 +462,18 @@ disks in three dimensions, as well as the largest recorded belt speed
 of all three belts. The interpretation of the quality measurement was 
 used as the training target. It can be OK or NOK which we encoded as 
 zero and one.
-
 We worked with a total of 528 measurements. Each containing arm and belt data
 logs of individual cell run. 50 samples were set aside at random for testing 
 purposes, leaving 478 training samples. The random number generator seed was
 set to one to ensure the train and test set splits are identical 
 for all experiments.
-
 We compared a total of three different classifier architectures on the data,
 a Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Decision Tree
 structure. In this case, we chose to train all three models using exemplary 
 default hyperparameters, which we found to work well.
 \footnote{To allow exact reproduction of our results source code
  is available at \url{https://github.com/USi-IPEM/Demo-Cell-Classification}}
-
+%
 \begin{table}
        \centering
        \begin{tabular}{ c c } \toprule
@@ -496,7 +486,7 @@ default hyperparameters, which we found to work well.
        \caption{Comparison of Support Vector Machine (SVM), Multilayer Perceptron and Decision Tree classification on our anomaly detection task. }
        \label{tab:class_comp}
 \end{table}
-
+%
 \begin{table}
        \begin{subtable}[h]{0.3\textwidth}
               \centering
@@ -555,12 +545,10 @@ default hyperparameters, which we found to work well.
        \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper-left cell as: true-positive, false-positive, false-negative, true-negative.}
        \label{tab:Confusion_matrix}
 \end{table}
-
+%
 Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples quality measurements indicated a problem. 
 The first row shows the performance of naively predicting a broken piece every time. This accuracy sets the baseline over the entire data set, which would be obtained by simply labeling all samples as faulty. Therefore, we expected any naive classifier to produce at least 64\% accuracy, which we had to surpass. In Table~\ref{tab:class_comp}, we observe that this was indeed the case for all three approaches evaluated here. 
-
 The MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model was not 100\% accurate, the percentage of false-positive predictions was 0\%. The false-negative results represented 12\% of the test sample and the true predictions constituted 88\% of the test data.
-
 The outcome of the models showed that the Decision Tree performed best followed by the Multilayer Perceptron and the Support Vector Machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, Multilayer Perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
 
 \section{Conclusion} \label{sec:conclusion}
@@ -568,44 +556,41 @@ The outcome of the models showed that the Decision Tree performed best followed 
 % Quality assurance is an important topic in production. Quality assurance methods in production might diverge one from each other, however, all of them seek to prove the product quality in one way or another. 
 
 Based on the explorative literature review, we observed that the hundred percent quality check method proves to be the most efficient method to guarantee the final product quality, however, the high implementation cost is its biggest draw-back. On the other hand, we have the statistical methods, which are known to be fast and efficient, but the lack of reviewing each product until the next batch review might imply a considerable loss of the produced products whenever NOK products are found. This is based on the uncertainty of when the error occurred and how many products are affected.
-
 Implementing ML models based on just the initial conditions of the process and capable to predict the quality of the product, would be a great asset for the industrial processes. Within the limits of our work, we predicted with 98\% certainty the product quality by implementing a Decision Tree model with a 6-variables vector as input. 
 However, our decision for industrial applications would be the MLP with 88\% accuracy, to guarantee that all passed parts are OK and avoid labeling NOK pieces as OK. For further work, we expect to increase the accuracy of the prediction model by collecting more data-samples and experimenting with other, more complex, ML models.
-
 It is important to state that this prediction model is not yet ready to fully replace the statistical methods, nor the hundred percent quality check method, since this research is still in its early stages and needs further development. However, a combination of SPC along prediction models could work well together, since the prediction model will evaluate each produced piece, and this might compensate for disadvantages of the statistical methods.
 
 \section{Lesson Learned} \label{sec:lessons} % 1/2 Page
-
-It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area. Difficulties at implementing ML models in production are also described by others authors \cite{paleyes2020challenges}.
-\vspace{0.1cm}
-
+It is worth to mention the most important points learned during the project implementation. This might help as building blocks for further research in the area. Difficulties at implementing ML models in production are also described by others authors \cite{paleyes2020challenges}. \\
+%
 \textbf{Incompatibility between technologies}; devices configured on the same network presented troubles to share data due to network restrictions, as well as the limitation to access and modify restricted program-code given by the machine manufacture. 
-To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system.
-
+To overcome the situation stated above, it was necessary to reprogram big sections of the machine control system. \\
+%
 \textbf{Data synchronization}; two OPC-UA servers were used on this implementation. This led to a series of data synchronization problems due to differences in the internal clock of both servers.
-To solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, determining the production cycle would have been impossible and the input data for the ML model would have been useless, and the model inaccurate. 
-
-\textbf{Data interpretation}; this process is considered complicated, time-consuming, and a fundamental step for any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well a basic correlation within the presented data.
-
-\textbf{Missing values}; to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact on the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap.
-
-\textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occur, made it complicated to have accurate data sampling from each assembly cycle. To overcome this uncertainty, we modified the machine program to raise specific flags whenever certain actions were executed.
-
+To solve the issue, it was needed to write a time-stamp synchronization script that was deployed during the data preprocessing phase. Without harmonious time-stamps, determining the production cycle would have been impossible and the input data for the ML model would have been useless, and the model inaccurate. \\
+%
+\textbf{Data interpretation}; this process is considered complicated, time-consuming, and a fundamental step for any ML applications. It is fundamental to understand the assembly process, the timing from the machine movements, the boundaries of the machine's sensors, as well a basic correlation within the presented data. \\
+%
+\textbf{Missing values}; to minimize the risk of false results delivered by the ML model, it would be compulsory to carefully review the ML input data. Missing values can have a great impact on the ML prediction, that is the reason why we deliberately review all the input data and validate it with the expected output from the diverse sensors. Whenever there was missing data, and as long as we did not fabricate data, we employed statistical methods to fill the data gap. \\
+%
+\textbf{Adapting the industry 4.0 demonstration cell}; the initial state of the demonstrator was very limited. Even though the process was well known, the lack of labels or flags whenever certain actions occur, made it complicated to have accurate data sampling from each assembly cycle. To overcome this uncertainty, we modified the machine program to raise specific flags whenever certain actions were executed. \\
+%
 \textbf{Machine Learning}; careful measurement and  meaningful preprocessing
 of our cell-data was key to the successful application of all three algorithms.
-Without the labels, the problem could not have been framed as a supervised 
-classification problem.
-
+Without the labels, the problem could not have been framed as a supervised classification problem. \\
+%
 \textbf{Dataset size}; as the starting point we collected as many data points like the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
-\section{Author Contributions}
-
-Pérez M. and Wolter performed writing - original draft, conceptualization, review, and editing; investigation; software and data curation.
-Schmallenbach performed writing - review \& editing.
-Burggräf, Wagner, Heinbach, Steinberg performed writing - conceptualization, review. Garcke, and Steffes-lai performed writing - review.
+\vspace{0.1cm}
+\footnotesize
+\textbf{Author Contributions}
+Pérez M. and Wolter writing - original draft, conceptualization, review, and editing; investigation; software and data curation.
+Schmallenbach writing - review, editing.
+Burggräf, Wagner, Heinbach, Steinberg writing - conceptualization, review. Garcke, and Steffes-lai writing - review.
 % Burggräf performed supervision of work.
 
-\section*{Acknowledgments}
+\footnotesize
+\textbf{Acknowledgments}
 This work was funded by the European Regional Development Fund (ERDF) within the project "ManuBrain".
 
 %\bibliographystyle{elsarticle-harv} %elsarticle-harv} %abbrv %IEEEtran
