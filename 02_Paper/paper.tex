@@ -200,7 +200,7 @@
 \address[d]{Institute for Numerical Simulation, Universität Bonn, Endenicher Allee 19b, 53115 Bonn, Germany}
 \address[e]{Institute for Computer Science, Universität Bonn, Endenicher Allee 19a, 53115 Bonn, Germany}
 
-\aucores{* Corresponding author. Tel.: +49-271-740-2630; fax: +49-271-740-12628. {\it E-mail address:} alejandro.perez@uni-siegen.de}
+\aucores{* Corresponding author. Tel.: +49-271-740-2630; fax: +49-271-740-12628. {\it E-mail address:} fabian.steinberg@uni-siegen.de}
 
 \begin{abstract}
 %% Text of abstract
@@ -243,7 +243,7 @@ In general, the quality characteristics of a product can be classified as attrib
 \textit{Attributes} are qualitative measurable characteristics, i.e., color or texture. On the other hand, \textit{variables} are precise and measurable characteristics, which are shown as numbers, i.e., length or width. 
 The advantage of quantitative measurements is that in the event of a defective intermediate or end product, precise measured values are available, which enable controlled adjustment of the process parameters, as well as the possibility of observing trends in the collected data. This allows the employment of predictive models to determine the quality of the product before the QC process takes place \cite{bishop2006pattern, krauss2019machine}.
 
-With the evolution of machine learning (ML) applications \cite{bishop2006pattern}, approaches combining QC and predictive models are becoming more relevant. The applications range from the defect analysis of the produced piece \cite{Carlos2018MLforQC, Sohnius2019PASurfacequality}, to process-oriented QC \cite{krauss2020automated, krauss2019machine, aumi2012model, ritter1992neue}, see Section~\ref{sec:related_works}. 
+With the evolution of machine learning (ML) applications \cite{bishop2006pattern}, approaches combining QC and predictive models are becoming more relevant. The applications range from the defect analysis of the produced piece \cite{Carlos2018MLforQC, Sohnius2019PASurfacequality}, to process-oriented QC \cite{krauss2019machine, krauss2020automated,  aumi2012model, ritter1992neue}, see Section~\ref{sec:related_works}. 
 Independently of the research area previously stated, within the scope of the related works, there is no evidence of an evaluation framework for diverse ML techniques applied in QC process.
 
 % Considering the high amount of data available in industries, one approach to reduce the inspection costs and simultaneously increase the accuracy of detecting faulty products would be to implement an ML model capable to predict the product quality based on the initial state of the machine. This will not only help to detect faulty products before the QC process is performed, it would also strengthen the current QC methods by combining them with QC predictive models.
@@ -470,9 +470,12 @@ for all experiments.
 We compared a total of three different classifier architectures on the data,
 a Support Vector Machine (SVM), a Multilayer Perceptron (MLP) and a Decision Tree
 structure. In this case, we chose to train all three models using exemplary 
-default hyperparameters, which we found to work well.
-\footnote{To allow exact reproduction of our results source code
+default hyperparameters, which we found to work well. \footnote{To allow exact reproduction of our results source code
  is available at \url{https://github.com/USi-IPEM/Demo-Cell-Classification}}
+Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples quality measurements indicated a problem. 
+The first row shows the performance of naively predicting a broken piece every time. This accuracy sets the baseline over the entire data set, which would be obtained by simply labeling all samples as faulty. Therefore, we expected any naive classifier to produce at least 64\% accuracy, which we had to surpass. In Table~\ref{tab:class_comp}, we observe that this was indeed the case for all three approaches evaluated here. 
+The MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model was not 100\% accurate, the percentage of false-positive predictions was 0\%. The false-negative results represented 12\% of the test sample and the true predictions constituted 88\% of the test data.
+The outcome of the models showed that the Decision Tree performed best followed by the Multilayer Perceptron and the Support Vector Machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, Multilayer Perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
 %
 \begin{table}
        \centering
@@ -542,14 +545,11 @@ default hyperparameters, which we found to work well.
               \caption{Decision Tree.}
               \label{tab:Tree_conf_matrix}
        \end{subtable}
-       \caption{Confusion matrices result of the prediction of 50 test data-points. We present the result of the predictions given by all three algorithms in detail based on the comparison between true values vs predictions. The tables read from the upper-left cell as: true-positive, false-positive, false-negative, true-negative.}
+       \caption{Confusion matrices result of the prediction of 50 test data-points. }
        \label{tab:Confusion_matrix}
 \end{table}
 %
-Results are shown in table~\ref{tab:class_comp}. For 32 of the total 50 test samples quality measurements indicated a problem. 
-The first row shows the performance of naively predicting a broken piece every time. This accuracy sets the baseline over the entire data set, which would be obtained by simply labeling all samples as faulty. Therefore, we expected any naive classifier to produce at least 64\% accuracy, which we had to surpass. In Table~\ref{tab:class_comp}, we observe that this was indeed the case for all three approaches evaluated here. 
-The MLP prediction results presented on Table~\ref{tab:Confusion_matrix}\subref{tab:MPL_conf_matrix} show that even though the prediction model was not 100\% accurate, the percentage of false-positive predictions was 0\%. The false-negative results represented 12\% of the test sample and the true predictions constituted 88\% of the test data.
-The outcome of the models showed that the Decision Tree performed best followed by the Multilayer Perceptron and the Support Vector Machine. However, by reviewing the confusion matrices presented in Table~\ref{tab:Confusion_matrix}, Multilayer Perceptron would be the preferred solution to be implemented in industrial applications due to the 0\% ratio in false-positive results and high accuracy of 88\%.
+
 
 \section{Conclusion} \label{sec:conclusion}
 
@@ -581,13 +581,15 @@ Without the labels, the problem could not have been framed as a supervised class
 %
 \textbf{Dataset size}; as the starting point we collected as many data points like the ones found in the iris Dataset \cite{fisher_1936}. The next step was to collect batches of data of around 30 minutes per use case. This process was repeated until accumulate around 15 hours of data.
 
+
+
 \vspace{0.1cm}
 \footnotesize
 \textbf{Author Contributions}
 Pérez M. and Wolter writing - original draft, conceptualization, review, and editing; investigation; software and data curation.
 Schmallenbach writing - review, editing.
 Burggräf, Wagner, Heinbach, Steinberg writing - conceptualization, review. Garcke, and Steffes-lai writing - review.
-% Burggräf performed supervision of work.
+
 
 \footnotesize
 \textbf{Acknowledgments}
